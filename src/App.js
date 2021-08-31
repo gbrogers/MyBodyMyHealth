@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import PeriodTracking from "./PeriodTracking";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function App() {
+import BCTracking from "./BCTracking";
+import Resources from "./Resources";
+import Nav from "./Nav";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SetUpForm from "./SetUpForm";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/resources" component={Resources} />
+            <Route path="/menstrualtracking" exact component={PeriodTracking} />
+            <Route path="/contraceptivetracking" exact component={BCTracking} />
+            {/* <Route path="/shop/:id" component={ItemDetail} /> */}
+          </Switch>
+        </div>
+      </Router>
+      <SetUpForm />
+    </>
   );
 }
-
-export default App;
+const Home = () => {
+  return (
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  );
+};
