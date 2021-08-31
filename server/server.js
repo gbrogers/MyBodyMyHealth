@@ -13,11 +13,8 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "../public"));
 });
-// const baseURL = "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json?";
-// // https://health.gov/myhealthfinder/api/v3/myhealthfinder.json?age=35&sex=female&pregnant=no&sexuallyActive=yes&tobaccoUse=no
 
 // endpoints
-// app.get(`${baseURL}/`, ctrl.getWords);
 
 const port = process.env.PORT || 5555;
 // const port = 5555;

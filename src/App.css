@@ -28,7 +28,6 @@ nav {
   padding: 20px;
 }
 nav div {
-  width: 40%;
   display: flex;
   justify-content: space-between;
 }
@@ -38,4 +37,9 @@ nav ul {
 }
 nav li {
   margin-right: 30px;
+}
+
+.personalizedResources {
+  color: hotpink;
+  font-size: 40px;
 }
