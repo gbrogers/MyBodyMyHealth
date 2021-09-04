@@ -5,6 +5,11 @@ import styles from "./Resources.module.scss";
 
 export default function Resources() {
   const [resourceList, setResourceList] = useState([]);
+  const [age, setAge] = useState("");
+  const [sex, setSex] = useState("Female");
+  const [pregnant, setPregnant] = useState("No");
+  const [tobacco, setTobacco] = useState("No");
+  const [sexActive, setSexActive] = useState("No");
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
@@ -29,8 +34,16 @@ export default function Resources() {
   return (
     <div className={styles.displayResources}>
       <h1>Resources Page</h1>
-      <SetUpForm />
-      <button onClick={() => generateResource(25, "female", "no", "yes", "no")}>
+      <SetUpForm
+        setAge={setAge}
+        setSex={setSex}
+        setPregnant={setPregnant}
+        setTobacco={setTobacco}
+        setSexActive={setSexActive}
+      />
+      <button
+        onClick={() => generateResource(age, sex, pregnant, tobacco, sexActive)}
+      >
         Press Me for Resource
       </button>
       <ul className={styles.personalizedResources}>
