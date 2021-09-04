@@ -1,0 +1,29 @@
+.displayResources {
+  .personalizedResources {
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      margin: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 300px;
+    }
+    img {
+      width: 260px;
+      border-radius: 5px;
+      //   border: 2px grey solid;
+    }
+  }
+  .individualResource {
+    background-color: #ffe46f;
+    padding: 20px;
+    border: 2px grey solid;
+    border-radius: 5px;
+  }
+  .individualResource:nth-child(odd) {
+    background-color: #dff4f3;
+  }
+}

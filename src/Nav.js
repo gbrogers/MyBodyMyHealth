@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import styles from "./Nav.module.scss";
 import { Link } from "react-router-dom";
 import Authenticate from "./Authenticate";
 
@@ -8,23 +8,22 @@ function Nav() {
     color: "black",
   };
   return (
-    <nav>
-      <ul className="nav-links">
+    <nav className={styles.nav}>
+      <ul className={styles.navLinks}>
         <Link style={navStyle} to="/">
           <li>Logo</li>
         </Link>
-        <div>
-          <Link style={navStyle} to="/menstrualtracking">
-            <li>Menstrual Tracking</li>
-          </Link>
-          <Link style={navStyle} to="/contraceptivetracking">
-            <li>Contraceptive Tracking</li>
-          </Link>
-          <Link style={navStyle} to="/resources">
-            <li>Resources</li>
-          </Link>
-          <Authenticate />
-        </div>
+
+        <Link style={navStyle} to="/menstrualtracking">
+          <li>Menstrual Tracking</li>
+        </Link>
+        <Link style={navStyle} to="/contraceptivetracking">
+          <li>Contraceptive Tracking</li>
+        </Link>
+        <Link style={navStyle} to="/resources">
+          <li>Resources</li>
+        </Link>
+        <Authenticate />
       </ul>
     </nav>
   );

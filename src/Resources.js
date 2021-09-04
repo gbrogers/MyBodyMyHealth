@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SetUpForm from "./SetUpForm";
+import styles from "./Resources.module.scss";
 
 export default function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -25,22 +27,34 @@ export default function Resources() {
   };
 
   return (
-    <>
+    <div className={styles.displayResources}>
       <h1>Resources Page</h1>
+      <SetUpForm />
       <button onClick={() => generateResource(25, "female", "no", "yes", "no")}>
         Press Me for Resource
       </button>
-      <ul className="personalizedResources">
+      <ul className={styles.personalizedResources}>
         {resourceList.map((item) => {
-          let url = item.AccessibleVersion;
-          let title = item.Title;
+          const {
+            Id,
+            AccessibleVersion,
+            Title,
+            ImageUrl,
+            ImageAlt,
+            MyHFCategoryHeading,
+          } = item;
+
           return (
-            <li key={item.Id}>
-              <a href={url}>{item.Title}</a>
+            <li key={Id} className={styles.individualResource}>
+              <img src={ImageUrl} alt={ImageAlt}></img>
+              <a href={AccessibleVersion} target="_blank">
+                {Title}
+              </a>
+              {/* {MyHFCategoryHeading} */}
             </li>
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }

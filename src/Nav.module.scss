@@ -1,0 +1,28 @@
+nav {
+  min-height: 10vh;
+  background: #f5bdc4;
+  width: 100%;
+
+  .navLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    padding: 20px;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+  ul > a:nth-child(1) {
+    flex-grow: 2;
+  }
+  li {
+    margin-right: 30px;
+  }
+}

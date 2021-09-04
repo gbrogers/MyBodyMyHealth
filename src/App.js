@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.module.scss";
 import React, { useState } from "react";
 import PeriodTracking from "./PeriodTracking";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -7,7 +7,6 @@ import BCTracking from "./BCTracking";
 import Resources from "./Resources";
 import Nav from "./Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SetUpForm from "./SetUpForm";
 
 export default function App() {
   return (
@@ -24,7 +23,6 @@ export default function App() {
           </Switch>
         </div>
       </Router>
-      <SetUpForm />
     </>
   );
 }

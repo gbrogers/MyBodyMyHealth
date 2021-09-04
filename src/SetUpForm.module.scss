@@ -1,0 +1,14 @@
+.setUpForm {
+  display: flex;
+  flex-direction: column;
+
+  label,
+  select {
+    cursor: pointer;
+  }
+  label,
+  select,
+  input {
+    margin-left: 10px;
+  }
+}
