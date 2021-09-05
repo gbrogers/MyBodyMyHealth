@@ -1,0 +1,15 @@
+.setUpForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.setUpForm label,
+.setUpForm select {
+  cursor: pointer;
+}
+
+.setUpForm label,
+.setUpForm select,
+.setUpForm input {
+  margin-left: 10px;
+}

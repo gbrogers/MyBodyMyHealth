@@ -1,15 +1,15 @@
-import "./PeriodTracking.module.css";
+import styles from "./BCTracking.module.scss";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 
-export default function PeriodTracking() {
-  const date1 = new Date(2021, 7, 11);
-  const date2 = new Date(2021, 7, 12);
-  const date3 = new Date(2021, 7, 14);
+export default function BCTracking() {
+  const date4 = new Date(2021, 7, 13);
+  const date5 = new Date(2021, 7, 16);
+  const date6 = new Date(2021, 7, 17);
 
-  const [datesToAddTo, setdatesToAddTo] = useState([date1, date2, date3]);
+  const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
 
   const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
@@ -18,15 +18,15 @@ export default function PeriodTracking() {
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
-    if (datesToAddTo.find((dDate) => isSameDay(dDate, date))) {
-      console.log("matched date");
-      return "period";
+    if (bcTaken.find((dDate) => isSameDay(dDate, date))) {
+      console.log("BC matched date");
+      return "BC";
     }
   }
 
   return (
     <>
-      <h2>My Menstruation Tracking</h2>
+      <h2>My Contraceptive Tracking</h2>
       <Calendar
         value={dateState}
         onChange={changeDate}

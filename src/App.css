@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  all: unset;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: black !important;
+}
+
+.BC {
+  background-color: #cd57d8 !important;
+}
+
+.period {
+  background-color: brown !important;
+}

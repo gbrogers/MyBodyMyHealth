@@ -1,11 +1,12 @@
-import "./App.module.scss";
+import "./App.scss";
 import React, { useState } from "react";
-import PeriodTracking from "./PeriodTracking";
+import PeriodTracking from "./components/PeriodTracking/PeriodTracking";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import BCTracking from "./BCTracking";
-import Resources from "./Resources";
-import Nav from "./Nav";
+import BCTracking from "./components/BCTracking/BCTracking";
+import Resources from "./components/Resources/Resources";
+import Nav from "./components/Nav/Nav";
+import Home from "./components/Home/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -26,10 +27,3 @@ export default function App() {
     </>
   );
 }
-const Home = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
-};

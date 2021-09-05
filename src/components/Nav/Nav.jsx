@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./Nav.module.scss";
+import styles from "./_Nav.module.scss";
 import { Link } from "react-router-dom";
-import Authenticate from "./Authenticate";
+import Authenticate from "../Authenticate/Authenticate";
 
 function Nav() {
   const navStyle = {
@@ -10,8 +10,8 @@ function Nav() {
   return (
     <nav className={styles.nav}>
       <ul className={styles.navLinks}>
-        <Link style={navStyle} to="/">
-          <li>Logo</li>
+        <Link style={styles.navStyle} to="/">
+          <li>&#9776;</li>
         </Link>
 
         <Link style={navStyle} to="/menstrualtracking">

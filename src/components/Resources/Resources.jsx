@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SetUpForm from "./SetUpForm";
+import SetUpForm from "../SetUpForm/SetUpForm";
 import styles from "./Resources.module.scss";
 
 export default function Resources() {
