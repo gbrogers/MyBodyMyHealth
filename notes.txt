@@ -1,4 +1,5 @@
 to do: 
 Resource page button switch back to default
-no longer accessing calendar styles properly
-why is every modules getting own css file with SCSS.. should be one main one
+make option to use menstrual calendar or BC tracking when sign up
+add border for if day has notes in it
+

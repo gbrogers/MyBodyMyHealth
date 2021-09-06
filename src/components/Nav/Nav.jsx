@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./_Nav.module.scss";
 import { Link } from "react-router-dom";
 import Authenticate from "../Authenticate/Authenticate";
+import Logo from "../../images/Logo.svg";
 
 function Nav() {
   const navStyle = {
@@ -11,7 +12,10 @@ function Nav() {
     <nav className={styles.nav}>
       <ul className={styles.navLinks}>
         <Link style={styles.navStyle} to="/">
-          <li>&#9776;</li>
+          {/* <li>&#9776;</li> */}
+          <li>
+            <img className={styles.logo} src={Logo}></img>
+          </li>
         </Link>
 
         <Link style={navStyle} to="/menstrualtracking">

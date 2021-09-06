@@ -59,9 +59,10 @@ export default function Resources() {
 
           return (
             <li key={Id} className={styles.individualResource}>
-              <img src={ImageUrl} alt={ImageAlt}></img>
               <a href={AccessibleVersion} target="_blank">
-                {Title}
+                <img src={ImageUrl} alt={ImageAlt}></img>
+
+                <h3>{Title}</h3>
               </a>
               {/* {MyHFCategoryHeading} */}
             </li>
