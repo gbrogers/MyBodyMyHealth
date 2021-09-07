@@ -15,6 +15,7 @@
 
   .sectionOne {
     > div {
+      // margin-top: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -90,7 +91,10 @@
     //   // top: 0;
     //   right: 0;
     // }
-    img {
+    .threeFaces {
+      display: none;
+    }
+    .runner {
       display: none;
     }
   }
@@ -142,7 +146,7 @@
         // align-items: center;
         // justify-items: center;
       }
-      img {
+      .threeFaces {
         display: block;
         height: 300px;
         width: 45vw;
@@ -199,25 +203,18 @@
     .sectionThree {
     }
     .sectionFour {
+      .mustardSqr {
+        width: 40vw;
+      }
+      .threeFaces {
+        display: none;
+      }
+      .runner {
+        display: block;
+        height: 300px;
+        width: 60vw;
+        object-fit: cover;
+      }
     }
   }
 } //end of 768 media query
-// .getStartedBtn {
-//   all: unset;
-//   background-color: #9ef3ef;
-//   cursor: pointer;
-//   padding: 10px 20px;
-//   border-radius: 5px;
-//   font-weight: 700;
-//   margin: 5px 0;
-// }
-// .sectionOne > div {
-//   display: flex;
-
-// }
-
-// .sectionTwo {
-//   position: relative;
-//   margin-bottom: 50px;
-
-// }

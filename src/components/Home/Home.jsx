@@ -2,6 +2,7 @@ import styles from "./Home.module.scss";
 import MainSectionImg from "../../images/bc-types-home.jpg";
 import Triangle from "../../images/home-triangle.svg";
 import ThreeFaces from "../../images/threefaces.jpg";
+import Runner from "../../images/runner.jpg";
 
 export default function Home() {
   return (
@@ -45,7 +46,8 @@ export default function Home() {
             <button className={styles.getStartedBtn}>Learn More</button>
           </div>
 
-          <img src={ThreeFaces}></img>
+          <img src={ThreeFaces} className={styles.threeFaces}></img>
+          <img src={Runner} className={styles.runner}></img>
         </section>
         <section>
           <h2>Section 5</h2>
