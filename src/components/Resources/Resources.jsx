@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SetUpForm from "../SetUpForm/SetUpForm";
 import styles from "./Resources.module.scss";
+import e from "cors";
 
 export default function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -19,7 +20,8 @@ export default function Resources() {
   //   console.log({ resourceList });
   // }, [resourceList]);
 
-  const generateResource = (age, sex, pregnant, sexActive, tobacco) => {
+  const generateResource = (e, age, sex, pregnant, sexActive, tobacco) => {
+    // e.preventDefault();
     console.log("in generateResource");
     axios
       .get(
@@ -32,7 +34,7 @@ export default function Resources() {
   };
 
   return (
-    <div className={styles.displayResources}>
+    <div className={`${styles.displayResources} page-layout`}>
       <h1>Resources Page</h1>
       <SetUpForm
         setAge={setAge}

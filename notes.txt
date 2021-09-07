@@ -1,6 +1,6 @@
 to do: 
 Resource page button switch back to default
-make option to use menstrual calendar or BC tracking when sign up
+make option to use menstrual calendar or BC tracking when sign up?
 add border for if day has notes in it
 top margin covered by nav
 

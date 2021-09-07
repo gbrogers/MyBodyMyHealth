@@ -7,6 +7,7 @@ const app = express();
 const path = require("path");
 app.use(express.static(path.join(__dirname, "build")));
 
+// app.use(express.urlencoded({ extended: true })); // this is from youtube video
 app.use(express.json());
 app.use(cors());
 

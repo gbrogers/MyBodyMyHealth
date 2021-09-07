@@ -57,7 +57,7 @@ function Nav() {
         >
           <li>Resources</li>
         </Link>
-        <Authenticate />
+        {/* <Authenticate /> */}
       </ul>
       <style jsx>{`
         .navList button {
@@ -71,6 +71,7 @@ function Nav() {
           flex-direction: column;
           justify-content: space-between;
           background-color: #f5bdc4;
+          z-index: 100;
         }
         .navigation button {
           all: unset;
@@ -96,14 +97,13 @@ function Nav() {
 
         @media screen and (min-width: 768px){
           .navList {
-            padding: 0 30px ;
+            padding: 0 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: auto;
         }
-        .navList li,
-        .navList button {
+        .navList li {
           list-style-type: none;
           padding: 10px;
           font-size: 1em;
