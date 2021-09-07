@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import BirthControl from "../BirthControl/BirthControl";
 
 export default function BCTracking() {
   const date4 = new Date(2021, 7, 13);
@@ -10,6 +11,10 @@ export default function BCTracking() {
   const date6 = new Date(2021, 7, 17);
 
   const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
+  const [showBC, setShowBC] = useState(false);
+  const [dropDown, setDropDown] = useState(true);
+
+  let srcDropDown = dropDown ? "down" : "up"; //update to src images
 
   const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
@@ -26,6 +31,19 @@ export default function BCTracking() {
 
   return (
     <>
+      <div>
+        <button
+          className={styles.showBCBtn}
+          onClick={() => {
+            setShowBC(!showBC);
+            setDropDown(!dropDown);
+          }}
+        >
+          <img src={srcDropDown}></img>
+          Step One: Select Your Method of Birth Control
+        </button>
+      </div>
+      {showBC && <BirthControl />}
       <h2>My Contraceptive Tracking</h2>
       <Calendar
         value={dateState}

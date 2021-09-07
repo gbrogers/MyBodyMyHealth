@@ -7,6 +7,7 @@ import BCTracking from "./components/BCTracking/BCTracking";
 import Resources from "./components/Resources/Resources";
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
+import Footer from "./components/Footer/Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -20,8 +21,8 @@ export default function App() {
             <Route path="/resources" component={Resources} />
             <Route path="/menstrualtracking" exact component={PeriodTracking} />
             <Route path="/contraceptivetracking" exact component={BCTracking} />
-            {/* <Route path="/shop/:id" component={ItemDetail} /> */}
           </Switch>
+          <Footer />
         </div>
       </Router>
     </>

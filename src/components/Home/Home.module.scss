@@ -1,0 +1,220 @@
+* {
+  outline: 1px solid hotpink;
+}
+.home {
+  .getStartedBtn {
+    all: unset;
+    background-color: #9ef3ef;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    margin: 5px 0;
+  }
+  ///////////////////////// SECTION ONE///////////////////////////////////////////////////////
+
+  .sectionOne {
+    > div {
+      // margin-top: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      .mainSectionImg {
+        width: 95vw;
+      }
+      > div {
+        width: 95vw;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1,
+        p {
+          text-align: center;
+        }
+        p {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  ///////////////////////// SECTION TWO///////////////////////////////////////////////////////
+  .sectionTwo {
+    position: relative;
+    margin: 50px 0;
+
+    .blueSection {
+      // height: 450px;
+      background-color: #dff4f3;
+      display: flex;
+      justify-content: center;
+    }
+    .circleIcons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      div {
+        background-color: #c3fd8a;
+        border: 3px solid #fff;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+      }
+    }
+  }
+  ///////////////////////// SECTION THREE///////////////////////////////////////////////////////
+
+  .sectionThree {
+    height: 300px;
+  }
+  ///////////////////////// SECTION FOUR///////////////////////////////////////////////////////
+
+  .sectionFour {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .mustardSqr {
+      background-color: #ffe46f;
+      position: relative;
+      height: 300px;
+    }
+    // .mustardSqr::after {
+    //   // position: absolute;
+    //   content: url("../../images/home-triangle.svg");
+    //   bottom: 0;
+    //   // top: 0;
+    //   right: 0;
+    // }
+    .threeFaces {
+      display: none;
+    }
+    .runner {
+      display: none;
+    }
+  }
+}
+////////////////////////////////// 400 MEDIA QUERY///////////////////////////////////////
+@media screen and (min-width: 400px) {
+  .home {
+    .sectionOne {
+      > div > div > p {
+        max-width: 300px;
+      }
+    }
+    .sectionTwo {
+    }
+    .sectionThree {
+    }
+    .sectionFour {
+    }
+  }
+} //end of 400 media query
+////////////////////////////////// 550 MEDIA QUERY///////////////////////////////////////
+@media screen and (min-width: 550px) {
+  .home {
+    .sectionOne {
+      > div > div > p {
+        max-width: 500px;
+      }
+    }
+    .sectionTwo {
+    }
+    .sectionThree {
+    }
+    .sectionFour {
+      display: flex;
+      flex-direction: row;
+      .mustardSqr {
+        width: 55vw;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        align-items: flex-start;
+        justify-content: center;
+
+        h2 {
+        }
+        p {
+          // height: 200px;
+        }
+        // align-items: center;
+        // justify-items: center;
+      }
+      .threeFaces {
+        display: block;
+        height: 300px;
+        width: 45vw;
+        object-fit: cover;
+      }
+    }
+  }
+} //end of 550 media query
+////////////////////////////////// 768 MEDIA QUERY///////////////////////////////////////
+@media screen and (min-width: 768px) {
+  .home {
+    .sectionOne {
+      > div {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 50px;
+        .mainSectionImg {
+          width: 40%;
+        }
+        > div {
+          width: 40%;
+          margin: 30px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          // justify-content: center;
+          p {
+            margin: 10px 0;
+            text-align: left;
+          }
+        }
+      }
+    }
+    .sectionTwo {
+      .blueSection {
+        height: 450px;
+      }
+      .circleIcons {
+        position: absolute;
+        margin-top: 387.5px;
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        justify-content: space-between;
+        align-items: center;
+
+        div {
+          width: 9em;
+          height: 9em;
+        }
+      }
+    }
+    .sectionThree {
+    }
+    .sectionFour {
+      .mustardSqr {
+        width: 40vw;
+      }
+      .threeFaces {
+        display: none;
+      }
+      .runner {
+        display: block;
+        height: 300px;
+        width: 60vw;
+        object-fit: cover;
+      }
+    }
+  }
+} //end of 768 media query
