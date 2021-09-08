@@ -1,11 +1,11 @@
 const Sequelize = require("sequelize");
 const connection = require("./database/sequelize.js");
 
-const Birth_control = connection.define(
-  "Birth_control",
+const Note = connection.define(
+  "Note",
   {
-    id: {
-      type: Sequelize.UUIDV4,
+    fname: {
+      type: Sequelize.STRING,
       allowNull: false,
     },
   },
@@ -14,4 +14,4 @@ const Birth_control = connection.define(
   }
 );
 
-module.exports = Birth_control;
+module.exports = Note;

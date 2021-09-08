@@ -41,10 +41,10 @@ export default function Home() {
               <div>
                 <img className={styles.resourcesIcon} src={ResourcesIcon}></img>
               </div>
+
               <div>
                 <img className={styles.bodyIcon} src={UterusIcon}></img>
               </div>
-
               <div>
                 <img className={styles.brainIcon} src={BrainIcon}></img>
               </div>

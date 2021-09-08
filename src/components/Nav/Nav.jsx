@@ -12,7 +12,6 @@ function Nav() {
   };
   return (
     <nav className="navigation">
-      {/* <ul className={`menuNav ${navbarOpen ? " showMenu" : ""}`}> */}
       <div className={styles.navBar}>
         <Link
           style={styles.navStyle}
@@ -65,6 +64,7 @@ function Nav() {
         }
         .navigation {
           position: fixed;
+          // padding: 10px 0 0 0;
           min-height: 10vh;
           width: 100%;
           display: flex;
@@ -82,29 +82,32 @@ function Nav() {
         }
         .navList {
           display: ${navbarOpen ? "inline" : "none"};
+          // margin-top: 10px;
           align-items: center;
-          // margin: 30px;
           background-color: #f79da7;
           height: 100vh;
         }
-        .navList li,
-        .navList button {
+        .navList li {
           list-style-type: none;
+          border-bottom: 1px solid black;
           padding: 10px;
-          // height: 30px;
           font-size: 1.3em;
+        }
+        .navList li:hover {
+          background-color: #DA8590;
         }
 
         @media screen and (min-width: 768px){
           .navList {
             padding: 0 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             height: auto;
         }
         .navList li {
           list-style-type: none;
+          border: none;
           padding: 10px;
           font-size: 1em;
         }

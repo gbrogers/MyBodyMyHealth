@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 const connection = require("./database/sequelize.js");
 
-const Birth_control = connection.define(
-  "Birth_control",
+const Date_birth_control = connection.define(
+  "Date_birth_control",
   {
     id: {
       type: Sequelize.UUIDV4,
@@ -14,4 +14,4 @@ const Birth_control = connection.define(
   }
 );
 
-module.exports = Birth_control;
+module.exports = Date_birth_control;
