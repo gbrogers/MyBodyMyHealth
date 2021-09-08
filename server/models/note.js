@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const connection = require("./database/sequelize.js");
+const connection = require("../database/sequelize.js");
 
 const Note = connection.define(
   "Note",

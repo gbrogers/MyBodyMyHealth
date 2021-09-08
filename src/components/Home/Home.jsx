@@ -1,4 +1,5 @@
 import styles from "./Home.module.scss";
+import { Link } from "react-router-dom";
 
 //image components
 import MainSectionImg from "../../images/bc-types-home.jpg";
@@ -6,7 +7,6 @@ import Triangle from "../../images/home-triangle.svg";
 import ThreeFaces from "../../images/threefaces.jpg";
 import Runner from "../../images/runner.jpg";
 import MethodsIcon from "../../images/methods.png";
-// import BodyIcon from "../../images/body.png";
 import UterusIcon from "../../images/uterus.png";
 import BrainIcon from "../../images/brain.png";
 import ResourcesIcon from "../../images/resources.png";
@@ -27,7 +27,9 @@ export default function Home() {
                 both personalized and generic health resources at the tips of
                 your fingers.
               </p>
-              <button className={styles.getStartedBtn}>Get Started</button>
+              <Link to="/signup">
+                <button className={styles.getStartedBtn}>Get Started</button>
+              </Link>
             </div>
             <img src={MainSectionImg} className={styles.mainSectionImg}></img>
           </div>
@@ -66,7 +68,9 @@ export default function Home() {
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
             <p>Get information by topic, or personalized just for you.</p>
-            <button className={styles.getStartedBtn}>Learn More</button>
+            <Link to="/signup">
+              <button className={styles.getStartedBtn}>Learn More</button>
+            </Link>
           </div>
 
           <img src={ThreeFaces} className={styles.threeFaces}></img>
@@ -78,8 +82,12 @@ export default function Home() {
             <h2>Visually monitor your progress </h2>
             <p>Sign up to get started today</p>
             <div className={styles.sectionFiveBtns}>
-              <button className={styles.getStartedBtn}>Get Started</button>
-              <button className={styles.loginBtn}>Login</button>
+              <Link to="/signup">
+                <button className={styles.getStartedBtn}>Get Started</button>
+              </Link>
+              <Link to="/login">
+                <button className={styles.loginBtn}>Login</button>
+              </Link>
             </div>
           </div>
         </section>
