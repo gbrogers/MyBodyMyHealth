@@ -13,7 +13,7 @@ function Nav() {
   return (
     <nav className="navigation">
       <div className={styles.navBar}>
-        <Link to="/" onClick={() => setNavbarOpen(!navbarOpen)}>
+        <Link to="/">
           <div className={styles.logoName}>
             <img className={styles.logo} src={Logo}></img>
             <h1>My Body My Health</h1>

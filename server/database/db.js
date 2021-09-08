@@ -23,7 +23,8 @@ User.hasMany(Saved_article);
 module.exports = connect = () => {
   connection
     .sync({
-      alter: true, //force: true, //to drop table and re-add - don't use once you have data - obviously
+      alter: true, //this find differences and alters as needed vs force dropping tables
+      //force: true, //to drop table and re-add - don't use once you have data - obviously
       // logging: console.log
     })
     .then(() => {

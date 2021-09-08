@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 // endpoints
-app.use("/api/authenticate/:id", ctrl.loginUser);
+app.use("/api/authenticate/login", ctrl.loginUser);
 
 const port = process.env.PORT || 5555;
 // const port = 5555;

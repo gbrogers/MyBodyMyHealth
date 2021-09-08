@@ -8,6 +8,15 @@ const Birth_control = connection.define(
       type: Sequelize.UUIDV4,
       allowNull: false,
     },
+    name: {
+      type: Sequelize.STRING,
+    },
+    type: {
+      type: Sequelize.STRING,
+    },
+    frequency: {
+      type: Sequelize.STRING,
+    },
   },
   {
     timestamps: false,
