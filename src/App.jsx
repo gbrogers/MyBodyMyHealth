@@ -8,6 +8,8 @@ import Resources from "./components/Resources/Resources";
 import Nav from "./components/Nav/Nav";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
@@ -18,6 +20,8 @@ export default function App() {
           <Nav />
           <Switch>
             <Route path="/" exact component={Home} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={SignUp} />
             <Route path="/resources" component={Resources} />
             <Route path="/menstrualtracking" exact component={PeriodTracking} />
             <Route path="/contraceptivetracking" exact component={BCTracking} />

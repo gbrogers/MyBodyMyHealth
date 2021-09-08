@@ -13,47 +13,46 @@ function Nav() {
   return (
     <nav className="navigation">
       <div className={styles.navBar}>
-        <Link
-          style={styles.navStyle}
-          to="/"
-          onClick={() => setNavbarOpen(!navbarOpen)}
-        >
-          <li className={styles.logoName}>
+        <Link to="/" onClick={() => setNavbarOpen(!navbarOpen)}>
+          <div className={styles.logoName}>
             <img className={styles.logo} src={Logo}></img>
             <h1>My Body My Health</h1>
-          </li>
+          </div>
         </Link>
-        <button onClick={() => setNavbarOpen(!navbarOpen)}>
-          <Hamburger />
-        </button>
+        <div className={styles.loginSignUpNav}>
+          <Link
+            to="/login"
+            className={`${styles.loginSignUpBtn} ${styles.login}`}
+          >
+            <button>Login</button>
+          </Link>
+
+          <Link
+            to="/signup"
+            className={`${styles.loginSignUpBtn} ${styles.signUp}`}
+          >
+            <button>Sign Up</button>
+          </Link>
+        </div>
+        <Hamburger navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       </div>
       <ul className="navList">
-        <Link
-          style={styles.navStyle}
-          to="/"
-          onClick={() => setNavbarOpen(!navbarOpen)}
-        >
+        <Link to="/" onClick={() => setNavbarOpen(!navbarOpen)}>
           <li>Home</li>
         </Link>
         <Link
-          style={navStyle}
           to="/menstrualtracking"
           onClick={() => setNavbarOpen(!navbarOpen)}
         >
           <li>Menstrual Tracking</li>
         </Link>
         <Link
-          style={navStyle}
           to="/contraceptivetracking"
           onClick={() => setNavbarOpen(!navbarOpen)}
         >
           <li>Contraceptive Tracking</li>
         </Link>
-        <Link
-          style={navStyle}
-          to="/resources"
-          onClick={() => setNavbarOpen(!navbarOpen)}
-        >
+        <Link to="/resources" onClick={() => setNavbarOpen(!navbarOpen)}>
           <li>Resources</li>
         </Link>
         {/* <Authenticate /> */}
@@ -73,9 +72,9 @@ function Nav() {
           background-color: #f5bdc4;
           z-index: 100;
         }
-        .navigation button {
-          all: unset;
-        }
+        // .navigation button {
+        //   all: unset;
+        // }
         .navigation a,
         .navigation button {
           cursor: pointer;
@@ -97,6 +96,7 @@ function Nav() {
           background-color: #DA8590;
         }
 
+
         @media screen and (min-width: 768px){
           .navList {
             padding: 0 30px;
@@ -111,6 +111,7 @@ function Nav() {
           padding: 10px;
           font-size: 1em;
         }
+
       `}</style>
     </nav>
   );
