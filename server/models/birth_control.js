@@ -6,6 +6,7 @@ const Birth_control = connection.define(
   {
     id: {
       type: Sequelize.UUIDV4,
+      primaryKey: true,
       allowNull: false,
     },
     name: {

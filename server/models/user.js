@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/sequelize.js");
 const bcrypt = require("bcrypt");
+const Birth_control = require("./birth_control.js");
 
 const User = connection.define(
   "User",
@@ -34,13 +35,13 @@ const User = connection.define(
       type: Sequelize.DATE,
       allowNull: true,
     },
-    // birth_control: {
-    //   type: Sequelize.INTEGER,
-    //   references: {
-    //     model: Birth_control,
-    //     key: "id",
-    //   },
-    // },
+    birth_control: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: Birth_control,
+        key: "id",
+      },
+    },
   },
 
   {
