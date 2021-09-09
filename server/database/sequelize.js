@@ -8,7 +8,6 @@ const connection = new Sequelize(process.env.CONNECTION_STRING, {
   host: "localhost",
   logQueryParameters: true,
   dialect: "postgres",
-  // operatorsAliases: false,
   dialectOptions: {
     ssl: {
       require2: true,
