@@ -1,4 +1,4 @@
-import "./_PeriodTracking.module.scss";
+import styles from "./_PeriodTracking.module.scss";
 import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -25,19 +25,21 @@ export default function PeriodTracking() {
   }
 
   return (
-    <>
+    <div className={`${styles.menstrualTracking} page-layout`}>
       <h2>My Menstruation Tracking</h2>
-      <Calendar
-        value={dateState}
-        onChange={changeDate}
-        tileClassName={tileClassName}
-        // tileContent={tileContent}
-      />
+      <div className="calendar-container">
+        <Calendar
+          value={dateState}
+          onChange={changeDate}
+          tileClassName={tileClassName}
+          // tileContent={tileContent}
+        />
+      </div>
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
       </p>
-    </>
+    </div>
   );
 }
 

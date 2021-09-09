@@ -1,15 +1,37 @@
 * {
-  outline: 1px solid hotpink;
+  // outline: 1px solid hotpink;
 }
 .home {
-  .getStartedBtn {
+  // z-index: -1;
+  h1,
+  h2 {
+    font-family: "Caveat", cursive;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  h2 {
+    font-size: 2rem;
+    line-height: 0.8;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .getStartedBtn,
+  .loginBtn {
     all: unset;
-    background-color: #9ef3ef;
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: 700;
     margin: 5px 0;
+  }
+  .getStartedBtn {
+    background-color: #9ef3ef;
+  }
+  .loginBtn {
+    background-color: #defbf9;
+    margin-left: 10px;
   }
   ///////////////////////// SECTION ONE///////////////////////////////////////////////////////
 
@@ -19,20 +41,30 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: center;
+      background-image: url("../../images/bc-types-home.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
 
       .mainSectionImg {
         width: 95vw;
+        display: none;
       }
       > div {
-        width: 95vw;
-        margin: 10px;
+        width: 75vw;
+        margin: 20px 0;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 5px;
         h1,
         p {
           text-align: center;
+          font-weight: 400;
         }
         p {
           margin: 10px 0;
@@ -44,34 +76,64 @@
   ///////////////////////// SECTION TWO///////////////////////////////////////////////////////
   .sectionTwo {
     position: relative;
-    margin: 50px 0;
+    margin: 50px 0 100px 0;
 
     .blueSection {
       // height: 450px;
+      height: 300px;
       background-color: #dff4f3;
       display: flex;
+      flex-direction: column;
       justify-content: center;
     }
     .circleIcons {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      div {
+      // flex-direction: column;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      align-items: center;
+      // z-index: -50;
+      > div {
         background-color: #c3fd8a;
-        border: 3px solid #fff;
-        width: 150px;
-        height: 150px;
+        border: 5px solid #fff;
+        width: 20vw;
+        height: 20vw;
+        min-width: 100px;
+        min-height: 100px;
         border-radius: 50%;
         text-align: center;
         padding: 10px;
         margin: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 70%;
+        }
       }
     }
   }
   ///////////////////////// SECTION THREE///////////////////////////////////////////////////////
 
   .sectionThree {
-    height: 300px;
+    .quoteContainer {
+      height: 200px;
+      margin-bottom: 100px;
+      display: flex;
+      // flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        width: 70%;
+        font-style: italic;
+        font-size: 1.3rem;
+        .author {
+          float: right;
+          font-weight: 700;
+        }
+      }
+    }
   }
   ///////////////////////// SECTION FOUR///////////////////////////////////////////////////////
 
@@ -80,22 +142,59 @@
     flex-direction: column;
     justify-content: space-around;
     .mustardSqr {
-      background-color: #ffe46f;
+      font-size: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background-color: #ffe56f;
+      padding-left: 60px;
       position: relative;
       height: 300px;
+      p,
+      button {
+        font-size: 1rem;
+      }
     }
-    // .mustardSqr::after {
-    //   // position: absolute;
-    //   content: url("../../images/home-triangle.svg");
-    //   bottom: 0;
-    //   // top: 0;
-    //   right: 0;
-    // }
+    .mustardSqr::after {
+      position: absolute;
+      content: url("../../images/home-triangle.svg");
+      left: 0;
+      bottom: 0;
+      // top: 0;
+      right: 0;
+    }
     .threeFaces {
       display: none;
     }
     .runner {
       display: none;
+    }
+  }
+
+  ////////////////////////////////////////// SECTION 5//////////////////////////////////////////////////////
+
+  .sectionFive {
+    padding: 50px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+    .demonstration {
+      height: 200px;
+      width: 300px;
+      background-color: grey;
+      margin-bottom: 15px;
+    }
+    .caption {
+      margin-top: 15px;
+      p,
+      h2 {
+        width: 80%;
+      }
+      p {
+        margin: 5px 0;
+      }
     }
   }
 }
@@ -104,7 +203,7 @@
   .home {
     .sectionOne {
       > div > div > p {
-        max-width: 300px;
+        // max-width: 300px;
       }
     }
     .sectionTwo {
@@ -120,7 +219,7 @@
   .home {
     .sectionOne {
       > div > div > p {
-        max-width: 500px;
+        // max-width: 500px;
       }
     }
     .sectionTwo {
@@ -168,12 +267,10 @@
           width: 40%;
         }
         > div {
-          width: 40%;
           margin: 30px;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          // justify-content: center;
           p {
             margin: 10px 0;
             text-align: left;
@@ -183,17 +280,19 @@
     }
     .sectionTwo {
       .blueSection {
-        height: 450px;
+        align-items: center;
+        .quoteContainer {
+          padding-bottom: 4.5em;
+        }
       }
       .circleIcons {
         position: absolute;
-        margin-top: 387.5px;
+        margin-top: 300px;
         display: flex;
         flex-direction: row;
-        width: 80%;
+        width: 90%;
         justify-content: space-between;
         align-items: center;
-
         div {
           width: 9em;
           height: 9em;
@@ -205,6 +304,7 @@
     .sectionFour {
       .mustardSqr {
         width: 40vw;
+        background-color: #ffe46f;
       }
       .threeFaces {
         display: none;
@@ -214,6 +314,16 @@
         height: 300px;
         width: 60vw;
         object-fit: cover;
+      }
+    }
+    .sectionFive {
+      flex-direction: row;
+      justify-content: center;
+      .demonstration {
+        margin-right: 15px;
+      }
+      .caption {
+        margin-left: 15px;
       }
     }
   }

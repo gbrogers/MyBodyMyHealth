@@ -1,11 +1,15 @@
-export default function Hamburger() {
+export default function Hamburger(props) {
+  const { navbarOpen, setNavbarOpen } = props;
   return (
     <>
-      <div className="hamburger">&#9776;</div>
+      <button className="hamburger" onClick={() => setNavbarOpen(!navbarOpen)}>
+        &#9776;
+      </button>
 
       <style jsx>
         {`
           .hamburger {
+            all: unset;
             font-size: 2em;
             margin-right: 30px;
             display: flex;

@@ -4,6 +4,8 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
 import BirthControl from "../BirthControl/BirthControl";
+import DownArrow from "../../images/downArrow.svg";
+import UpArrow from "../../images/upArrow.svg";
 
 export default function BCTracking() {
   const date4 = new Date(2021, 7, 13);
@@ -14,7 +16,7 @@ export default function BCTracking() {
   const [showBC, setShowBC] = useState(false);
   const [dropDown, setDropDown] = useState(true);
 
-  let srcDropDown = dropDown ? "down" : "up"; //update to src images
+  let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
 
   const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
@@ -31,7 +33,7 @@ export default function BCTracking() {
 
   return (
     <>
-      <div>
+      <div className={`${styles.birthControlTracking} page-layout`}>
         <button
           className={styles.showBCBtn}
           onClick={() => {
@@ -45,12 +47,20 @@ export default function BCTracking() {
       </div>
       {showBC && <BirthControl />}
       <h2>My Contraceptive Tracking</h2>
-      <Calendar
-        value={dateState}
-        onChange={changeDate}
-        tileClassName={tileClassName}
-        // tileContent={tileContent}
-      />
+      <div className="calendar-container">
+        <Calendar
+          value={dateState}
+          onChange={changeDate}
+          tileClassName={tileClassName}
+          // tileContent={tileContent}
+        />
+        <div className={styles.bcCalendarLegend}>
+          <div>
+            <div className={styles.yellowKey}></div>
+            <h4>hello</h4>
+          </div>
+        </div>
+      </div>
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
