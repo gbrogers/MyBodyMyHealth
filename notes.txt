@@ -4,3 +4,43 @@ make option to use menstrual calendar or BC tracking when sign up?
 add border for if day has notes in it
 top margin covered by nav
 
+
+
+
+
+SQL QUeries for bc:
+-- DROP TABLE birth_control;
+
+INSERT INTO birth_control VALUES (1, 'iud', 'mirena', 'q7y')
+INSERT INTO birth_control VALUES (2, 'iud', 'kyleena', 'q5y')
+INSERT INTO birth_control VALUES (3, 'iud', 'liletta', 'q7y')
+INSERT INTO birth_control VALUES (4, 'iud', 'skyla', 'q3y')
+INSERT INTO birth_control VALUES (5, 'iud', 'paragard', 'q12y')
+INSERT INTO birth_control VALUES (6, 'implant', 'nexplanon', 'q5y')
+INSERT INTO birth_control VALUES (7, 'shot', 'depo-provera', 'q3m')
+INSERT INTO birth_control VALUES (8, 'ring', 'annovera', 'qm')
+INSERT INTO birth_control VALUES (9, 'patch', 'xulane', 'qm')
+INSERT INTO birth_control VALUES (10, 'patch', 'twirla', 'qm');
+INSERT INTO birth_control VALUES (11, 'pill', 'combo-pill', 'qd');
+INSERT INTO birth_control VALUES (12, 'pill', 'progesterone-only', 'qd');
+INSERT INTO birth_control VALUES (13, 'condom', 'condom', 'prn');
+INSERT INTO birth_control VALUES (14, 'internal-condom', 'internal-condom', 'prn');
+INSERT INTO birth_control VALUES (15, 'diaphragm', 'diaphragm', 'prn');
+INSERT INTO birth_control VALUES (16, 'sponge', 'sponge', 'prn');
+INSERT INTO birth_control VALUES (17, 'spermicide', 'spermicide', 'prn');
+INSERT INTO birth_control VALUES (18, 'cervical-cap', 'cervical-cap', 'prn');
+INSERT INTO birth_control VALUES (19, 'fam', 'fam', 'prn');
+INSERT INTO birth_control VALUES (20, 'breastfeeding', 'breastfeeding', 'q4h');
+INSERT INTO birth_control VALUES (21, 'abstinence', 'abstinence', 'prn');
+INSERT INTO birth_control VALUES (22, 'sterilization', 'sterilization', 'once');
+INSERT INTO birth_control VALUES (23, 'vasectomy', 'vasectomy', 'once');
+INSERT INTO birth_control VALUES (24, 'no-method', 'no-method', 'never');
+-- UPDATE birth_control SET birth_control_id = 45 WHERE birth_control_id=1;
+-- UPDATE birth_control SET bc_name = 'IUD' WHERE birth_control_id=45;
+-- SELECT * FROM birth_control
+-- CREATE table birth_control(
+-- birth_control_id SERIAL PRIMARY KEY,
+-- bc_name VARCHAR(200),
+-- bc_type VARCHAR(200),
+-- frequency VARCHAR(20)
+-- )

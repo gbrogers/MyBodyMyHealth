@@ -1,12 +1,14 @@
 const Sequelize = require("sequelize");
 require("dotenv").config();
-// import connect from "./db";
+// const connect = require("./db");
+// const { DATABASE, DB_USER, DB_PASSWORD } = process.env;
 
+// const connection = new Sequelize(DATABASE, DB_USER, DB_PASSWORD, {
 const connection = new Sequelize(process.env.CONNECTION_STRING, {
   host: "localhost",
-  dialect: "postgres",
   logQueryParameters: true,
   dialect: "postgres",
+  // operatorsAliases: false,
   dialectOptions: {
     ssl: {
       require2: true,
@@ -15,11 +17,15 @@ const connection = new Sequelize(process.env.CONNECTION_STRING, {
   },
 });
 
-try {
-  connection.authenticate();
-  console.log("good");
-} catch (error) {
-  console.log(`error: ${error}`);
-}
+// async function testConnection() {
+//   try {
+//     await connection.authenticate();
+//     console.log("good");
+//   } catch (error) {
+//     console.log(`error: ${error}`);
+//   }
+// }
+
+// testConnection();
 
 module.exports = connection;

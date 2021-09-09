@@ -4,15 +4,15 @@ const connection = require("../database/sequelize.js");
 const Birth_control = connection.define(
   "Birth_control",
   {
-    id: {
-      type: Sequelize.UUIDV4,
-      primaryKey: true,
-      allowNull: false,
-    },
-    name: {
+    // id: {
+    //   type: Sequelize.UUID,
+    //   primaryKey: true,
+    //   allowNull: false,
+    // },
+    bc_name: {
       type: Sequelize.STRING,
     },
-    type: {
+    bc_type: {
       type: Sequelize.STRING,
     },
     frequency: {

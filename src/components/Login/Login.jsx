@@ -5,9 +5,9 @@ import axios from "axios";
 // const bcrypt = require("bcrypt"); // error here when trying to has password (aws-sdk)
 // const saltRounds = 10;
 
-export default function Login() {
+export default function Login(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  // const { isLoggedIn, setIsLoggedIn } = props;
   const email = useRef();
   const password = useRef();
 

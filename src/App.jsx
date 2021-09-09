@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PeriodTracking from "./components/PeriodTracking/PeriodTracking";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -13,6 +13,12 @@ import SignUp from "./components/SignUp/SignUp";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
+  //any time app does a thing, lets call to see if this token exist
+
+  //axios did exist by checking if storage // reponse from server with 200 or 401. if good grab all info from backend. update local state
+
+  //routes pass down props.
+  //updated function that will upate variables and then pass function done.
   return (
     <>
       <Router>
