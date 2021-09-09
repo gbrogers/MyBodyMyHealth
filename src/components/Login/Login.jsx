@@ -2,7 +2,7 @@ import styles from "./Login.module.scss";
 import { useState, useRef } from "react";
 import axios from "axios";
 // import bcrypt from "bcrypt";
-// const bcrypt = require("bcrypt"); // error here when trying to has password (aws-sdk)
+const bcrypt = require("bcryptjs"); // error here when trying to has password (aws-sdk)
 // const saltRounds = 10;
 
 export default function Login(props) {
@@ -12,11 +12,9 @@ export default function Login(props) {
   const password = useRef();
 
   function handleHashing(password) {
-    // bcrypt.genSalt(saltRounds, function (err, salt) {
-    //   bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
-    //     // Store hash in your password DB.
-    //   });
-    // });
+    const salt = bcrypt.genSaltSync(5);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    return passwordHash;
   }
 
   async function handleLogin(e) {
@@ -27,8 +25,8 @@ export default function Login(props) {
 
     const credentials = {
       email: email.current.value,
-      password: password.current.value,
-      // password: hashedPass,
+      // password: password.current.value,
+      password: handleHashing(password.current.value),
     };
 
     console.log({ credentials });

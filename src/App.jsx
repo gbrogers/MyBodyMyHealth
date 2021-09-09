@@ -1,7 +1,6 @@
 import "./App.scss";
 import React, { useEffect, useState } from "react";
 import PeriodTracking from "./components/PeriodTracking/PeriodTracking";
-import { useAuth0 } from "@auth0/auth0-react";
 
 import BCTracking from "./components/BCTracking/BCTracking";
 import Resources from "./components/Resources/Resources";

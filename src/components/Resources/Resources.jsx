@@ -14,13 +14,8 @@ export default function Resources() {
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
-  // https://health.gov/myhealthfinder/api/v3/myhealthfinder.json?age=35&sex=female&pregnant=no&sexuallyActive=yes&tobaccoUse=no
 
-  // useEffect(() => {
-  //   console.log({ resourceList });
-  // }, [resourceList]);
-
-  const generateResource = (e, age, sex, pregnant, sexActive, tobacco) => {
+  const generateResource = (age, sex, pregnant, sexActive, tobacco) => {
     // e.preventDefault();
     console.log("in generateResource");
     axios
@@ -28,7 +23,14 @@ export default function Resources() {
         `${baseURL}?age=${age}&sex=${sex}&pregnant=${pregnant}&sexuallyActive=${sexActive}&tobaccoUse=${tobacco}`
       )
       .then((res) => {
-        setResourceList(res.data.Result.Resources.all.Resource);
+        console.log(res.data);
+        setResourceList([
+          ...res.data.Result.Resources.all.Resource,
+          ...res.data.Result.Resources.some.Resource,
+          ...res.data.Result.Resources[
+            "You may also be interested in these health topics:"
+          ].Resource,
+        ]);
       })
       .catch((error) => console.log(error));
   };

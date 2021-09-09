@@ -1,6 +1,7 @@
 import styles from "./SignUp.module.scss";
 import { useState, useRef } from "react";
 import axios from "axios";
+const bcrypt = require("bcryptjs");
 
 export default function SignUp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,11 +12,9 @@ export default function SignUp() {
   const lname = useRef();
 
   function handleHashing(password) {
-    // bcrypt.genSalt(saltRounds, function (err, salt) {
-    //   bcrypt.hash(myPlaintextPassword, salt, function (err, hash) {
-    //     // Store hash in your password DB.
-    //   });
-    // });
+    const salt = bcrypt.genSaltSync(5);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    return passwordHash;
   }
 
   async function handleLogin(e) {
@@ -26,7 +25,8 @@ export default function SignUp() {
 
     const credentials = {
       email: email.current.value,
-      password: password.current.value,
+      // password: password.current.value,
+      password: handleHashing(password.current.value),
       // password: hashedPass,
       fname: fname.current.value,
       lname: lname.current.value,
