@@ -1,14 +1,15 @@
-import styles from "./_PeriodTracking.module.scss";
-import React, { useState } from "react";
+import styles from "./PeriodTracking.module.scss";
+import React, { useState, useContext } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+import { UserContext } from "../../UserContext";
 
 export default function PeriodTracking() {
   const date1 = new Date(2021, 7, 11);
   const date2 = new Date(2021, 7, 12);
   const date3 = new Date(2021, 7, 14);
-
+  const { user, setUser } = useContext(UserContext);
   const [datesToAddTo, setdatesToAddTo] = useState([date1, date2, date3]);
 
   const [dateState, setDateState] = useState(new Date());
