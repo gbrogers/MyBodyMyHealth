@@ -6,6 +6,7 @@ import MainSectionImg from "../../images/bc-types-home.jpg";
 import Triangle from "../../images/home-triangle.svg";
 import ThreeFaces from "../../images/threefaces.jpg";
 import Runner from "../../images/runner.jpg";
+import Research from "../../images/research.jpg";
 import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";
 import BrainIcon from "../../images/brain.png";
@@ -65,6 +66,8 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.sectionFour}>
+          {/* <img src={ThreeFaces} className={styles.threeFaces}></img> */}
+          <img src={Research} className={styles.research}></img>
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
             <p>Get information by topic, or personalized just for you.</p>
@@ -72,9 +75,6 @@ export default function Home() {
               <button className={styles.getStartedBtn}>Learn More</button>
             </Link>
           </div>
-
-          <img src={ThreeFaces} className={styles.threeFaces}></img>
-          <img src={Runner} className={styles.runner}></img>
         </section>
         <section className={styles.sectionFive}>
           <div className={styles.demonstration}></div>

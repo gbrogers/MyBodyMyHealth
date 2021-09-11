@@ -16,10 +16,15 @@ export default function BCTracking() {
 
   const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
   const [showBC, setShowBC] = useState(false);
+  const [showLastUse, setShowLastUse] = useState(false);
   const [dropDown, setDropDown] = useState(true);
+  const [dropDown2, setDropDown2] = useState(true);
+  const [lastDate, setLastDate] = useState("");
+
   const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
+  let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
   const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
@@ -32,6 +37,14 @@ export default function BCTracking() {
       console.log("BC matched date");
       return "BC";
     }
+  }
+
+  async function handleLastUseDate(e) {
+    setLastDate(String(e.target.value));
+    console.log(lastDate); // this is sending previous date vs. current date.
+    await axios.post("/api/calcNextDose", { lastDate });
+    // console.log(e.target);
+    // console.log(String(e.target.value));
   }
 
   return (
@@ -51,6 +64,29 @@ export default function BCTracking() {
         </button>
       </div>
       {showBC && <BirthControl />}
+      <div className={styles.lastTaken}>
+        <button
+          className={styles.showBCBtn}
+          onClick={() => {
+            setShowLastUse(!showLastUse);
+            setDropDown2(!dropDown2);
+          }}
+        >
+          <img src={srcDropDown2}></img>
+          Step Two: Select Your Method of Birth Control
+        </button>
+        {showLastUse && (
+          <form>
+            <label>
+              {" "}
+              When is the last time you used your method of birth control OR
+              when was it last replaced?
+              <input onChange={(e) => handleLastUseDate(e)} type="date"></input>
+            </label>
+            <button>Save</button>
+          </form>
+        )}
+      </div>
       <h2>My Contraceptive Tracking</h2>
       <div className="calendar-container">
         <Calendar

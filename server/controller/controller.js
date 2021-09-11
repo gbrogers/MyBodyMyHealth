@@ -70,6 +70,7 @@ module.exports = {
   },
 
   calcNextDose: (req, res) => {
+    console.log(req.body.lastDate);
     return true;
   },
 };
