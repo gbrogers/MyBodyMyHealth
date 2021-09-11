@@ -1,5 +1,5 @@
 import styles from "./BCTracking.module.scss";
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { UserContext } from "../../UserContext";
 import axios from "axios";
 import Calendar from "react-calendar";
@@ -19,17 +19,27 @@ export default function BCTracking() {
   const [showLastUse, setShowLastUse] = useState(false);
   const [dropDown, setDropDown] = useState(true);
   const [dropDown2, setDropDown2] = useState(true);
-  const [lastDate, setLastDate] = useState("");
+  const [dateState, setDateState] = useState(new Date());
+  const [lastDate, setLastDate] = useState(new Date());
+  const date = useRef();
 
   const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
   let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
-  const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
     setDateState(e);
   };
+  const changeLastDate = (e) => {
+    setLastDate(e);
+  };
+
+  useEffect(() => {
+    console.log("hello");
+    const variable = Math.abs(lastDate.getTime() - new Date().getTime());
+    console.log(variable / (60 * 60 * 1000 * 24));
+  }, [lastDate]);
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
@@ -39,13 +49,24 @@ export default function BCTracking() {
     }
   }
 
-  async function handleLastUseDate(e) {
-    setLastDate(String(e.target.value));
-    console.log(lastDate); // this is sending previous date vs. current date.
-    await axios.post("/api/calcNextDose", { lastDate });
-    // console.log(e.target);
-    // console.log(String(e.target.value));
-  }
+  // async function handleLastUseDate(e) {
+  //   e.preventDefault();
+  //   // console.log(date.current.value);
+  //   console.log(lastDate);
+  //   setLastDate(date.current.value);
+  //   const date1 = moment(dateState).format("YYYY-MM-DD");
+  //   const date2 = moment(lastDate).format("YYYY-MM-DD");
+  //   console.log(
+  //     Math.abs(date1.getTime() - date2.getTime()) / (1000 * 24 * 60 * 60)
+  //   );
+  //   // console.log(dateState.getTime());
+  //   // console.log(moment(dateState).format("YYYY-MM-DD") - lastDate);
+  //   console.log("hello");
+  //   // await axios
+  //   //   .post("/api/calcNextDose", { lastDate })
+  //   //   .then()
+  //   //   .catch((error) => console.log(error));
+  // }
 
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
@@ -73,18 +94,16 @@ export default function BCTracking() {
           }}
         >
           <img src={srcDropDown2}></img>
-          Step Two: Select Your Method of Birth Control
+          Step Two: Select the date of last use of specified Birth Control
+          method.
         </button>
         {showLastUse && (
-          <form>
-            <label>
-              {" "}
-              When is the last time you used your method of birth control OR
-              when was it last replaced?
-              <input onChange={(e) => handleLastUseDate(e)} type="date"></input>
-            </label>
-            <button>Save</button>
-          </form>
+          <Calendar
+            value={dateState}
+            onChange={changeLastDate}
+            tileClassName={styles.setUpCalendar}
+            // tileContent={tileContent}
+          />
         )}
       </div>
       <h2>My Contraceptive Tracking</h2>
@@ -105,6 +124,7 @@ export default function BCTracking() {
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+        {/* {console.log(moment(dateState).format("YYYY-MM-DD"))} */}
       </p>
     </div>
   );
@@ -118,3 +138,23 @@ function isSameDay(a, b) {
   console.log(dateA === dateB);
   return dateA === dateB;
 }
+
+// <form>
+{
+  /* <form onSubmit={(e) => handleLastUseDate(e)}> */
+}
+{
+  /* <label>
+              {" "}
+              When is the last time you used your method of birth control OR
+              when was it last replaced?
+              {/* <input type="date" ref={date}></input> */
+}
+// <input type="date" onChange={(e) => changeLastDate(e)}></input>
+// </label>
+// <b>{moment(lastDate).format("MMMM Do YYYY")}</b>
+// <button>Save</button> */}
+{
+  /* <button type="submit">Save</button> */
+}
+// </form>

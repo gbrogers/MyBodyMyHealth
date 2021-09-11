@@ -69,8 +69,8 @@ module.exports = {
     return res.status(200).send(updatedUser);
   },
 
-  calcNextDose: (req, res) => {
-    console.log(req.body.lastDate);
-    return true;
-  },
+  // calcNextDose: async (req, res) => {
+  //   console.log(req.body);
+  //   return true;
+  // },
 };

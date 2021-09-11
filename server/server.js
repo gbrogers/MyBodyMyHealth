@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 app.use("/api/authenticate/login", ctrl.loginUser);
 app.use("/api/authenticate/signup", ctrl.signUpUser);
 app.use("/api/addBC", ctrl.addBC);
-app.use("/api/calcNextDose", ctrl.calcNextDose);
+// app.use("/api/calcNextDose", ctrl.calcNextDose);
 
 connect.connect();
 
