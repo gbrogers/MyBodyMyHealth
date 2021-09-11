@@ -27,19 +27,37 @@ export default function PeriodTracking() {
 
   return (
     <div className={`${styles.menstrualTracking} page-layout`}>
-      <h2>My Menstruation Tracking</h2>
-      <div className="calendar-container">
-        <Calendar
-          value={dateState}
-          onChange={changeDate}
-          tileClassName={tileClassName}
-          // tileContent={tileContent}
-        />
-      </div>
-      <p>
-        Current selected date is{" "}
-        <b>{moment(dateState).format("MMMM Do YYYY")}</b>
-      </p>
+      {/* <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2> */}
+      <h2>{`Hello, Welcome to My Menstruation Tracking`}</h2>
+      <section className="styles.calendar-section-container">
+        <div className="styles.calendar-container">
+          <Calendar
+            value={dateState}
+            onChange={changeDate}
+            tileClassName={tileClassName}
+          />
+        </div>
+        <p>
+          Current selected date is{" "}
+          <b>{moment(dateState).format("MMMM Do YYYY")}</b>
+        </p>
+      </section>
+      <aside>
+        <div className={styles.period_checkin_container}>
+          <label>
+            <input type="date"></input>
+          </label>
+          <label className={styles.period_checkin}>
+            <p>Did you menstruate today?</p>
+            <button>Yes</button>
+            <button>No</button>
+          </label>
+          <label className={styles.notes}>
+            <p>Enter any notes about today that you'd like to keep track of </p>
+            <textarea placeholder="enter notes here"></textarea>
+          </label>
+        </div>
+      </aside>
     </div>
   );
 }

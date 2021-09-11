@@ -1,5 +1,7 @@
 import styles from "./BCTracking.module.scss";
-import React, { useState } from "react";
+import { useState, useRef, useContext } from "react";
+import { UserContext } from "../../UserContext";
+import axios from "axios";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
@@ -15,6 +17,7 @@ export default function BCTracking() {
   const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
   const [showBC, setShowBC] = useState(false);
   const [dropDown, setDropDown] = useState(true);
+  const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
 
@@ -32,8 +35,10 @@ export default function BCTracking() {
   }
 
   return (
-    <>
-      <div className={`${styles.birthControlTracking} page-layout`}>
+    <div className={`${styles.birthControlTracking} page-layout`}>
+      <div className={styles.choose_bc}>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+
         <button
           className={styles.showBCBtn}
           onClick={() => {
@@ -65,7 +70,7 @@ export default function BCTracking() {
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
       </p>
-    </>
+    </div>
   );
 }
 

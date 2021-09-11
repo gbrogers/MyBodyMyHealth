@@ -1,1 +1,24 @@
-
+.menstrualTracking {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  .calendar-section-container {
+    display: flex;
+    justify-content: center;
+    .calendar-container {
+    }
+  }
+  aside {
+    display: flex;
+    justify-content: center;
+    .period_checkin_container {
+      border: 1px black solid;
+      padding: 15px;
+      width: 90vw;
+      .period_checkin {
+      }
+      .notes {
+      }
+    }
+  }
+}
