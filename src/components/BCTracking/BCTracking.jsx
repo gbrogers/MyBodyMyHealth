@@ -21,7 +21,6 @@ export default function BCTracking() {
   const [dropDown2, setDropDown2] = useState(true);
   const [dateState, setDateState] = useState(new Date());
   const [lastDate, setLastDate] = useState(new Date());
-  const date = useRef();
 
   const { user, setUser } = useContext(UserContext);
 
@@ -31,15 +30,18 @@ export default function BCTracking() {
   const changeDate = (e) => {
     setDateState(e);
   };
-  const changeLastDate = (e) => {
+  async function changeLastDate(e) {
     setLastDate(e);
-  };
+    handleLastDay();
+  }
 
-  useEffect(() => {
-    console.log("hello");
+  //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
+  function handleLastDay() {
+    console.log("I made it to the handle function");
+    console.log(lastDate);
     const variable = Math.abs(lastDate.getTime() - new Date().getTime());
     console.log(variable / (60 * 60 * 1000 * 24));
-  }, [lastDate]);
+  }
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
@@ -51,17 +53,9 @@ export default function BCTracking() {
 
   // async function handleLastUseDate(e) {
   //   e.preventDefault();
-  //   // console.log(date.current.value);
-  //   console.log(lastDate);
   //   setLastDate(date.current.value);
   //   const date1 = moment(dateState).format("YYYY-MM-DD");
-  //   const date2 = moment(lastDate).format("YYYY-MM-DD");
-  //   console.log(
-  //     Math.abs(date1.getTime() - date2.getTime()) / (1000 * 24 * 60 * 60)
-  //   );
-  //   // console.log(dateState.getTime());
-  //   // console.log(moment(dateState).format("YYYY-MM-DD") - lastDate);
-  //   console.log("hello");
+
   //   // await axios
   //   //   .post("/api/calcNextDose", { lastDate })
   //   //   .then()
@@ -74,7 +68,7 @@ export default function BCTracking() {
         <pre>{JSON.stringify(user, null, 2)}</pre>
 
         <button
-          className={styles.showBCBtn}
+          className={styles.showBtn}
           onClick={() => {
             setShowBC(!showBC);
             setDropDown(!dropDown);
@@ -87,7 +81,7 @@ export default function BCTracking() {
       {showBC && <BirthControl />}
       <div className={styles.lastTaken}>
         <button
-          className={styles.showBCBtn}
+          className={styles.showBtn}
           onClick={() => {
             setShowLastUse(!showLastUse);
             setDropDown2(!dropDown2);
@@ -98,21 +92,26 @@ export default function BCTracking() {
           method.
         </button>
         {showLastUse && (
-          <Calendar
-            value={dateState}
-            onChange={changeLastDate}
-            tileClassName={styles.setUpCalendar}
-            // tileContent={tileContent}
-          />
+          <div>
+            <p>
+              When is the last time you used your method of birth control OR
+              when was it last replaced?
+            </p>
+            <Calendar
+              value={dateState}
+              onChange={changeLastDate}
+              tileClassName={styles.setUpCalendar}
+            />
+          </div>
         )}
       </div>
       <h2>My Contraceptive Tracking</h2>
+
       <div className="calendar-container">
         <Calendar
           value={dateState}
           onChange={changeDate}
           tileClassName={tileClassName}
-          // tileContent={tileContent}
         />
         <div className={styles.bcCalendarLegend}>
           <div>
@@ -121,11 +120,21 @@ export default function BCTracking() {
           </div>
         </div>
       </div>
+
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
-        {/* {console.log(moment(dateState).format("YYYY-MM-DD"))} */}
       </p>
+      <aside className={styles.checkIn}>
+        <h3>Check in!</h3>
+        <label>Did you use your birth control method today?</label>
+        <button>Yes</button>
+        <button>No</button>
+        <p>
+          to update previous days on the calendar, just select the date and
+          respond to the prompt for that particular day
+        </p>
+      </aside>
     </div>
   );
 }
@@ -138,23 +147,3 @@ function isSameDay(a, b) {
   console.log(dateA === dateB);
   return dateA === dateB;
 }
-
-// <form>
-{
-  /* <form onSubmit={(e) => handleLastUseDate(e)}> */
-}
-{
-  /* <label>
-              {" "}
-              When is the last time you used your method of birth control OR
-              when was it last replaced?
-              {/* <input type="date" ref={date}></input> */
-}
-// <input type="date" onChange={(e) => changeLastDate(e)}></input>
-// </label>
-// <b>{moment(lastDate).format("MMMM Do YYYY")}</b>
-// <button>Save</button> */}
-{
-  /* <button type="submit">Save</button> */
-}
-// </form>

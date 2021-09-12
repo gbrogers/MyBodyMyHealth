@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const { Op } = require("sequelize");
 const Birth_control = require("../models/birth_control");
+const Date_menstruation = require("../models/date_menstruation");
 
 module.exports = {
   loginUser: async (req, res) => {
@@ -67,6 +68,22 @@ module.exports = {
     //   birthControl,
     // };
     return res.status(200).send(updatedUser);
+  },
+  addPeriodDate: async (req, res) => {
+    console.log(req.body);
+    const { id, dateState } = req.body;
+    await Date_menstruation.create({
+      user_id: id,
+      date_occurred: dateState,
+    })
+      .then(async () => {
+        const allDates = await Date_menstruation.findAll({
+          where: { user_id: id },
+        });
+        console.log(allDates);
+        return res.status(200).send(allDates);
+      })
+      .catch(() => console.log("failed"));
   },
 
   // calcNextDose: async (req, res) => {

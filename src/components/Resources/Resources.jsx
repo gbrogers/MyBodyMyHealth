@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SetUpForm from "../SetUpForm/SetUpForm";
+import SavedResources from "../SavedResources/SavedResources";
 import styles from "./Resources.module.scss";
-import e from "cors";
 
 export default function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -37,42 +37,49 @@ export default function Resources() {
 
   return (
     <div className={`${styles.displayResources} page-layout`}>
-      <h1>Resources Page</h1>
-      <SetUpForm
-        setAge={setAge}
-        setSex={setSex}
-        setPregnant={setPregnant}
-        setTobacco={setTobacco}
-        setSexActive={setSexActive}
-      />
-      <button
-        onClick={() => generateResource(age, sex, pregnant, tobacco, sexActive)}
-      >
-        Press Me for Resource
-      </button>
-      <ul className={styles.personalizedResources}>
-        {resourceList.map((item) => {
-          const {
-            Id,
-            AccessibleVersion,
-            Title,
-            ImageUrl,
-            ImageAlt,
-            MyHFCategoryHeading,
-          } = item;
+      <div>
+        <div>
+          <h1>Resources Page</h1>
+          <SetUpForm
+            setAge={setAge}
+            setSex={setSex}
+            setPregnant={setPregnant}
+            setTobacco={setTobacco}
+            setSexActive={setSexActive}
+          />
+          <button
+            onClick={() =>
+              generateResource(age, sex, pregnant, tobacco, sexActive)
+            }
+          >
+            Press Me for Resource
+          </button>
+        </div>
+        <ul className={styles.personalizedResources}>
+          {resourceList.map((item) => {
+            const {
+              Id,
+              AccessibleVersion,
+              Title,
+              ImageUrl,
+              ImageAlt,
+              MyHFCategoryHeading,
+            } = item;
 
-          return (
-            <li key={Id} className={styles.individualResource}>
-              <a href={AccessibleVersion} target="_blank">
-                <img src={ImageUrl} alt={ImageAlt}></img>
+            return (
+              <li key={Id} className={styles.individualResource}>
+                <a href={AccessibleVersion} target="_blank">
+                  <img src={ImageUrl} alt={ImageAlt}></img>
 
-                <h3>{Title}</h3>
-              </a>
-              {/* {MyHFCategoryHeading} */}
-            </li>
-          );
-        })}
-      </ul>
+                  <h3>{Title}</h3>
+                </a>
+                {/* {MyHFCategoryHeading} */}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <SavedResources />
     </div>
   );
 }
