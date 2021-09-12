@@ -12,6 +12,7 @@ export default function Resources() {
   const [pregnant, setPregnant] = useState("No");
   const [tobacco, setTobacco] = useState("No");
   const [sexActive, setSexActive] = useState("No");
+  const [userSavedResources, setuserSavedResources] = useState([]);
   const { user, setUser } = useContext(UserContext);
 
   const baseURL =
@@ -48,7 +49,10 @@ export default function Resources() {
     };
     axios
       .post("/api/saveArticle", requestBody)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        console.log(res.data);
+        setuserSavedResources(res.data);
+      })
       .catch((error) => console.log(error));
   }
   return (
@@ -70,6 +74,16 @@ export default function Resources() {
           >
             Press Me for Resource
           </button>
+        </div>
+        <div>
+          <h2>Your Saved Articles</h2>
+          {userSavedResources.map((item) => {
+            return (
+              <li>
+                <a href={item.url}>{item.name}</a>
+              </li>
+            );
+          })}
         </div>
         <ul className={styles.personalizedResources}>
           {resourceList.map((item) => {

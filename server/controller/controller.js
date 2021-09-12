@@ -116,8 +116,18 @@ module.exports = {
       name: title,
       user_id,
     })
-      .then(() => {
+      .then(async () => {
+        // console.log("recored created");
+        const allArticles = await Saved_article.findAll({
+          where: { user_id },
+        });
+        // .then(() => {
+        return res.status(200).send(allArticles);
+        // })
+        // .catch((error) => console.log(error));
+
         console.log("done");
+        // return res.status(200).send(allDates);
       })
       .catch((error) => console.log(error));
   },
