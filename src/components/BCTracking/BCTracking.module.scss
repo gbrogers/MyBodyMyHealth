@@ -1,19 +1,31 @@
-.showBCBtn {
+.showBtn {
   all: unset;
-  // width: 100vw;
   cursor: pointer;
-  background-color: #dff4f3;
   padding: 15px;
   display: flex;
+
   img {
     width: 18px;
     margin-right: 10px;
     padding-top: 1px;
   }
 }
+.choose_bc {
+  width: 100%;
+  background-color: #dff4f3;
+}
 
 .yellowKey {
   background-color: yellow;
   width: 25px;
   height: 15px;
+}
+
+.setUpCalendar {
+  background-color: crimson;
+  //adjust sixe of compoonent here
+}
+
+.checkIn {
+  background-color: cyan;
 }

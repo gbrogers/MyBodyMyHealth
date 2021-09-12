@@ -161,13 +161,11 @@
       content: url("../../images/home-triangle.svg");
       left: 0;
       bottom: 0;
-      // top: 0;
       right: 0;
     }
-    .threeFaces {
-      display: none;
-    }
-    .runner {
+
+    .research {
+      opacity: 0.9;
       display: none;
     }
   }
@@ -178,7 +176,6 @@
     padding: 50px 10px;
     display: flex;
     flex-direction: column;
-    // width: 100vw;
     align-items: center;
     .demonstration {
       height: 200px;
@@ -245,7 +242,7 @@
         // align-items: center;
         // justify-items: center;
       }
-      .threeFaces {
+      .research {
         display: block;
         height: 300px;
         width: 45vw;
@@ -306,10 +303,8 @@
         width: 40vw;
         background-color: #ffe46f;
       }
-      .threeFaces {
-        display: none;
-      }
-      .runner {
+
+      .research {
         display: block;
         height: 300px;
         width: 60vw;

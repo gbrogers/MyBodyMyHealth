@@ -1,5 +1,7 @@
 import styles from "./BCTracking.module.scss";
-import React, { useState } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
+import { UserContext } from "../../UserContext";
+import axios from "axios";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import moment from "moment";
@@ -14,14 +16,32 @@ export default function BCTracking() {
 
   const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
   const [showBC, setShowBC] = useState(false);
+  const [showLastUse, setShowLastUse] = useState(false);
   const [dropDown, setDropDown] = useState(true);
+  const [dropDown2, setDropDown2] = useState(true);
+  const [dateState, setDateState] = useState(new Date());
+  const [lastDate, setLastDate] = useState(new Date());
+
+  const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
+  let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
-  const [dateState, setDateState] = useState(new Date());
   const changeDate = (e) => {
     setDateState(e);
   };
+  async function changeLastDate(e) {
+    setLastDate(e);
+    handleLastDay();
+  }
+
+  //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
+  function handleLastDay() {
+    console.log("I made it to the handle function");
+    console.log(lastDate);
+    const variable = Math.abs(lastDate.getTime() - new Date().getTime());
+    console.log(variable / (60 * 60 * 1000 * 24));
+  }
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
@@ -31,11 +51,24 @@ export default function BCTracking() {
     }
   }
 
+  // async function handleLastUseDate(e) {
+  //   e.preventDefault();
+  //   setLastDate(date.current.value);
+  //   const date1 = moment(dateState).format("YYYY-MM-DD");
+
+  //   // await axios
+  //   //   .post("/api/calcNextDose", { lastDate })
+  //   //   .then()
+  //   //   .catch((error) => console.log(error));
+  // }
+
   return (
-    <>
-      <div className={`${styles.birthControlTracking} page-layout`}>
+    <div className={`${styles.birthControlTracking} page-layout`}>
+      <div className={styles.choose_bc}>
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+
         <button
-          className={styles.showBCBtn}
+          className={styles.showBtn}
           onClick={() => {
             setShowBC(!showBC);
             setDropDown(!dropDown);
@@ -46,13 +79,39 @@ export default function BCTracking() {
         </button>
       </div>
       {showBC && <BirthControl />}
+      <div className={styles.lastTaken}>
+        <button
+          className={styles.showBtn}
+          onClick={() => {
+            setShowLastUse(!showLastUse);
+            setDropDown2(!dropDown2);
+          }}
+        >
+          <img src={srcDropDown2}></img>
+          Step Two: Select the date of last use of specified Birth Control
+          method.
+        </button>
+        {showLastUse && (
+          <div>
+            <p>
+              When is the last time you used your method of birth control OR
+              when was it last replaced?
+            </p>
+            <Calendar
+              value={dateState}
+              onChange={changeLastDate}
+              tileClassName={styles.setUpCalendar}
+            />
+          </div>
+        )}
+      </div>
       <h2>My Contraceptive Tracking</h2>
+
       <div className="calendar-container">
         <Calendar
           value={dateState}
           onChange={changeDate}
           tileClassName={tileClassName}
-          // tileContent={tileContent}
         />
         <div className={styles.bcCalendarLegend}>
           <div>
@@ -61,11 +120,22 @@ export default function BCTracking() {
           </div>
         </div>
       </div>
+
       <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
       </p>
-    </>
+      <aside className={styles.checkIn}>
+        <h3>Check in!</h3>
+        <label>Did you use your birth control method today?</label>
+        <button>Yes</button>
+        <button>No</button>
+        <p>
+          to update previous days on the calendar, just select the date and
+          respond to the prompt for that particular day
+        </p>
+      </aside>
+    </div>
   );
 }
 

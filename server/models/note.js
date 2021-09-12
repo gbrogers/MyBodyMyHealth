@@ -20,6 +20,9 @@ const Note = connection.define(
     note_date: {
       type: Sequelize.DATE,
     },
+    text: {
+      type: Sequelize.STRING,
+    },
   },
   {
     timestamps: false,
