@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import Calendar from "react-calendar";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
@@ -12,6 +12,36 @@ export default function PeriodTracking() {
   const [periodPresent, setPeriodPresent] = useState(false);
   const [dateState, setDateState] = useState(new Date());
   const note = useRef();
+
+  useEffect(() => {
+    console.log("in effect");
+
+    async function fetchRecords() {
+      const requestBody = {
+        id: user.id,
+        dateState,
+      };
+      //will send notes in this request too.
+
+      axios
+        .post("/api/addPeriodDate", requestBody)
+        .then((res) => {
+          const dates = res.data;
+          console.log(dates);
+          let dateArray = [];
+          dates.map((instance) => {
+            dateArray = [...dateArray, instance.date_occurred];
+            console.log(dateArray);
+            console.log(instance.date_occurred);
+          });
+          setdatesToAddTo(dateArray);
+        })
+        .catch((error) => console.log(error));
+      // console.log(datesToAddTo);
+    }
+
+    fetchRecords();
+  }, []);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -34,10 +64,11 @@ export default function PeriodTracking() {
     return dateA === dateB;
   }
 
-  async function updateRecords(e) {
-    e.preventDefault();
+  //make fetch funtion to be called in useEffect
+  async function updateRecords() {
     console.log(periodPresent);
     if (periodPresent) {
+      setPeriodPresent(false);
       console.log("period had");
 
       const requestBody = {
@@ -50,10 +81,12 @@ export default function PeriodTracking() {
         .post("/api/addPeriodDate", requestBody)
         .then((res) => {
           const dates = res.data;
-          console.log(`RES.DATA: ${res.data}`);
+          console.log(dates);
           let dateArray = [];
           dates.map((instance) => {
-            dateArray = [...datesToAddTo, instance.date_occurred];
+            dateArray = [...dateArray, instance.date_occurred];
+            console.log(dateArray);
+            console.log(instance.date_occurred);
           });
           setdatesToAddTo(dateArray);
         })
@@ -76,25 +109,36 @@ export default function PeriodTracking() {
             tileClassName={tileClassName}
           />
         </div>
-        <p>
+        {/* <p>
           Current selected date is{" "}
           <b>{moment(dateState).format("MMMM Do YYYY")}</b>
-        </p>
+        </p> */}
       </section>
       <aside>
         <div className={styles.period_checkin_container}>
           <form>
             <label className={styles.period_checkin}>
-              <p>Did you menstruate today?</p>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPeriodPresent(true);
-                }}
-              >
-                Yes
-              </button>
-              <button>No</button>
+              <p>
+                Did you menstruate on{" "}
+                <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
+              </p>
+              <div className={styles.yesNoBtn}>
+                <button
+                  className={styles.yesBtn}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setPeriodPresent(true);
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  className={styles.noBtn}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  No
+                </button>
+              </div>
             </label>
             <label className={styles.notes}>
               <p>
@@ -102,7 +146,15 @@ export default function PeriodTracking() {
               </p>
               <textarea placeholder="enter notes here" ref={note}></textarea>
             </label>
-            <button onClick={updateRecords}>Save</button>
+            <button
+              className={styles.saveBtn}
+              onClick={(e) => {
+                e.preventDefault();
+                updateRecords();
+              }}
+            >
+              Save
+            </button>
           </form>
           <p>
             to update previous days on the calendar, just select the date and

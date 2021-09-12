@@ -35,7 +35,7 @@ export default function Login() {
     await axios
       .post("/api/authenticate/login", credentials)
       .then((res) => {
-        console.table(`res.data:  ${res.data}`);
+        // console.table(`res.data:  ${res.data}`);
         if (res.data !== false) {
           const currentUser = res.data;
           // sessionStorage.setItem("email", res.data.email);
