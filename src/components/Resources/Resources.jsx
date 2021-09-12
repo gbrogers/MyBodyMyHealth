@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import SetUpForm from "../SetUpForm/SetUpForm";
 import SavedResources from "../SavedResources/SavedResources";
 import styles from "./Resources.module.scss";
+import { UserContext } from "../../UserContext";
 
 export default function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -11,6 +12,7 @@ export default function Resources() {
   const [pregnant, setPregnant] = useState("No");
   const [tobacco, setTobacco] = useState("No");
   const [sexActive, setSexActive] = useState("No");
+  const { user, setUser } = useContext(UserContext);
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
@@ -35,6 +37,20 @@ export default function Resources() {
       .catch((error) => console.log(error));
   };
 
+  function saveResource(resourceInfo) {
+    let value = resourceInfo.split(",");
+    const title = value[0];
+    const url = value[1];
+    const requestBody = {
+      user_id: user.id,
+      title,
+      url,
+    };
+    axios
+      .post("/api/saveArticle", requestBody)
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error));
+  }
   return (
     <div className={`${styles.displayResources} page-layout`}>
       <div>
@@ -68,11 +84,21 @@ export default function Resources() {
 
             return (
               <li key={Id} className={styles.individualResource}>
-                <a href={AccessibleVersion} target="_blank">
-                  <img src={ImageUrl} alt={ImageAlt}></img>
+                <img src={ImageUrl} alt={ImageAlt}></img>
 
-                  <h3>{Title}</h3>
+                <h3>{Title}</h3>
+
+                <a href={AccessibleVersion} target="_blank">
+                  LEARN MORE
                 </a>
+
+                <button
+                  value={[Title, AccessibleVersion]}
+                  onClick={(e) => saveResource(e.target.value)}
+                >
+                  SAVE ME
+                </button>
+
                 {/* {MyHFCategoryHeading} */}
               </li>
             );

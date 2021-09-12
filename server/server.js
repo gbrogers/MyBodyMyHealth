@@ -23,6 +23,7 @@ app.use("/api/addBC", ctrl.addBC);
 app.use("/api/addPeriodDate", ctrl.addPeriodDate);
 // app.use("/api/getPeriodDate", ctrl.getPeriodDate);
 app.use("/api/addBCDate", ctrl.addBCDate);
+app.use("/api/saveArticle", ctrl.saveArticle);
 // app.use("/api/calcNextDose", ctrl.calcNextDose);
 
 connect.connect();
