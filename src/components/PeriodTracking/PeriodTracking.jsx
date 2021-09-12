@@ -8,40 +8,40 @@ import { UserContext } from "../../UserContext";
 
 export default function PeriodTracking() {
   const { user, setUser } = useContext(UserContext);
+
   const [datesToAddTo, setdatesToAddTo] = useState([]);
   const [periodPresent, setPeriodPresent] = useState(false);
   const [dateState, setDateState] = useState(new Date());
   const note = useRef();
 
-  useEffect(() => {
-    console.log("in effect");
+  // useEffect(() => {
+  //   console.log("in effect");
 
-    async function fetchRecords() {
-      const requestBody = {
-        id: user.id,
-        dateState,
-      };
-      //will send notes in this request too.
+  //   async function fetchRecords() {
+  //     const requestBody = {
+  //       id: user.id,
+  //     };
+  //     //will send notes in this request too.
+  //     console.log(user.id);
+  //     axios
+  //       .get("/api/getPeriodDate", { id: user.id })
+  //       .then((res) => {
+  //         const dates = res.data;
+  //         console.log(dates);
+  //         let dateArray = [];
+  //         dates.map((instance) => {
+  //           dateArray = [...dateArray, instance.date_occurred];
+  //           console.log(dateArray);
+  //           // console.log(instance.date_occurred);
+  //         });
+  //         setdatesToAddTo(dateArray);
+  //       })
+  //       .catch((error) => console.log(error));
+  //     // console.log(datesToAddTo);
+  //   }
 
-      axios
-        .post("/api/addPeriodDate", requestBody)
-        .then((res) => {
-          const dates = res.data;
-          console.log(dates);
-          let dateArray = [];
-          dates.map((instance) => {
-            dateArray = [...dateArray, instance.date_occurred];
-            console.log(dateArray);
-            console.log(instance.date_occurred);
-          });
-          setdatesToAddTo(dateArray);
-        })
-        .catch((error) => console.log(error));
-      // console.log(datesToAddTo);
-    }
-
-    fetchRecords();
-  }, []);
+  //   fetchRecords();
+  // }, []);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -101,6 +101,7 @@ export default function PeriodTracking() {
     <div className={`${styles.menstrualTracking} page-layout`}>
       {/* <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2> */}
       <h2>{`Hello, Welcome to My Menstruation Tracking`}</h2>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
       <section className="styles.calendar-section-container">
         <div className="styles.calendar-container">
           <Calendar

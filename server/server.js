@@ -21,6 +21,8 @@ app.use("/api/authenticate/login", ctrl.loginUser);
 app.use("/api/authenticate/signup", ctrl.signUpUser);
 app.use("/api/addBC", ctrl.addBC);
 app.use("/api/addPeriodDate", ctrl.addPeriodDate);
+// app.use("/api/getPeriodDate", ctrl.getPeriodDate);
+app.use("/api/addBCDate", ctrl.addBCDate);
 // app.use("/api/calcNextDose", ctrl.calcNextDose);
 
 connect.connect();

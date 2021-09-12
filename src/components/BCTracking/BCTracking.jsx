@@ -10,22 +10,53 @@ import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
 
 export default function BCTracking() {
-  const date4 = new Date(2021, 7, 13);
-  const date5 = new Date(2021, 7, 16);
-  const date6 = new Date(2021, 7, 17);
+  // const date4 = new Date(2021, 7, 13);
+  // const date5 = new Date(2021, 7, 16);
+  // const date6 = new Date(2021, 7, 17);
 
-  const [bcTaken, setBCTaken] = useState([date4, date5, date6]);
+  const [bcTaken, setBCTaken] = useState([]);
   const [showBC, setShowBC] = useState(false);
   const [showLastUse, setShowLastUse] = useState(false);
   const [dropDown, setDropDown] = useState(true);
   const [dropDown2, setDropDown2] = useState(true);
   const [dateState, setDateState] = useState(new Date());
   const [lastDate, setLastDate] = useState(new Date());
+  const [bcUsed, setBCUsed] = useState(false);
 
   const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
   let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
+
+  // useEffect(() => {
+  //   console.log("in effect");
+
+  //   async function fetchRecords() {
+  //     const requestBody = {
+  //       id: user.id,
+  //       dateState,
+  //     };
+  //     //will send notes in this request too.
+
+  //     axios
+  //       .get("/api/getBCDate")
+  //       .then((res) => {
+  //         // const dates = res.data;
+  //         // console.log(dates);
+  //         // let dateArray = [];
+  //         // dates.map((instance) => {
+  //         //   dateArray = [...dateArray, instance.date_occurred];
+  //         //   console.log(dateArray);
+  //         //   console.log(instance.date_occurred);
+  //         // });
+  //         // setBCTaken(dateArray);
+  //         console.log(res.data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   }
+
+  //   fetchRecords();
+  // }, []);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -48,6 +79,48 @@ export default function BCTracking() {
     if (bcTaken.find((dDate) => isSameDay(dDate, date))) {
       console.log("BC matched date");
       return "BC";
+    }
+  }
+  function isSameDay(a, b) {
+    const d = new Date(a);
+    // console.log(d.getMonth());
+    // console.log(b.getMonth());
+    const dateA = `${d.getMonth()}${d.getDate()}${d.getYear()}`;
+    const dateB = `${b.getMonth()}${b.getDate()}${d.getYear()}`;
+    console.log(dateA === dateB);
+    return dateA === dateB;
+  }
+
+  async function updateRecords() {
+    if (bcUsed) {
+      setBCUsed(false);
+      console.log("bc used");
+
+      const requestBody = {
+        id: user.id,
+        dateState,
+      };
+      //will send notes in this request too.
+
+      axios
+        .post("/api/addBCDate", requestBody)
+        .then((res) => {
+          const dates = res.data;
+          console.log("--------");
+          console.log(dates);
+          console.log("--------");
+          let dateArray = [];
+          dates.map((instance) => {
+            dateArray = [...dateArray, instance.date_taken];
+            console.log(dateArray);
+            console.log(instance.date_taken);
+          });
+          setBCTaken(dateArray);
+        })
+        .catch((error) => console.log(error));
+      // console.log(datesToAddTo);
+    } else {
+      console.log("negative");
     }
   }
 
@@ -121,7 +194,7 @@ export default function BCTracking() {
         </div>
       </div>
 
-      <p>
+      {/* <p>
         Current selected date is{" "}
         <b>{moment(dateState).format("MMMM Do YYYY")}</b>
       </p>
@@ -134,16 +207,55 @@ export default function BCTracking() {
           to update previous days on the calendar, just select the date and
           respond to the prompt for that particular day
         </p>
+      </aside> */}
+      <aside>
+        <div className={styles.period_checkin_container}>
+          <form>
+            <label className={styles.period_checkin}>
+              <p>
+                Did you menstruate on{" "}
+                <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
+              </p>
+              <div className={styles.yesNoBtn}>
+                <button
+                  className={styles.yesBtn}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setBCUsed(true);
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  className={styles.noBtn}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  No
+                </button>
+              </div>
+            </label>
+            <label className={styles.notes}>
+              <p>
+                Enter any notes about today that you'd like to keep track of{" "}
+              </p>
+              <textarea placeholder="enter notes here"></textarea>
+            </label>
+            <button
+              className={styles.saveBtn}
+              onClick={(e) => {
+                e.preventDefault();
+                updateRecords();
+              }}
+            >
+              Save
+            </button>
+          </form>
+          <p>
+            to update previous days on the calendar, just select the date and
+            respond to the prompt for that particular day
+          </p>
+        </div>
       </aside>
     </div>
   );
-}
-
-function isSameDay(a, b) {
-  // console.log(a);
-  // console.log(b);
-  const dateA = `${a.getMonth()}${a.getDate()}`;
-  const dateB = `${b.getMonth()}${b.getDate()}`;
-  console.log(dateA === dateB);
-  return dateA === dateB;
 }

@@ -2,6 +2,7 @@ const User = require("../models/user");
 const { Op } = require("sequelize");
 const Birth_control = require("../models/birth_control");
 const Date_menstruation = require("../models/date_menstruation");
+const Date_birth_control = require("../models/date_birth_control");
 
 module.exports = {
   loginUser: async (req, res) => {
@@ -80,11 +81,41 @@ module.exports = {
         const allDates = await Date_menstruation.findAll({
           where: { user_id: id },
         });
+        // console.log(allDates);
+        return res.status(200).send(allDates);
+      })
+      .catch(() => console.log("failed"));
+  },
+  // getPeriodDate: async (req, res) => {
+  //   console.log(req.body.id);
+  //   const { id } = req.body;
+  //   const allDates = await Date_menstruation.findAll({
+  //     where: { user_id: id },
+  //   });
+  //   console.log(allDates);
+  //   return res.status(200).send(allDates);
+  // },
+
+  addBCDate: async (req, res) => {
+    console.log(req.body);
+    const { id, dateState } = req.body;
+    await Date_birth_control.create({
+      user_id: id,
+      date_taken: dateState,
+    })
+      .then(async () => {
+        console.log("recored created");
+        const allDates = await Date_birth_control.findAll({
+          where: { user_id: id },
+        });
         console.log(allDates);
         return res.status(200).send(allDates);
       })
       .catch(() => console.log("failed"));
   },
+  // getBCDate: async (req, res) => {
+  //   return res.status(200).send("hi");
+  // },
 
   // calcNextDose: async (req, res) => {
   //   console.log(req.body);
