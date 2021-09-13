@@ -8,12 +8,9 @@ import moment from "moment";
 import BirthControl from "../BirthControl/BirthControl";
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
+import { withRouter } from "react-router-dom";
 
-export default function BCTracking() {
-  // const date4 = new Date(2021, 7, 13);
-  // const date5 = new Date(2021, 7, 16);
-  // const date6 = new Date(2021, 7, 17);
-
+function BCTracking() {
   const [bcTaken, setBCTaken] = useState([]);
   const [showBC, setShowBC] = useState(false);
   const [showLastUse, setShowLastUse] = useState(false);
@@ -259,3 +256,5 @@ export default function BCTracking() {
     </div>
   );
 }
+
+export default withRouter(BCTracking);

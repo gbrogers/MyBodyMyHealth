@@ -1,6 +1,7 @@
 import styles from "./Login.module.scss";
 import { useState, useRef, useContext } from "react";
 import { UserContext } from "../../UserContext";
+import { AuthContext } from "../../AuthContext";
 import axios from "axios";
 
 import Logout from "../Logout/Logout";
@@ -8,10 +9,12 @@ const bcrypt = require("bcryptjs");
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
 
   const email = useRef();
   const password = useRef();
 
+  //Password Hashing
   function handleHashing(password) {
     const salt = bcrypt.genSaltSync(5);
     const passwordHash = bcrypt.hashSync(password, salt);
@@ -20,26 +23,23 @@ export default function Login() {
 
   async function handleLogin(e) {
     e.preventDefault();
-
     console.log(email.current.value);
     console.log(password.current.value);
 
     const credentials = {
       email: email.current.value,
-      // password: password.current.value,
       password: handleHashing(password.current.value),
     };
 
-    console.log({ credentials });
+    // console.log({ credentials });
 
     await axios
       .post("/api/authenticate/login", credentials)
       .then((res) => {
-        // console.table(`res.data:  ${res.data}`);
         if (res.data !== false) {
           const currentUser = res.data;
-          // sessionStorage.setItem("email", res.data.email);
           setUser(currentUser);
+          setIsAuth(true);
           //need to redirect to home following success
         }
       })

@@ -2,12 +2,15 @@ import styles from "./SignUp.module.scss";
 import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
+import { AuthContext } from "../../AuthContext";
+
 import Logout from "../Logout/Logout";
 
 const bcrypt = require("bcryptjs");
 
 export default function SignUp() {
   const { user, setUser } = useContext(UserContext);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
 
   const email = useRef();
   const password = useRef();
@@ -44,6 +47,7 @@ export default function SignUp() {
         // console.log(res.data.email);
         const currentUser = res.data;
         setUser(currentUser);
+        setIsAuth(true);
         //need to redirect to home following success
       })
       .catch((error) => console.log(error));

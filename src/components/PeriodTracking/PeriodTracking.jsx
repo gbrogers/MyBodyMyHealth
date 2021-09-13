@@ -5,8 +5,9 @@ import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import styles from "./PeriodTracking.module.scss";
 import { UserContext } from "../../UserContext";
+import { withRouter } from "react-router-dom";
 
-export default function PeriodTracking() {
+function PeriodTracking() {
   const { user, setUser } = useContext(UserContext);
 
   const [datesToAddTo, setdatesToAddTo] = useState([]);
@@ -166,3 +167,4 @@ export default function PeriodTracking() {
     </div>
   );
 }
+export default withRouter(PeriodTracking);

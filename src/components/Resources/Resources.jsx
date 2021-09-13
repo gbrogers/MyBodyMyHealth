@@ -4,8 +4,9 @@ import SetUpForm from "../SetUpForm/SetUpForm";
 import SavedResources from "../SavedResources/SavedResources";
 import styles from "./Resources.module.scss";
 import { UserContext } from "../../UserContext";
+import { withRouter } from "react-router-dom";
 
-export default function Resources() {
+function Resources() {
   const [resourceList, setResourceList] = useState([]);
   const [age, setAge] = useState("");
   const [sex, setSex] = useState("Female");
@@ -123,3 +124,5 @@ export default function Resources() {
     </div>
   );
 }
+
+export default withRouter(Resources);
