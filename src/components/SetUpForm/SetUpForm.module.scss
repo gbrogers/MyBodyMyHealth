@@ -1,3 +1,30 @@
+.setUpContainer {
+  background-color: #9ef3ef;
+  padding: 25px;
+  margin-top: 10px;
+}
+.setUpWords {
+  background-color: rgba(255, 255, 255, 0.692);
+  padding: 15px;
+  border-radius: 5px;
+}
+.showBtn {
+  border: none;
+  background-color: #ffe46f;
+  cursor: pointer;
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+
+  border-radius: 5px;
+  // margin-left: 10px;
+
+  img {
+    width: 18px;
+    margin-right: 10px;
+    padding-top: 1px;
+  }
+}
 .setUpForm {
   display: flex;
   flex-direction: column;
@@ -23,7 +50,12 @@
     margin-left: 10px;
   }
 }
-
+.componentContainer {
+  display: flex;
+  justify-content: center;
+  // padding: 0 10px;
+  flex-direction: column;
+}
 .setUpHeader {
   width: 100%;
   // color: hotpink;
@@ -35,6 +67,28 @@
 .ageSelect {
   width: 60%;
 }
+.setUpMainHeader {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 30px;
+  margin: 10px auto 10px auto;
+  background-color: #ffe46f;
+}
+.generateResource {
+  border: none;
+  background-color: #f79da7;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.generateResource:hover {
+  background-color: #fab2bb;
+}
+
 @media screen and (min-width: 400px) {
   .sexSelect,
   .ageSelect {

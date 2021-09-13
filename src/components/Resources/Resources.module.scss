@@ -1,4 +1,8 @@
-.displayResources {
+.personalizedResources {
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .pageTitle {
@@ -12,26 +16,7 @@
   border-radius: 5px;
   padding: 10px;
 }
-.generateResource {
-  border: none;
-  background-color: #f79da7;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-.generateResource:hover {
-  background-color: #fab2bb;
-}
-
-.setUpContainer {
-  background-color: #9ef3ef;
-  padding: 25px;
-}
-.setUpWords {
-  background-color: rgba(255, 255, 255, 0.692);
-  padding: 15px;
-  border-radius: 5px;
+.dropdowns {
+  display: flex;
+  flex-direction: column;
 }

@@ -25,35 +25,27 @@ function BCTracking() {
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
   let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
-  // useEffect(() => {
-  //   console.log("in effect");
+  useEffect(() => {
+    console.log("in effect");
 
-  //   async function fetchRecords() {
-  //     const requestBody = {
-  //       id: user.id,
-  //       dateState,
-  //     };
-  //     //will send notes in this request too.
+    const user_id = user.id;
+    //will send notes in this request too.
 
-  //     axios
-  //       .get("/api/getBCDate")
-  //       .then((res) => {
-  //         // const dates = res.data;
-  //         // console.log(dates);
-  //         // let dateArray = [];
-  //         // dates.map((instance) => {
-  //         //   dateArray = [...dateArray, instance.date_occurred];
-  //         //   console.log(dateArray);
-  //         //   console.log(instance.date_occurred);
-  //         // });
-  //         // setBCTaken(dateArray);
-  //         console.log(res.data);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   }
-
-  //   fetchRecords();
-  // }, []);
+    axios
+      .get(`/api/getBCDates/${user_id}`)
+      .then((res) => {
+        const dates = res.data;
+        console.log(dates);
+        let dateArray = [];
+        dates.map((instance) => {
+          dateArray = [...dateArray, instance.date_taken];
+          console.log(dateArray);
+          console.log(instance.date_occurred);
+        });
+        setBCTaken(dateArray);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -190,21 +182,6 @@ function BCTracking() {
           </div>
         </div>
       </div>
-
-      {/* <p>
-        Current selected date is{" "}
-        <b>{moment(dateState).format("MMMM Do YYYY")}</b>
-      </p>
-      <aside className={styles.checkIn}>
-        <h3>Check in!</h3>
-        <label>Did you use your birth control method today?</label>
-        <button>Yes</button>
-        <button>No</button>
-        <p>
-          to update previous days on the calendar, just select the date and
-          respond to the prompt for that particular day
-        </p>
-      </aside> */}
       <aside>
         <div className={styles.period_checkin_container}>
           <form>

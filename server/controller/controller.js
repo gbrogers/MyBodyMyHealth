@@ -132,7 +132,6 @@ module.exports = {
     }
   },
   getSavedArticles: async (req, res) => {
-    // console.log(req.body);
     let { user_id } = req.params;
     user_id = Number(user_id);
     console.log(user_id);
@@ -142,23 +141,33 @@ module.exports = {
     if (previousSavedArticles) {
       return res.status(200).send(previousSavedArticles);
     }
-
-    // ((error) => console.log("unsuccessful grab - " + error));
   },
   // calcNextDose: async (req, res) => {
   //   console.log(req.body);
   //   return true;
   // },
-  // getPeriodDate: async (req, res) => {
-  //   console.log(req.body.id);
-  //   const { id } = req.body;
-  //   const allDates = await Date_menstruation.findAll({
-  //     where: { user_id: id },
-  //   });
-  //   console.log(allDates);
-  //   return res.status(200).send(allDates);
-  // },
-  // getBCDate: async (req, res) => {
-  //   return res.status(200).send("hi");
-  // },
+  getPeriodDates: async (req, res) => {
+    let { user_id } = req.params;
+    user_id = Number(user_id);
+    console.log(user_id);
+    const previousPeriodDates = await Date_menstruation.findAll({
+      where: { user_id: user_id },
+    });
+    if (previousPeriodDates) {
+      // console.log(previousPeriodDates);
+      return res.status(200).send(previousPeriodDates);
+    }
+  },
+  getBCDates: async (req, res) => {
+    let { user_id } = req.params;
+    user_id = Number(user_id);
+    console.log(user_id);
+    const previousBCDates = await Date_birth_control.findAll({
+      where: { user_id: user_id },
+    });
+    if (previousBCDates) {
+      console.log(previousBCDates);
+      return res.status(200).send(previousBCDates);
+    }
+  },
 };

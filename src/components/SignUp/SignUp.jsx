@@ -3,6 +3,7 @@ import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
 import { AuthContext } from "../../AuthContext";
+import { Link } from "react-router-dom";
 
 import Logout from "../Logout/Logout";
 
@@ -90,6 +91,12 @@ export default function SignUp() {
               ></input>
             </label>
             <button type="submit">Sign Up</button>
+            <p>
+              Already have and account?{" "}
+              <b>
+                <Link to="/login">Log in</Link>
+              </b>
+            </p>
           </div>
         ) : (
           <div>

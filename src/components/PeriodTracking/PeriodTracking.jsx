@@ -15,34 +15,21 @@ function PeriodTracking() {
   const [dateState, setDateState] = useState(new Date());
   const note = useRef();
 
-  // useEffect(() => {
-  //   console.log("in effect");
+  useEffect(() => {
+    const user_id = user.id;
 
-  //   async function fetchRecords() {
-  //     const requestBody = {
-  //       id: user.id,
-  //     };
-  //     //will send notes in this request too.
-  //     console.log(user.id);
-  //     axios
-  //       .get("/api/getPeriodDate", { id: user.id })
-  //       .then((res) => {
-  //         const dates = res.data;
-  //         console.log(dates);
-  //         let dateArray = [];
-  //         dates.map((instance) => {
-  //           dateArray = [...dateArray, instance.date_occurred];
-  //           console.log(dateArray);
-  //           // console.log(instance.date_occurred);
-  //         });
-  //         setdatesToAddTo(dateArray);
-  //       })
-  //       .catch((error) => console.log(error));
-  //     // console.log(datesToAddTo);
-  //   }
-
-  //   fetchRecords();
-  // }, []);
+    axios
+      .get(`/api/getPeriodDates/${user_id}`)
+      .then((res) => {
+        const dates = res.data;
+        let dateArray = [];
+        dates.map((instance) => {
+          dateArray = [...dateArray, instance.date_occurred];
+        });
+        setdatesToAddTo(dateArray);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const changeDate = (e) => {
     setDateState(e);

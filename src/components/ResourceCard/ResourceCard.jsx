@@ -8,9 +8,11 @@ export default function ResourceCard({ item, saveResource }) {
   const { Id, AccessibleVersion, Title, ImageUrl, ImageAlt } = item;
   return (
     <li key={Id} className={styles.individualResource}>
-      <img src={ImageUrl} alt={ImageAlt}></img>
+      <div class={styles.namePictureContainer}>
+        <img src={ImageUrl} alt={ImageAlt}></img>
 
-      <h3>{Title}</h3>
+        <h3>{Title}</h3>
+      </div>
       <div className={styles.resourceOptions}>
         <a href={AccessibleVersion} target="_blank">
           LEARN MORE

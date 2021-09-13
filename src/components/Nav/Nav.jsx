@@ -67,7 +67,6 @@ function Nav() {
         <Link to="/resources" onClick={() => setNavbarOpen(!navbarOpen)}>
           <li>Resources</li>
         </Link>
-        {/* <Authenticate /> */}
       </ul>
       <style jsx>{`
         .navList button {

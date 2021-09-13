@@ -9,11 +9,7 @@ import { withRouter } from "react-router-dom";
 
 function Resources() {
   const [resourceList, setResourceList] = useState([]);
-  const [age, setAge] = useState("");
-  const [sex, setSex] = useState("Female");
-  const [pregnant, setPregnant] = useState("No");
-  const [tobacco, setTobacco] = useState("No");
-  const [sexActive, setSexActive] = useState("No");
+
   const [userSavedResources, setuserSavedResources] = useState([]);
   const { user, setUser } = useContext(UserContext);
 
@@ -21,12 +17,7 @@ function Resources() {
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
 
   useEffect(() => {
-    console.log(user.id);
     const user_id = user.id;
-
-    // const fetchUser = async () => {
-
-    // }
     axios
       .get(`/api/getSavedArticles/${user_id}`)
       .then((res) => {
@@ -80,29 +71,16 @@ function Resources() {
       <div>
         <div>
           <h1 className={styles.pageTitle}>Resources</h1>
-          <div className={styles.setUpContainer}>
-            <div className={styles.setUpWords}>
-              <SetUpForm
-                setAge={setAge}
-                setSex={setSex}
-                setPregnant={setPregnant}
-                setTobacco={setTobacco}
-                setSexActive={setSexActive}
-              />
-              <button
-                className={styles.generateResource}
-                onClick={() =>
-                  generateResource(age, sex, pregnant, tobacco, sexActive)
-                }
-              >
-                Generate Resources
-              </button>
+          <div className={styles.dropdowns}>
+            <div>
+              <SavedResources userSavedResources={userSavedResources} />
+            </div>
+            <div>
+              <SetUpForm generateResource={generateResource} />
             </div>
           </div>
         </div>
-        <div>
-          <SavedResources userSavedResources={userSavedResources} />
-        </div>
+
         <ul className={styles.personalizedResources}>
           {resourceList.map((item) => {
             return <ResourceCard item={item} saveResource={saveResource} />;

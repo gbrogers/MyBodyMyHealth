@@ -69,6 +69,12 @@ export default function Login() {
               ></input>
             </label>
             <button type="submit">Login</button>
+            <p>
+              New to the app?{" "}
+              <b>
+                <Link to="/signup">Sign Up</Link>
+              </b>
+            </p>
           </div>
         ) : (
           <div>
