@@ -36,17 +36,11 @@
             margin: 5px 0;
             background-color: #9ef3ef;
           }
-          // .noBtn {
-          //   margin-left: 30px;
-          // }
-
-          // button:hover {
-          // }
         }
       }
       .notes {
         padding: 10px;
-        background-color: hotpink;
+        // background-color: hotpink;
         textarea {
           width: 80%;
           height: 75px;
@@ -72,4 +66,12 @@
 }
 .saveBtn:hover {
   background-color: #700713;
+}
+
+.noteListContainer {
+  border: 1px black solid;
+  margin: 10px;
+}
+.noteList {
+  list-style-type: none;
 }

@@ -1,5 +1,5 @@
 import "./App.scss";
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import PeriodTracking from "./components/PeriodTracking/PeriodTracking";
 
 import BCTracking from "./components/BCTracking/BCTracking";
@@ -10,7 +10,6 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import SignUp from "./components/SignUp/SignUp";
-import Profile from "./components/Profile/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import { AuthContext } from "./AuthContext";
@@ -45,7 +44,6 @@ export default function App() {
                   path="/contraceptivetracking"
                   component={BCTracking}
                 />
-                <ProtectedRoute path="/profile" component={Profile} />
               </Switch>
             </AuthContext.Provider>
           </UserContext.Provider>

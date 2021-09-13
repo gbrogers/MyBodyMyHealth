@@ -1,4 +1,3 @@
-import reactDom from "react-dom";
 import React, { useState } from "react";
 import styles from "./SetUpForm.module.scss";
 import DownArrow from "../../images/downArrow.svg";

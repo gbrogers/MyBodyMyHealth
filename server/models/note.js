@@ -12,6 +12,7 @@ const Note = connection.define(
     // },
     user_id: {
       type: Sequelize.INTEGER,
+      allowNull: false,
       references: {
         model: User,
         key: "id",
@@ -19,9 +20,11 @@ const Note = connection.define(
     },
     note_date: {
       type: Sequelize.DATE,
+      allowNull: false,
     },
     text: {
       type: Sequelize.STRING,
+      allowNull: false,
     },
   },
   {
