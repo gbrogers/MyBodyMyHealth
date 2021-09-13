@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import SetUpForm from "../SetUpForm/SetUpForm";
 import SavedResources from "../SavedResources/SavedResources";
+import ResourceCard from "../ResourceCard/ResourceCard";
 import styles from "./Resources.module.scss";
 import { UserContext } from "../../UserContext";
 import { withRouter } from "react-router-dom";
@@ -18,6 +19,22 @@ function Resources() {
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
+
+  useEffect(() => {
+    console.log(user.id);
+    const user_id = user.id;
+
+    // const fetchUser = async () => {
+
+    // }
+    axios
+      .get(`/api/getSavedArticles/${user_id}`)
+      .then((res) => {
+        console.log(res.data);
+        setuserSavedResources(res.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   const generateResource = (age, sex, pregnant, sexActive, tobacco) => {
     // e.preventDefault();
@@ -52,7 +69,9 @@ function Resources() {
       .post("/api/saveArticle", requestBody)
       .then((res) => {
         console.log(res.data);
-        setuserSavedResources(res.data);
+        if (res.data !== "no thanks") {
+          setuserSavedResources(res.data);
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -60,67 +79,36 @@ function Resources() {
     <div className={`${styles.displayResources} page-layout`}>
       <div>
         <div>
-          <h1>Resources Page</h1>
-          <SetUpForm
-            setAge={setAge}
-            setSex={setSex}
-            setPregnant={setPregnant}
-            setTobacco={setTobacco}
-            setSexActive={setSexActive}
-          />
-          <button
-            onClick={() =>
-              generateResource(age, sex, pregnant, tobacco, sexActive)
-            }
-          >
-            Press Me for Resource
-          </button>
+          <h1 className={styles.pageTitle}>Resources</h1>
+          <div className={styles.setUpContainer}>
+            <div className={styles.setUpWords}>
+              <SetUpForm
+                setAge={setAge}
+                setSex={setSex}
+                setPregnant={setPregnant}
+                setTobacco={setTobacco}
+                setSexActive={setSexActive}
+              />
+              <button
+                className={styles.generateResource}
+                onClick={() =>
+                  generateResource(age, sex, pregnant, tobacco, sexActive)
+                }
+              >
+                Generate Resources
+              </button>
+            </div>
+          </div>
         </div>
         <div>
-          <h2>Your Saved Articles</h2>
-          {userSavedResources.map((item) => {
-            return (
-              <li>
-                <a href={item.url}>{item.name}</a>
-              </li>
-            );
-          })}
+          <SavedResources userSavedResources={userSavedResources} />
         </div>
         <ul className={styles.personalizedResources}>
           {resourceList.map((item) => {
-            const {
-              Id,
-              AccessibleVersion,
-              Title,
-              ImageUrl,
-              ImageAlt,
-              MyHFCategoryHeading,
-            } = item;
-
-            return (
-              <li key={Id} className={styles.individualResource}>
-                <img src={ImageUrl} alt={ImageAlt}></img>
-
-                <h3>{Title}</h3>
-
-                <a href={AccessibleVersion} target="_blank">
-                  LEARN MORE
-                </a>
-
-                <button
-                  value={[Title, AccessibleVersion]}
-                  onClick={(e) => saveResource(e.target.value)}
-                >
-                  SAVE ME
-                </button>
-
-                {/* {MyHFCategoryHeading} */}
-              </li>
-            );
+            return <ResourceCard item={item} saveResource={saveResource} />;
           })}
         </ul>
       </div>
-      <SavedResources />
     </div>
   );
 }

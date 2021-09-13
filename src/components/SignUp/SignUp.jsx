@@ -56,7 +56,7 @@ export default function SignUp() {
   return (
     <div className={`${styles.signup} page-layout`}>
       <form className={styles.signupForm} onSubmit={(e) => handleLogin(e)}>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         {!user ? (
           <div>
             <h2>Welcome!</h2>

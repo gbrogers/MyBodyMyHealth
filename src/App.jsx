@@ -28,10 +28,10 @@ export default function App() {
     <>
       <Router>
         <div className="App">
-          <Nav />
-          <Switch>
-            <UserContext.Provider value={userValue}>
-              <AuthContext.Provider value={authValue}>
+          <UserContext.Provider value={userValue}>
+            <AuthContext.Provider value={authValue}>
+              <Nav />
+              <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/login" exact component={Login} />
                 <Route path="/logout" exact component={Logout} />
@@ -46,9 +46,9 @@ export default function App() {
                   component={BCTracking}
                 />
                 <ProtectedRoute path="/profile" component={Profile} />
-              </AuthContext.Provider>
-            </UserContext.Provider>
-          </Switch>
+              </Switch>
+            </AuthContext.Provider>
+          </UserContext.Provider>
           <Footer />
         </div>
       </Router>

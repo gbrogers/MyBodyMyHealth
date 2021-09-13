@@ -102,7 +102,7 @@ function PeriodTracking() {
     <div className={`${styles.menstrualTracking} page-layout`}>
       {/* <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2> */}
       <h2>{`Hello, Welcome to My Menstruation Tracking`}</h2>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
       <section className="styles.calendar-section-container">
         <div className="styles.calendar-container">
           <Calendar

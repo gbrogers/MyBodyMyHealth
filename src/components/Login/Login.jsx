@@ -3,6 +3,7 @@ import { useState, useRef, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import { AuthContext } from "../../AuthContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import Logout from "../Logout/Logout";
 const bcrypt = require("bcryptjs");
@@ -49,7 +50,7 @@ export default function Login() {
   return (
     <div className={`${styles.login} page-layout`}>
       <form className={styles.loginForm} onSubmit={(e) => handleLogin(e)}>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
         {!user ? (
           <div>
@@ -72,7 +73,8 @@ export default function Login() {
         ) : (
           <div>
             <h2>{`Welcome Back, ${user.fname}!`}</h2>
-            <Logout />
+            <Link to="/">Return to Home</Link>
+            {/* <Logout /> */}
           </div>
         )}
       </form>

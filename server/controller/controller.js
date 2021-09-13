@@ -107,29 +107,43 @@ module.exports = {
   },
 
   saveArticle: async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { user_id, title, url } = req.body;
-    // console.log(user_id);
+    const alreadyExists = await Saved_article.findOne({
+      where: { [Op.and]: [{ name: title }, { user_id: user_id }] },
+    });
+    console.log(alreadyExists);
 
-    await Saved_article.create({
-      url,
-      name: title,
-      user_id,
-    })
-      .then(async () => {
-        // console.log("recored created");
-        const allArticles = await Saved_article.findAll({
-          where: { user_id },
-        });
-        // .then(() => {
-        return res.status(200).send(allArticles);
-        // })
-        // .catch((error) => console.log(error));
-
-        console.log("done");
-        // return res.status(200).send(allDates);
+    if (!alreadyExists) {
+      await Saved_article.create({
+        url,
+        name: title,
+        user_id,
       })
-      .catch((error) => console.log(error));
+        .then(async () => {
+          const allArticles = await Saved_article.findAll({
+            where: { user_id },
+          });
+          return res.status(200).send(allArticles);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      return res.status(200).send("no thanks");
+    }
+  },
+  getSavedArticles: async (req, res) => {
+    // console.log(req.body);
+    let { user_id } = req.params;
+    user_id = Number(user_id);
+    console.log(user_id);
+    const previousSavedArticles = await Saved_article.findAll({
+      where: { user_id: user_id },
+    });
+    if (previousSavedArticles) {
+      return res.status(200).send(previousSavedArticles);
+    }
+
+    // ((error) => console.log("unsuccessful grab - " + error));
   },
   // calcNextDose: async (req, res) => {
   //   console.log(req.body);

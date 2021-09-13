@@ -135,7 +135,7 @@ function BCTracking() {
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
       <div className={styles.choose_bc}>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
         <button
           className={styles.showBtn}

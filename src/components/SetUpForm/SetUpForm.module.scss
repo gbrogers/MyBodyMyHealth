@@ -1,16 +1,12 @@
 .setUpForm {
   display: flex;
   flex-direction: column;
-  // height: 400px;
   flex-wrap: wrap;
 
   > label {
-    margin: 10px 0px;
-    border: 1px solid grey;
-    padding: 15px;
+    margin: 7px 0px;
     width: fit-content;
     border-radius: 5px;
-    border: 1px #474747 solid;
     > label > input:nth-child(1) {
       cursor: pointer;
       margin-right: 7px;
@@ -28,10 +24,20 @@
   }
 }
 
-@media screen and (min-width: 800px) {
-  .setUpForm {
-    // height: 230px;
-    padding-top: 10px;
-    width: 60%;
+.setUpHeader {
+  width: 100%;
+  // color: hotpink;
+  font-size: 0.95rem;
+  margin-left: 10px;
+  text-align: left;
+}
+.sexSelect,
+.ageSelect {
+  width: 60%;
+}
+@media screen and (min-width: 400px) {
+  .sexSelect,
+  .ageSelect {
+    width: 200px;
   }
 }
