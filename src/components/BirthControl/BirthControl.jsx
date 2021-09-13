@@ -1,5 +1,5 @@
 import styles from "./BirthControl.module.scss";
-import { useState, useRef, useContext } from "react";
+import { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import axios from "axios";
 

@@ -4,6 +4,7 @@ const Birth_control = require("../models/birth_control");
 const Date_menstruation = require("../models/date_menstruation");
 const Date_birth_control = require("../models/date_birth_control");
 const Saved_article = require("../models/saved_article");
+const Note = require("../models/note");
 
 module.exports = {
   loginUser: async (req, res) => {
@@ -12,7 +13,7 @@ module.exports = {
     const validUser = await User.findOne({ where: { email: email } });
     // if (validUser !== null && validUser.password === password) {
     if (validUser !== null) {
-      console.log(validUser.password);
+      // console.log(validUser.password);
       return res.status(200).send(validUser);
     }
 
@@ -26,7 +27,7 @@ module.exports = {
     //   return res.status(200).send(validUser);
     // }
     else {
-      console.log("in else of login fn");
+      // console.log("in else of login fn");
       return res.status(200).send(false);
     }
   },
@@ -72,7 +73,6 @@ module.exports = {
     return res.status(200).send(updatedUser);
   },
   addPeriodDate: async (req, res) => {
-    // console.log(req.body);
     const { id, dateState } = req.body;
     await Date_menstruation.create({
       user_id: id,
@@ -82,37 +82,43 @@ module.exports = {
         const allDates = await Date_menstruation.findAll({
           where: { user_id: id },
         });
-        // console.log(allDates);
         return res.status(200).send(allDates);
       })
       .catch(() => console.log("failed"));
   },
 
   addBCDate: async (req, res) => {
-    // console.log(req.body);
     const { id, dateState } = req.body;
     await Date_birth_control.create({
       user_id: id,
       date_taken: dateState,
     })
       .then(async () => {
-        // console.log("recored created");
         const allDates = await Date_birth_control.findAll({
           where: { user_id: id },
         });
-        // console.log(allDates);
         return res.status(200).send(allDates);
       })
-      .catch(() => console.log("failed"));
+      .catch((error) => console.log("failed - " + error));
+  },
+  addNotes: async (req, res) => {
+    const { user_id, text, note_date } = req.body;
+    await Note.create({ user_id, text, note_date })
+      .then(async () => {
+        const allNotes = await Note.findAll({
+          where: { user_id },
+        });
+        return res.status(200).send(allNotes);
+      })
+      .catch((error) => console.log("failed - " + error));
   },
 
   saveArticle: async (req, res) => {
-    // console.log(req.body);
     const { user_id, title, url } = req.body;
     const alreadyExists = await Saved_article.findOne({
       where: { [Op.and]: [{ name: title }, { user_id: user_id }] },
     });
-    console.log(alreadyExists);
+    // console.log(alreadyExists);
 
     if (!alreadyExists) {
       await Saved_article.create({
@@ -134,7 +140,7 @@ module.exports = {
   getSavedArticles: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    console.log(user_id);
+    // console.log(user_id);
     const previousSavedArticles = await Saved_article.findAll({
       where: { user_id: user_id },
     });
@@ -149,25 +155,35 @@ module.exports = {
   getPeriodDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    console.log(user_id);
+    // console.log(user_id);
     const previousPeriodDates = await Date_menstruation.findAll({
       where: { user_id: user_id },
     });
     if (previousPeriodDates) {
-      // console.log(previousPeriodDates);
       return res.status(200).send(previousPeriodDates);
     }
   },
   getBCDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    console.log(user_id);
+    // console.log(user_id);
     const previousBCDates = await Date_birth_control.findAll({
       where: { user_id: user_id },
     });
     if (previousBCDates) {
-      console.log(previousBCDates);
       return res.status(200).send(previousBCDates);
+    }
+  },
+  getNotes: async (req, res) => {
+    let { user_id } = req.params;
+    user_id = Number(user_id);
+    // console.log(user_id);
+    const previousNotes = await Note.findAll({
+      where: { user_id: user_id },
+    });
+    if (previousNotes) {
+      console.log(previousNotes);
+      return res.status(200).send(previousNotes);
     }
   },
 };

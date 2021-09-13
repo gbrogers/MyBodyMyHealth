@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext, useRef } from "react";
 import Calendar from "react-calendar";
+import IndividualNote from "../IndividualNote/IndividualNote";
 import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import styles from "./PeriodTracking.module.scss";
@@ -12,12 +13,14 @@ function PeriodTracking() {
 
   const [datesToAddTo, setdatesToAddTo] = useState([]);
   const [periodPresent, setPeriodPresent] = useState(false);
+  const [noteArray, setNoteArray] = useState([]);
   const [dateState, setDateState] = useState(new Date());
-  const note = useRef();
+  const noteText = useRef();
 
   useEffect(() => {
     const user_id = user.id;
 
+    //fetch dates
     axios
       .get(`/api/getPeriodDates/${user_id}`)
       .then((res) => {
@@ -27,6 +30,15 @@ function PeriodTracking() {
           dateArray = [...dateArray, instance.date_occurred];
         });
         setdatesToAddTo(dateArray);
+      })
+      .catch((error) => console.log(error));
+
+    //fetch notes
+    axios
+      .get(`/api/getNotes/${user_id}`)
+      .then((res) => {
+        // console.log(res.data);
+        setNoteArray(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -84,12 +96,26 @@ function PeriodTracking() {
       console.log("negative");
     }
   }
+  async function updateNotes() {
+    if (noteText.current.value.length > 1) {
+      const noteRequestBody = {
+        text: noteText.current.value,
+        note_date: dateState,
+        user_id: user.id,
+      };
+      axios
+        .post("/api/addNotes", noteRequestBody)
+        .then((res) => {
+          console.log(res.data);
+          setNoteArray(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }
 
   return (
     <div className={`${styles.menstrualTracking} page-layout`}>
-      {/* <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2> */}
-      <h2>{`Hello, Welcome to My Menstruation Tracking`}</h2>
-      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+      <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2>
       <section className="styles.calendar-section-container">
         <div className="styles.calendar-container">
           <Calendar
@@ -103,6 +129,23 @@ function PeriodTracking() {
           <b>{moment(dateState).format("MMMM Do YYYY")}</b>
         </p> */}
       </section>
+      <div className={styles.noteListContainer}>
+        <h3>Notes from the last 7 days</h3>
+        <ul className={styles.noteList}>
+          {noteArray.map((note) => {
+            //only show notes from the last 7 days
+            const dateDiff =
+              Math.abs(
+                new Date(note.note_date).getTime() - new Date().getTime()
+              ) /
+              (60 * 60 * 1000 * 24);
+            if (dateDiff < 7) {
+              return <IndividualNote note={note} />;
+            }
+          })}
+        </ul>
+      </div>
+
       <aside>
         <div className={styles.period_checkin_container}>
           <form>
@@ -133,13 +176,17 @@ function PeriodTracking() {
               <p>
                 Enter any notes about today that you'd like to keep track of{" "}
               </p>
-              <textarea placeholder="enter notes here" ref={note}></textarea>
+              <textarea
+                placeholder="enter notes here"
+                ref={noteText}
+              ></textarea>
             </label>
             <button
               className={styles.saveBtn}
               onClick={(e) => {
                 e.preventDefault();
                 updateRecords();
+                updateNotes();
               }}
             >
               Save

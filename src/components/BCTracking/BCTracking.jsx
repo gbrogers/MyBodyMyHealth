@@ -35,12 +35,9 @@ function BCTracking() {
       .get(`/api/getBCDates/${user_id}`)
       .then((res) => {
         const dates = res.data;
-        console.log(dates);
         let dateArray = [];
         dates.map((instance) => {
           dateArray = [...dateArray, instance.date_taken];
-          console.log(dateArray);
-          console.log(instance.date_occurred);
         });
         setBCTaken(dateArray);
       })
@@ -57,10 +54,10 @@ function BCTracking() {
 
   //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
   function handleLastDay() {
-    console.log("I made it to the handle function");
-    console.log(lastDate);
+    // console.log("I made it to the handle function");
+    // console.log(lastDate);
     const variable = Math.abs(lastDate.getTime() - new Date().getTime());
-    console.log(variable / (60 * 60 * 1000 * 24));
+    // console.log(variable / (60 * 60 * 1000 * 24));
   }
 
   function tileClassName({ date, view }) {
