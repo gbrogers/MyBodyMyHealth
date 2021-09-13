@@ -2,12 +2,16 @@ import styles from "./SignUp.module.scss";
 import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
+import { AuthContext } from "../../AuthContext";
+import { Link } from "react-router-dom";
+
 import Logout from "../Logout/Logout";
 
 const bcrypt = require("bcryptjs");
 
 export default function SignUp() {
   const { user, setUser } = useContext(UserContext);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
 
   const email = useRef();
   const password = useRef();
@@ -44,6 +48,7 @@ export default function SignUp() {
         // console.log(res.data.email);
         const currentUser = res.data;
         setUser(currentUser);
+        setIsAuth(true);
         //need to redirect to home following success
       })
       .catch((error) => console.log(error));
@@ -52,7 +57,7 @@ export default function SignUp() {
   return (
     <div className={`${styles.signup} page-layout`}>
       <form className={styles.signupForm} onSubmit={(e) => handleLogin(e)}>
-        <pre>{JSON.stringify(user, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         {!user ? (
           <div>
             <h2>Welcome!</h2>
@@ -86,6 +91,12 @@ export default function SignUp() {
               ></input>
             </label>
             <button type="submit">Sign Up</button>
+            <p>
+              Already have and account?{" "}
+              <b>
+                <Link to="/login">Log in</Link>
+              </b>
+            </p>
           </div>
         ) : (
           <div>

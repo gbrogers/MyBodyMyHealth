@@ -38,18 +38,34 @@ export default function Home() {
         <section className={styles.sectionTwo}>
           <div className={styles.blueSection}>
             <div className={styles.circleIcons}>
-              <div>
-                <img className={styles.methodIcon} src={MethodsIcon}></img>
-              </div>
-              <div>
-                <img className={styles.resourcesIcon} src={ResourcesIcon}></img>
+              <div className={styles.circle1}>
+                {/* <p>This is text information </p> */}
+                <div className={styles.individualCircle}>
+                  <img className={styles.methodIcon} src={MethodsIcon}></img>
+                </div>
               </div>
 
-              <div>
-                <img className={styles.bodyIcon} src={UterusIcon}></img>
+              <div className={styles.circle2}>
+                <div className={styles.individualCircle}>
+                  <img
+                    className={styles.resourcesIcon}
+                    src={ResourcesIcon}
+                  ></img>
+                </div>
+                {/* <p>This is text information </p> */}
               </div>
-              <div>
-                <img className={styles.brainIcon} src={BrainIcon}></img>
+
+              <div className={styles.circle3}>
+                {/* <p>This is text information </p> */}
+                <div className={styles.individualCircle}>
+                  <img className={styles.bodyIcon} src={UterusIcon}></img>
+                </div>
+              </div>
+              <div className={styles.circle4}>
+                <div className={styles.individualCircle}>
+                  <img className={styles.brainIcon} src={BrainIcon}></img>
+                </div>
+                {/* <p>This is text information </p> */}
               </div>
             </div>
           </div>

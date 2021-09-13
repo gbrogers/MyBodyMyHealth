@@ -1,8 +1,4 @@
-* {
-  // outline: 1px solid hotpink;
-}
 .home {
-  // z-index: -1;
   h1,
   h2 {
     font-family: "Caveat", cursive;
@@ -37,7 +33,6 @@
 
   .sectionOne {
     > div {
-      // margin-top: 150px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -76,7 +71,7 @@
   ///////////////////////// SECTION TWO///////////////////////////////////////////////////////
   .sectionTwo {
     position: relative;
-    margin: 50px 0 100px 0;
+    margin: 25px 0 100px 0;
 
     .blueSection {
       // height: 450px;
@@ -93,7 +88,7 @@
       flex-wrap: wrap;
       align-items: center;
       // z-index: -50;
-      > div {
+      .individualCircle {
         background-color: #c3fd8a;
         border: 5px solid #fff;
         width: 20vw;
@@ -215,8 +210,8 @@
 @media screen and (min-width: 550px) {
   .home {
     .sectionOne {
-      > div > div > p {
-        // max-width: 500px;
+      > div > div {
+        padding: 40px;
       }
     }
     .sectionTwo {
@@ -290,7 +285,7 @@
         width: 90%;
         justify-content: space-between;
         align-items: center;
-        div {
+        .individualCircle {
           width: 9em;
           height: 9em;
         }

@@ -5,42 +5,30 @@ import moment from "moment";
 import "react-calendar/dist/Calendar.css";
 import styles from "./PeriodTracking.module.scss";
 import { UserContext } from "../../UserContext";
+import { withRouter } from "react-router-dom";
 
-export default function PeriodTracking() {
+function PeriodTracking() {
   const { user, setUser } = useContext(UserContext);
+
   const [datesToAddTo, setdatesToAddTo] = useState([]);
   const [periodPresent, setPeriodPresent] = useState(false);
   const [dateState, setDateState] = useState(new Date());
   const note = useRef();
 
   useEffect(() => {
-    console.log("in effect");
+    const user_id = user.id;
 
-    async function fetchRecords() {
-      const requestBody = {
-        id: user.id,
-        dateState,
-      };
-      //will send notes in this request too.
-
-      axios
-        .post("/api/addPeriodDate", requestBody)
-        .then((res) => {
-          const dates = res.data;
-          console.log(dates);
-          let dateArray = [];
-          dates.map((instance) => {
-            dateArray = [...dateArray, instance.date_occurred];
-            console.log(dateArray);
-            console.log(instance.date_occurred);
-          });
-          setdatesToAddTo(dateArray);
-        })
-        .catch((error) => console.log(error));
-      // console.log(datesToAddTo);
-    }
-
-    fetchRecords();
+    axios
+      .get(`/api/getPeriodDates/${user_id}`)
+      .then((res) => {
+        const dates = res.data;
+        let dateArray = [];
+        dates.map((instance) => {
+          dateArray = [...dateArray, instance.date_occurred];
+        });
+        setdatesToAddTo(dateArray);
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const changeDate = (e) => {
@@ -101,6 +89,7 @@ export default function PeriodTracking() {
     <div className={`${styles.menstrualTracking} page-layout`}>
       {/* <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2> */}
       <h2>{`Hello, Welcome to My Menstruation Tracking`}</h2>
+      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
       <section className="styles.calendar-section-container">
         <div className="styles.calendar-container">
           <Calendar
@@ -165,3 +154,4 @@ export default function PeriodTracking() {
     </div>
   );
 }
+export default withRouter(PeriodTracking);

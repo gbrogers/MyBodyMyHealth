@@ -10,39 +10,45 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import SignUp from "./components/SignUp/SignUp";
+import Profile from "./components/Profile/Profile";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { User } from "@auth0/auth0-spa-js";
 import { UserContext } from "./UserContext";
+import { AuthContext } from "./AuthContext";
+
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [isAuth, setIsAuth] = useState(false);
 
-  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const authValue = useMemo(() => ({ isAuth, setIsAuth }), [isAuth, setIsAuth]);
 
   return (
     <>
       <Router>
         <div className="App">
-          <Nav />
-          <Switch>
-            <UserContext.Provider value={value}>
-              <Route path="/" exact component={Home} />
-              <Route path="/login" exact component={Login} />
-              <Route path="/logout" exact component={Logout} />
-              <Route path="/signup" exact component={SignUp} />
-              <Route path="/resources" component={Resources} />
-              <Route
-                path="/menstrualtracking"
-                exact
-                component={PeriodTracking}
-              />
-              <Route
-                path="/contraceptivetracking"
-                exact
-                component={BCTracking}
-              />
-            </UserContext.Provider>
-          </Switch>
+          <UserContext.Provider value={userValue}>
+            <AuthContext.Provider value={authValue}>
+              <Nav />
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/login" exact component={Login} />
+                <Route path="/logout" exact component={Logout} />
+                <Route path="/signup" exact component={SignUp} />
+                <ProtectedRoute path="/resources" component={Resources} />
+                <ProtectedRoute
+                  path="/menstrualtracking"
+                  component={PeriodTracking}
+                />
+                <ProtectedRoute
+                  path="/contraceptivetracking"
+                  component={BCTracking}
+                />
+                <ProtectedRoute path="/profile" component={Profile} />
+              </Switch>
+            </AuthContext.Provider>
+          </UserContext.Provider>
           <Footer />
         </div>
       </Router>

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./Nav.module.scss";
 import { Link } from "react-router-dom";
-import Authenticate from "../Authenticate/Authenticate";
 import Logo from "../../images/Logo.svg";
 import Hamburger from "../Hamburger/Hamburger";
+import { AuthContext } from "../../AuthContext";
 
 function Nav() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
   const navStyle = {
     color: "black",
   };
@@ -20,19 +21,30 @@ function Nav() {
           </div>
         </Link>
         <div className={styles.loginSignUpNav}>
-          <Link
-            to="/login"
-            className={`${styles.loginSignUpBtn} ${styles.login}`}
-          >
-            <button>Login</button>
-          </Link>
+          {!isAuth ? (
+            <div>
+              <Link
+                to="/login"
+                className={`${styles.loginSignUpBtn} ${styles.login}`}
+              >
+                <button>Login</button>
+              </Link>
 
-          <Link
-            to="/signup"
-            className={`${styles.loginSignUpBtn} ${styles.signUp}`}
-          >
-            <button>Sign Up</button>
-          </Link>
+              <Link
+                to="/signup"
+                className={`${styles.loginSignUpBtn} ${styles.signUp}`}
+              >
+                <button>Sign Up</button>
+              </Link>
+            </div>
+          ) : (
+            <Link
+              to="/logout"
+              className={`${styles.loginSignUpBtn} ${styles.logoutBtn}`}
+            >
+              Log Out
+            </Link>
+          )}
         </div>
         <Hamburger navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen} />
       </div>
@@ -55,7 +67,6 @@ function Nav() {
         <Link to="/resources" onClick={() => setNavbarOpen(!navbarOpen)}>
           <li>Resources</li>
         </Link>
-        {/* <Authenticate /> */}
       </ul>
       <style jsx>{`
         .navList button {
