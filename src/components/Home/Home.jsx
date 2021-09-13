@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 //image components
 import MainSectionImg from "../../images/bc-types-home.jpg";
-import Triangle from "../../images/home-triangle.svg";
-import ThreeFaces from "../../images/threefaces.jpg";
-import Runner from "../../images/runner.jpg";
+// import Triangle from "../../images/home-triangle.svg";
+// import ThreeFaces from "../../images/threefaces.jpg";
+// import Runner from "../../images/runner.jpg";
 import Research from "../../images/research.jpg";
 import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";

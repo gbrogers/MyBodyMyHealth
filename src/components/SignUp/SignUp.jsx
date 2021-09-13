@@ -1,5 +1,5 @@
 import styles from "./SignUp.module.scss";
-import { useState, useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../../UserContext";
 import { AuthContext } from "../../AuthContext";
