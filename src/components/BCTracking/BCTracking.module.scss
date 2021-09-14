@@ -31,18 +31,36 @@ h2 {
   width: 100%;
   background-color: #dff4f3;
 }
-
+.bcCalendarLegend {
+  div {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    // justify-content: center;
+  }
+}
 .yellowKey {
-  background-color: yellow;
+  background-color: #ffe46f;
   width: 25px;
-  height: 15px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 7px;
+  // margin-top: 5px;
 }
 
 .setUpCalendar {
-  background-color: crimson;
+  // background-color: crimson;
   //adjust sixe of compoonent here
 }
 
-.checkIn {
+.period_checkin {
   background-color: cyan;
+}
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.calendarPromptContainer {
+  display: flex;
 }

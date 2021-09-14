@@ -103,6 +103,7 @@ function PeriodTracking() {
         note_date: dateState,
         user_id: user.id,
       };
+      noteText.current.value = "";
       axios
         .post("/api/addNotes", noteRequestBody)
         .then((res) => {
@@ -120,17 +121,19 @@ function PeriodTracking() {
       </div>
       <div class={styles.calendar_notes_container}>
         <section className={styles.calendar_section_container}>
-          <div className={styles.calendar_container}>
+          <div className={`${styles.calendarContainer} "calendar-container"`}>
             <Calendar
               value={dateState}
               onChange={changeDate}
               tileClassName={tileClassName}
             />
+            <div className={styles.periodCalendarLegend}>
+              <div>
+                <div className={styles.keyColor}></div>
+                <h4>Period Present</h4>
+              </div>
+            </div>
           </div>
-          {/* <p>
-          Current selected date is{" "}
-          <b>{moment(dateState).format("MMMM Do YYYY")}</b>
-        </p> */}
         </section>
         <div className={styles.noteListContainer}>
           <h3>Notes from the last 7 days</h3>
@@ -153,38 +156,31 @@ function PeriodTracking() {
       <aside>
         <div className={styles.period_checkin_container}>
           <form>
-            <label className={styles.period_checkin}>
-              <p>
-                Did you menstruate on{" "}
-                <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
-              </p>
-              <div className={styles.yesNoBtn}>
-                <button
-                  className={styles.yesBtn}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setPeriodPresent(true);
-                  }}
-                >
-                  Yes
-                </button>
-                <button
-                  className={styles.noBtn}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  No
-                </button>
-              </div>
-            </label>
-            <label className={styles.notes}>
-              <p>
-                Enter any notes about today that you'd like to keep track of{" "}
-              </p>
-              <textarea
-                placeholder="enter notes here"
-                ref={noteText}
-              ></textarea>
-            </label>
+            <p>
+              Did you menstruate on{" "}
+              <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
+            </p>
+            <div className={styles.yesNoBtn}>
+              <button
+                className={styles.yesBtn}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPeriodPresent(true);
+                }}
+              >
+                Yes
+              </button>
+              <button
+                className={styles.noBtn}
+                onClick={(e) => e.preventDefault()}
+              >
+                No
+              </button>
+            </div>
+
+            <p>Enter any notes about today that you'd like to keep track of </p>
+            <textarea placeholder="enter notes here" ref={noteText}></textarea>
+
             <button
               className={styles.saveBtn}
               onClick={(e) => {

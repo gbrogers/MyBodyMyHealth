@@ -5,6 +5,7 @@ const Date_menstruation = require("../models/date_menstruation");
 const Date_birth_control = require("../models/date_birth_control");
 const Saved_article = require("../models/saved_article");
 const Note = require("../models/note");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   loginUser: async (req, res) => {
@@ -12,65 +13,80 @@ module.exports = {
     //check password logic here with db
     const validUser = await User.findOne({ where: { email: email } });
     // if (validUser !== null && validUser.password === password) {
-    if (validUser !== null) {
+    if (validUser) {
       // console.log(validUser.password);
-      return res.status(200).send(validUser);
-    }
-
-    // const validUser = await User.findOne({
-    //   where: { [Op.and]: [{ email: email }, { password: password }] },
-    // });
-    // if (validUser !== null) {
-    //   console.log("user is valid and found");
-    //   console.log(validUser);
-
-    //   return res.status(200).send(validUser);
-    // }
-    else {
-      // console.log("in else of login fn");
-      return res.status(200).send(false);
+      console.log(validUser);
+      if (bcrypt.compareSync(password, validUser.dataValues.password)) {
+        console.log("password correct");
+        return res.status(200).send(validUser);
+      } else {
+        return res.status(200).send("Password Incorrect");
+      }
+    } else {
+      return res.status(200).send("Email Not Recognized");
     }
   },
   signUpUser: async (req, res) => {
-    // console.log(req.body);
+    console.log(req.body);
     const { fname, lname, email, password } = req.body;
-    // console.log("in ctrl sign up function");
-    const newUser = await User.create({ fname, lname, email, password });
-    // console.log("user successfully added");
-    return res.status(200).send(newUser);
+    console.log(password);
+
+    //Password Hashing
+    const salt = bcrypt.genSaltSync(5);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    console.log(passwordHash);
+
+    const newUser = await User.create({
+      fname,
+      lname,
+      email,
+      password: passwordHash,
+    })
+      .then(() => {
+        if (newUser) {
+          console.log(newUser);
+          return res.status(200).send(newUser);
+        }
+      })
+      .catch((error) => {
+        console.log("failed - " + error);
+      });
   },
 
   addBC: async (req, res) => {
-    // console.log(req.body);
     const { birth_control_id, user_id } = req.body;
-    // console.log(user_id);
-    // console.log(birth_control_id);
+    console.log(user_id);
+    console.log(birth_control_id);
 
     // const foundUser = await User.findOne({ where: { id: user_id } });
-    // console.log(foundUser.dataValues);
-    // foundUser.dataValues.birth_control_id = birth_control_id;
-    // console.log(foundUser.dataValues.birth_control_id);
-    // console.log(foundUser.dataValues);
-    // foundUser.save();
-
     await User.update(
       { birth_control_id: birth_control_id },
       { where: { id: user_id } }
-    );
-    let updatedUser = await User.findOne({ where: { id: user_id } });
-    // const birthControl = await Birth_control.findByPk(birth_control_id);
-    // const duration = birthControl.frequency;
-    // console.log(duration);
-    // const expiration = duration + most recent date.
-    // switch(duration){
-    //   case:
-    // }
+    )
+      .then(async () => {
+        let updatedUser = await User.findOne({ where: { id: user_id } });
+        const birthControlObj = await Birth_control.findOne({
+          where: { id: birth_control_id },
+        });
 
-    // const returnObject = {
-    //   updatedUser,
-    //   birthControl,
-    // };
-    return res.status(200).send(updatedUser);
+        const returnObject = {
+          updatedUser,
+          birthControlObj,
+        };
+        console.log(birthControlObj);
+        return res.status(200).send(returnObject);
+      })
+      .catch((error) => console.log("failed - " + error));
+  },
+  getBirthControl: async (req, res) => {
+    let { birth_control_id } = req.params;
+    birth_control_id = Number(birth_control_id);
+    const birthControlObj = await Birth_control.findOne({
+      where: { id: birth_control_id },
+    });
+    if (birthControlObj) {
+      return res.status(200).send(birthControlObj);
+    }
   },
   addPeriodDate: async (req, res) => {
     const { id, dateState } = req.body;
@@ -148,10 +164,6 @@ module.exports = {
       return res.status(200).send(previousSavedArticles);
     }
   },
-  // calcNextDose: async (req, res) => {
-  //   console.log(req.body);
-  //   return true;
-  // },
   getPeriodDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
@@ -182,8 +194,14 @@ module.exports = {
       where: { user_id: user_id },
     });
     if (previousNotes) {
-      console.log(previousNotes);
+      // console.log(previousNotes);
       return res.status(200).send(previousNotes);
     }
+  },
+  deleteNote: async (req, res) => {
+    let { note_id } = req.params;
+    await Note.destroy({ where: { id: note_id } }).then(() => {
+      return res.status(200).send("successfully deleted");
+    });
   },
 };

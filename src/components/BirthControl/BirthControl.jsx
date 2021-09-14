@@ -3,11 +3,23 @@ import { useContext } from "react";
 import { UserContext } from "../../UserContext";
 import axios from "axios";
 
-export default function BirthControl() {
+export default function BirthControl(props) {
   const { user, setUser } = useContext(UserContext);
+  const {
+    setDropDown,
+    dropDown,
+    setShowBC,
+    showBC,
+    birthControl,
+    setBirthControl,
+  } = props;
+
+  // console.log(user)
 
   async function handleSelection(e, value) {
     console.log(e.target.value);
+    setDropDown(!dropDown);
+    setShowBC(!showBC);
 
     const requestBody = {
       user_id: user.id,
@@ -16,9 +28,10 @@ export default function BirthControl() {
     await axios
       .post("/api/addBC", requestBody)
       .then((res) => {
-        const { updatedUser, birthControl } = res.data;
+        const { updatedUser, birthControlObj } = res.data;
         setUser(updatedUser);
-        console.log(birthControl.bc_name);
+        setBirthControl(birthControlObj);
+        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }

@@ -19,18 +19,27 @@ function BCTracking() {
   const [dateState, setDateState] = useState(new Date());
   const [lastDate, setLastDate] = useState(new Date());
   const [bcUsed, setBCUsed] = useState(false);
+  const [birthControl, setBirthControl] = useState(null);
 
   const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
   let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
+  //load previously added calendar dates and birthcontrol info when page renders
   useEffect(() => {
-    console.log("in effect");
-
     const user_id = user.id;
-    //will send notes in this request too.
+    if (user.birth_control_id !== null) {
+      const birth_control_id = user.birth_control_id;
 
+      axios
+        .get(`/api/getBirthControl/${birth_control_id}`)
+        .then((res) => {
+          console.log(res.data);
+          setBirthControl(res.data);
+        })
+        .catch((error) => console.log(error));
+    }
     axios
       .get(`/api/getBCDates/${user_id}`)
       .then((res) => {
@@ -69,10 +78,8 @@ function BCTracking() {
   }
   function isSameDay(a, b) {
     const d = new Date(a);
-    // console.log(d.getMonth());
-    // console.log(b.getMonth());
     const dateA = `${d.getMonth()}${d.getDate()}${d.getYear()}`;
-    const dateB = `${b.getMonth()}${b.getDate()}${d.getYear()}`;
+    const dateB = `${b.getMonth()}${b.getDate()}${b.getYear()}`;
     console.log(dateA === dateB);
     return dateA === dateB;
   }
@@ -80,46 +87,54 @@ function BCTracking() {
   async function updateRecords() {
     if (bcUsed) {
       setBCUsed(false);
-      console.log("bc used");
-
       const requestBody = {
         id: user.id,
         dateState,
       };
-      //will send notes in this request too.
-
       axios
         .post("/api/addBCDate", requestBody)
         .then((res) => {
           const dates = res.data;
-          console.log("--------");
-          console.log(dates);
-          console.log("--------");
           let dateArray = [];
           dates.map((instance) => {
             dateArray = [...dateArray, instance.date_taken];
-            console.log(dateArray);
-            console.log(instance.date_taken);
           });
           setBCTaken(dateArray);
         })
         .catch((error) => console.log(error));
-      // console.log(datesToAddTo);
     } else {
       console.log("negative");
     }
   }
 
+  function calcFrequency(frequencyKey) {
+    switch (frequencyKey) {
+      case "q7y":
+        return "Lasts up to 7 years";
+      case "q5y":
+        return "Lasts up to 5 years";
+      case "q3y":
+        return "Lasts up to 3 years";
+      case "q12y":
+        return "Lasts up to 12 years";
+      case "q3m":
+        return "Recieve Every 3 Months";
+      case "qm":
+        return "Replace Monthly";
+      case "qd":
+        return "Take Daily";
+      case "prn":
+        return "Method must be used each time";
+      case "once":
+        return "This method does not need maintenance.";
+      case "q4h":
+        return "Must be done every 4 to 5 hours to be effective.";
+    }
+  }
   // async function handleLastUseDate(e) {
   //   e.preventDefault();
   //   setLastDate(date.current.value);
   //   const date1 = moment(dateState).format("YYYY-MM-DD");
-
-  //   // await axios
-  //   //   .post("/api/calcNextDose", { lastDate })
-  //   //   .then()
-  //   //   .catch((error) => console.log(error));
-  // }
 
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
@@ -127,7 +142,8 @@ function BCTracking() {
         <h2>{`${user.fname}'s Contraceptive Tracking`}</h2>
       </div>
       <div className={styles.choose_bc}>
-        {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(user, null, 2)}</pre>
+        <pre>{JSON.stringify(birthControl, null, 2)}</pre> */}
 
         <button
           className={styles.showBtn}
@@ -140,8 +156,17 @@ function BCTracking() {
           Step One: Select Your Method of Birth Control
         </button>
       </div>
-      {showBC && <BirthControl />}
-      <div className={styles.lastTaken}>
+      {showBC && (
+        <BirthControl
+          dropDown={dropDown}
+          setDropDown={setDropDown}
+          setShowBC={setShowBC}
+          showBC={showBC}
+          birthControl={birthControl}
+          setBirthControl={setBirthControl}
+        />
+      )}
+      {/* <div className={styles.lastTaken}>
         <button
           className={styles.showBtn}
           onClick={() => {
@@ -152,8 +177,8 @@ function BCTracking() {
           <img src={srcDropDown2}></img>
           Step Two: Select the date of last use of specified Birth Control
           method.
-        </button>
-        {showLastUse && (
+        </button> */}
+      {/* {showLastUse && (
           <div>
             <p>
               When is the last time you used your method of birth control OR
@@ -165,25 +190,34 @@ function BCTracking() {
               tileClassName={styles.setUpCalendar}
             />
           </div>
-        )}
-      </div>
-      <div className="calendar-container">
-        <Calendar
-          value={dateState}
-          onChange={changeDate}
-          tileClassName={tileClassName}
-        />
-        <div className={styles.bcCalendarLegend}>
-          <div>
-            <div className={styles.yellowKey}></div>
-            <h4>hello</h4>
+        )} */}
+      {/* </div> */}
+      <div className={styles.calendarPromptContainer}>
+        <div className={`${styles.calendarContainer} "calendar-container"`}>
+          <Calendar
+            value={dateState}
+            onChange={changeDate}
+            tileClassName={tileClassName}
+          />
+
+          <div className={styles.bcCalendarLegend}>
+            <div>
+              <div className={styles.yellowKey}></div>
+              <h4>Birth Control Method Used</h4>
+            </div>
           </div>
         </div>
-      </div>
-      <aside>
-        <div className={styles.period_checkin_container}>
-          <form>
-            <label className={styles.period_checkin}>
+        <aside>
+          {birthControl !== null && birthControl.bc_type !== "no-method" && (
+            <div>
+              <h4>Your Saved Contraceptive Method</h4>
+              <h5>{birthControl.bc_name}</h5>
+              <p>{birthControl.bc_type}</p>
+              <p>{calcFrequency(birthControl.frequency)}</p>
+            </div>
+          )}
+          <div className={styles.period_checkin_container}>
+            <form>
               <p>
                 Did you menstruate on{" "}
                 <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
@@ -205,24 +239,24 @@ function BCTracking() {
                   No
                 </button>
               </div>
-            </label>
 
-            <button
-              className={styles.saveBtn}
-              onClick={(e) => {
-                e.preventDefault();
-                updateRecords();
-              }}
-            >
-              Save
-            </button>
-          </form>
-          <p>
-            to update previous days on the calendar, just select the date and
-            respond to the prompt for that particular day
-          </p>
-        </div>
-      </aside>
+              <button
+                className={styles.saveBtn}
+                onClick={(e) => {
+                  e.preventDefault();
+                  updateRecords();
+                }}
+              >
+                Save
+              </button>
+            </form>
+            <p>
+              to update previous days on the calendar, just select the date and
+              respond to the prompt for that particular day
+            </p>
+          </div>
+        </aside>
+      </div>
     </div>
   );
 }

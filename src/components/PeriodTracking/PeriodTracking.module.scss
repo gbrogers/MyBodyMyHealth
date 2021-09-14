@@ -6,11 +6,11 @@ h2 {
   font-size: 38px;
 }
 .headerContainer {
-  background-image: url("../../images/periodTracking.jpg");
+  background-image: url("../../images/periodTracking1.jpg");
   padding: 30px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   opacity: 80%;
 }
 .calendar_notes_container {
@@ -23,10 +23,14 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-.calendar_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// .calendar_container {
+//   display: flex;
+//   // justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+// }
+.calendarContainer {
+  margin: 20px;
 }
 .menstrualTracking {
   display: flex;
@@ -45,30 +49,28 @@ h2 {
         align-items: flex-start;
       }
 
-      .period_checkin {
-        .yesNoBtn {
-          display: flex;
-          // width: 25%;
-          // justify-content: space-between;
-          .yesBtn,
-          .noBtn {
-            all: unset;
-            cursor: pointer;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 700;
-            margin: 5px 0;
-            background-color: #9ef3ef;
-          }
+      .yesNoBtn {
+        display: flex;
+        // width: 25%;
+        // justify-content: space-between;
+        .yesBtn,
+        .noBtn {
+          all: unset;
+          cursor: pointer;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: 700;
+          margin: 5px 0;
+          background-color: #9ef3ef;
         }
       }
-      .notes {
-        padding: 10px;
-        // background-color: hotpink;
-        textarea {
-          width: 80%;
-          height: 75px;
-        }
+
+      // .notes {
+      //   padding: 10px;
+      //   // background-color: hotpink;
+      textarea {
+        width: 80%;
+        height: 75px;
       }
     }
   }
@@ -93,10 +95,27 @@ h2 {
 }
 
 .noteListContainer {
-  margin: 20px 5%;
+  margin: 20px 20px 20px 20px;
+  flex-grow: 2;
 }
 .noteList {
   list-style-type: none;
+}
+
+.periodCalendarLegend {
+  > div {
+    display: flex;
+    align-items: center;
+    // margin-top: 5px;
+    margin-left: 20px;
+  }
+}
+.keyColor {
+  background-color: #db3b43c0;
+  width: 25px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 7px;
 }
 
 @media screen and (min-width: 875px) {
@@ -106,6 +125,6 @@ h2 {
     justify-content: center;
   }
   .noteListContainer {
-    margin: 20px 10px;
+    margin: 20px 20px 20px 0px;
   }
 }
