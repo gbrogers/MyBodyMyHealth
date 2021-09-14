@@ -18,6 +18,9 @@ a {
   display: flex;
   justify-content: center;
 }
+.react-calendar {
+  width: 300px !important;
+}
 .react-calendar__month-view__days__day--weekend {
   color: black !important;
 }
@@ -43,7 +46,7 @@ a {
   background-color: #ffe46f !important;
 }
 .period {
-  background-color: #db3b44 !important;
+  background-color: #db3b43c0 !important;
   color: #fff !important;
 }
 @media screen and (min-width: 570px) {

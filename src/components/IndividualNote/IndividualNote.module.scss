@@ -1,4 +1,12 @@
 .singleNote {
-  background-color: yellowgreen;
-  margin: 5px;
+  background-color: #ffeef1;
+  box-shadow: 2px 2px 4px #c5c5c5;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 5px 5px;
+}
+.notepadImg {
+  width: 50px;
+  margin: 15px;
 }

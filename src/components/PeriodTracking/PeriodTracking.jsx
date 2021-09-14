@@ -59,7 +59,7 @@ function PeriodTracking() {
     // console.log(d.getMonth());
     // console.log(b.getMonth());
     const dateA = `${d.getMonth()}${d.getDate()}${d.getYear()}`;
-    const dateB = `${b.getMonth()}${b.getDate()}${d.getYear()}`;
+    const dateB = `${b.getMonth()}${b.getDate()}${b.getYear()}`;
     console.log(dateA === dateB);
     return dateA === dateB;
   }
@@ -115,35 +115,39 @@ function PeriodTracking() {
 
   return (
     <div className={`${styles.menstrualTracking} page-layout`}>
-      <h2>{`Hello, ${user.fname} - Welcome to My Menstruation Tracking`}</h2>
-      <section className="styles.calendar-section-container">
-        <div className="styles.calendar-container">
-          <Calendar
-            value={dateState}
-            onChange={changeDate}
-            tileClassName={tileClassName}
-          />
-        </div>
-        {/* <p>
+      <div className={styles.headerContainer}>
+        <h2>{`${user.fname}'s Menstruation Tracking`}</h2>
+      </div>
+      <div class={styles.calendar_notes_container}>
+        <section className={styles.calendar_section_container}>
+          <div className={styles.calendar_container}>
+            <Calendar
+              value={dateState}
+              onChange={changeDate}
+              tileClassName={tileClassName}
+            />
+          </div>
+          {/* <p>
           Current selected date is{" "}
           <b>{moment(dateState).format("MMMM Do YYYY")}</b>
         </p> */}
-      </section>
-      <div className={styles.noteListContainer}>
-        <h3>Notes from the last 7 days</h3>
-        <ul className={styles.noteList}>
-          {noteArray.map((note) => {
-            //only show notes from the last 7 days
-            const dateDiff =
-              Math.abs(
-                new Date(note.note_date).getTime() - new Date().getTime()
-              ) /
-              (60 * 60 * 1000 * 24);
-            if (dateDiff < 7) {
-              return <IndividualNote note={note} />;
-            }
-          })}
-        </ul>
+        </section>
+        <div className={styles.noteListContainer}>
+          <h3>Notes from the last 7 days</h3>
+          <ul className={styles.noteList}>
+            {noteArray.map((note) => {
+              //only show notes from the last 7 days
+              const dateDiff =
+                Math.abs(
+                  new Date(note.note_date).getTime() - new Date().getTime()
+                ) /
+                (60 * 60 * 1000 * 24);
+              if (dateDiff < 7) {
+                return <IndividualNote note={note} />;
+              }
+            })}
+          </ul>
+        </div>
       </div>
 
       <aside>

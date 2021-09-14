@@ -70,7 +70,9 @@ function Resources() {
     <div className={`${styles.displayResources} page-layout`}>
       <div>
         <div>
-          <h1 className={styles.pageTitle}>Resources</h1>
+          <div className={styles.headerContainer}>
+            <h1 className={styles.pageTitle}>Resources</h1>
+          </div>
           <div className={styles.dropdowns}>
             <div>
               <SavedResources userSavedResources={userSavedResources} />

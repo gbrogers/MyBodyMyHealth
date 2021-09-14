@@ -123,6 +123,9 @@ function BCTracking() {
 
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
+      <div className={styles.headerContainer}>
+        <h2>{`${user.fname}'s Contraceptive Tracking`}</h2>
+      </div>
       <div className={styles.choose_bc}>
         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
@@ -164,8 +167,6 @@ function BCTracking() {
           </div>
         )}
       </div>
-      <h2>My Contraceptive Tracking</h2>
-
       <div className="calendar-container">
         <Calendar
           value={dateState}
@@ -205,12 +206,7 @@ function BCTracking() {
                 </button>
               </div>
             </label>
-            <label className={styles.notes}>
-              <p>
-                Enter any notes about today that you'd like to keep track of{" "}
-              </p>
-              <textarea placeholder="enter notes here"></textarea>
-            </label>
+
             <button
               className={styles.saveBtn}
               onClick={(e) => {
