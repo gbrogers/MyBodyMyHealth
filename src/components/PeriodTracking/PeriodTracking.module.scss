@@ -1,9 +1,11 @@
-h2 {
+.sectionHeader {
   text-align: center;
   padding: 10px;
   margin: 10px 0;
   font-family: "Caveat", cursive;
   font-size: 38px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
 }
 .headerContainer {
   background-image: url("../../images/periodTracking1.jpg");

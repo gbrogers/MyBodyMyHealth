@@ -6,7 +6,7 @@
   background-position: center;
   opacity: 80%;
 }
-h2 {
+.sectionHeader {
   text-align: center;
   font-family: "Caveat", cursive;
   font-weight: 400;
@@ -15,11 +15,13 @@ h2 {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
 }
+
 .showBtn {
   all: unset;
   cursor: pointer;
   padding: 15px;
   display: flex;
+  margin: 20px;
 
   img {
     width: 18px;
@@ -27,9 +29,15 @@ h2 {
     padding-top: 1px;
   }
 }
+.dropDownHeader {
+  font-family: "Caveat", cursive;
+
+  font-weight: 400;
+}
 .choose_bc {
-  width: 100%;
   background-color: #dff4f3;
+  margin: 20px 10px 0 10px;
+  border-radius: 5px;
 }
 .bcCalendarLegend {
   div {
@@ -39,8 +47,8 @@ h2 {
     // justify-content: center;
   }
 }
-.yellowKey {
-  background-color: #ffe46f;
+.keyColor {
+  background-color: #dff4f3;
   width: 25px;
   height: 20px;
   border-radius: 5px;
@@ -48,19 +56,118 @@ h2 {
   // margin-top: 5px;
 }
 
-.setUpCalendar {
-  // background-color: crimson;
-  //adjust sixe of compoonent here
-}
-
-.period_checkin {
-  background-color: cyan;
-}
 .calendarContainer {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  align-items: center;
 }
 .calendarPromptContainer {
   display: flex;
+  flex-direction: column;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: space-around;
+}
+.displayMethodContainer {
+  background-color: #c4faf7;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  padding: 20px;
+  box-shadow: gray 2px 2px 4px;
+  img {
+    width: 50px;
+    margin: 20px;
+  }
+}
+
+.methodHeader {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.sideNote {
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+.generatedBCInfo {
+  // background-color: gray;
+  display: flex;
+  align-items: center;
+}
+.bcDetailsContainer {
+  margin-left: 5px;
+  h5 {
+    font-weight: 700;
+
+    font-size: 18px;
+  }
+}
+.bc_checkin_container {
+  background-color: #f0fffe;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 60px 20px;
+  box-shadow: gray 2px 2px 4px;
+  // flex-grow: 2;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+.yesBtn,
+.noBtn {
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+}
+.saveBtn {
+  border: none;
+  padding: 10px 60px;
+  border-radius: 5px;
+}
+
+.yesBtn {
+  background-color: hotpink;
+  margin-left: 10px;
+}
+.yesBtn:hover {
+  background-color: indigo;
+}
+
+.noBtn {
+  background-color: lightcoral;
+  margin-left: 10px;
+}
+.noBtn:hover {
+  background-color: lightseagreen;
+}
+.saveBtn {
+  background-color: mediumturquoise;
+  // width: 60%;
+  margin-top: 20px;
+}
+.saveBtn:hover {
+  background-color: mediumvioletred;
+}
+.bcCheckinBtns {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin-top: 20px;
+}
+.yesNoBtn {
+  display: flex;
+  // width: 60%;
+  justify-content: space-evenly;
+}
+@media screen and (min-width: 960px) {
+  .calendarPromptContainer {
+    flex-direction: row;
+  }
 }

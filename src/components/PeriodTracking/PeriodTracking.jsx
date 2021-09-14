@@ -117,7 +117,9 @@ function PeriodTracking() {
   return (
     <div className={`${styles.menstrualTracking} page-layout`}>
       <div className={styles.headerContainer}>
-        <h2>{`${user.fname}'s Menstruation Tracking`}</h2>
+        <h2
+          className={styles.sectionHeader}
+        >{`${user.fname}'s Menstruation Tracking`}</h2>
       </div>
       <div class={styles.calendar_notes_container}>
         <section className={styles.calendar_section_container}>

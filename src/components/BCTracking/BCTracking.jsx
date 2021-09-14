@@ -8,6 +8,7 @@ import moment from "moment";
 import BirthControl from "../BirthControl/BirthControl";
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
+import Methods from "../../images/methods.svg";
 import { withRouter } from "react-router-dom";
 
 function BCTracking() {
@@ -139,7 +140,9 @@ function BCTracking() {
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
       <div className={styles.headerContainer}>
-        <h2>{`${user.fname}'s Contraceptive Tracking`}</h2>
+        <h2
+          className={styles.sectionHeader}
+        >{`${user.fname}'s Contraceptive Tracking`}</h2>
       </div>
       <div className={styles.choose_bc}>
         {/* <pre>{JSON.stringify(user, null, 2)}</pre>
@@ -153,7 +156,9 @@ function BCTracking() {
           }}
         >
           <img src={srcDropDown}></img>
-          Step One: Select Your Method of Birth Control
+          <h2 className={styles.dropDownHeader}>
+            Select Your Method of Birth Control
+          </h2>
         </button>
       </div>
       {showBC && (
@@ -202,57 +207,73 @@ function BCTracking() {
 
           <div className={styles.bcCalendarLegend}>
             <div>
-              <div className={styles.yellowKey}></div>
+              <div className={styles.keyColor}></div>
               <h4>Birth Control Method Used</h4>
             </div>
           </div>
         </div>
         <aside>
           {birthControl !== null && birthControl.bc_type !== "no-method" && (
-            <div>
-              <h4>Your Saved Contraceptive Method</h4>
-              <h5>{birthControl.bc_name}</h5>
-              <p>{birthControl.bc_type}</p>
-              <p>{calcFrequency(birthControl.frequency)}</p>
+            <div className={styles.displayMethodContainer}>
+              <h4 className={styles.methodHeader}>
+                Your Saved Contraceptive Method
+              </h4>
+
+              <div className={styles.generatedBCInfo}>
+                <img src={Methods} alt="birth control methods icon"></img>
+                <div className={styles.bcDetailsContainer}>
+                  <h5>{birthControl.bc_name}</h5>
+                  {birthControl.bc_name !== birthControl.bc_type && (
+                    <p>{`Type: ${birthControl.bc_type}`}</p>
+                  )}
+                  <p>{calcFrequency(birthControl.frequency)}</p>
+                </div>
+              </div>
             </div>
           )}
-          <div className={styles.period_checkin_container}>
+          <div className={styles.bc_checkin_container}>
             <form>
-              <p>
-                Did you menstruate on{" "}
+              <h4 className={styles.methodHeader}>
+                Contraceptive Method Check-in
+              </h4>
+              <p className={styles.checkinPrompt}>
+                Did you use your contraceptive method on{" "}
                 <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
               </p>
-              <div className={styles.yesNoBtn}>
+              <div className={styles.bcCheckinBtns}>
+                <div className={styles.yesNoBtn}>
+                  <button
+                    className={styles.yesBtn}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setBCUsed(true);
+                    }}
+                  >
+                    Yes
+                  </button>
+
+                  <button
+                    className={styles.noBtn}
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    No
+                  </button>
+                </div>
+
                 <button
-                  className={styles.yesBtn}
+                  className={styles.saveBtn}
                   onClick={(e) => {
                     e.preventDefault();
-                    setBCUsed(true);
+                    updateRecords();
                   }}
                 >
-                  Yes
-                </button>
-                <button
-                  className={styles.noBtn}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  No
+                  Save
                 </button>
               </div>
-
-              <button
-                className={styles.saveBtn}
-                onClick={(e) => {
-                  e.preventDefault();
-                  updateRecords();
-                }}
-              >
-                Save
-              </button>
             </form>
-            <p>
-              to update previous days on the calendar, just select the date and
-              respond to the prompt for that particular day
+            <p class={styles.sideNote}>
+              * Update previous days on the calendar by selecting the date and
+              responding to the prompt for that particular day
             </p>
           </div>
         </aside>
