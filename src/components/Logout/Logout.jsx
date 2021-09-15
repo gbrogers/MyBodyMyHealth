@@ -12,7 +12,7 @@ const Logout = () => {
     <div className="page-layout">
       <div className={styles.logoutPage}>
         <h2>Thanks for visiting! See you again soon.</h2>
-        <button
+        {/* <button
           className={styles.logoutBtn}
           onClick={() => {
             setUser(null);
@@ -23,7 +23,7 @@ const Logout = () => {
           }}
         >
           Log Out
-        </button>
+        </button> */}
       </div>
     </div>
   );

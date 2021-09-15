@@ -1,12 +1,16 @@
-import axios from "axios";
-import React, { useState, useEffect, useContext, useRef } from "react";
-import Calendar from "react-calendar";
-import IndividualNote from "../IndividualNote/IndividualNote";
-import moment from "moment";
-import "react-calendar/dist/Calendar.css";
 import styles from "./PeriodTracking.module.scss";
-import { UserContext } from "../../UserContext";
+import "react-calendar/dist/Calendar.css";
+
+import React, { useState, useEffect, useContext, useRef } from "react";
+import axios from "axios";
+import Calendar from "react-calendar";
+import moment from "moment";
 import { withRouter } from "react-router-dom";
+
+import IndividualNote from "../IndividualNote/IndividualNote";
+import { UserContext } from "../../UserContext";
+
+import Check from "../../images/checkmark.png";
 
 function PeriodTracking() {
   const { user, setUser } = useContext(UserContext);
@@ -153,9 +157,12 @@ function PeriodTracking() {
       <aside>
         <div className={styles.period_checkin_container}>
           <form>
-            <h4 className={styles.methodHeader}>
-              Contraceptive Method Check-in
-            </h4>
+            <div className={styles.checkinHeaderContainer}>
+              <h4 className={styles.methodHeader}>
+                Contraceptive Method Check-in
+              </h4>
+              <img className={styles.check} src={Check} alt="check mark"></img>
+            </div>
             <p>
               Did you menstruate on{" "}
               <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
