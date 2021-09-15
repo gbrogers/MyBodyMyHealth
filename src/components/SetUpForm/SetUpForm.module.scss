@@ -1,17 +1,19 @@
 .setUpContainer {
-  background-color: #9ef3ef;
+  background-color: #f7f6c4;
+  max-width: 700px;
   padding: 25px;
   margin: 10px;
   border-radius: 5px;
 }
 .setUpWords {
-  background-color: rgba(255, 255, 255, 0.692);
+  // background-color: rgba(255, 255, 255, 0.692);
   padding: 15px;
   border-radius: 5px;
 }
 .showBtn {
   border: none;
   background-color: #ffe46f;
+  width: 100%;
   cursor: pointer;
   padding: 0px 15px;
   display: flex;
@@ -54,8 +56,9 @@
 .componentContainer {
   display: flex;
   justify-content: center;
-  // padding: 0 10px;
+  padding: 0 10px;
   flex-direction: column;
+  align-items: center;
 }
 .setUpHeader {
   width: 100%;
@@ -74,11 +77,10 @@
   font-weight: 400;
   font-size: 30px;
   margin: 10px auto 10px auto;
-  background-color: #ffe46f;
 }
 .generateResource {
   border: none;
-  background-color: #f79da7;
+  background-color: #ffe46f;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -87,7 +89,18 @@
   margin-top: 10px;
 }
 .generateResource:hover {
-  background-color: #fab2bb;
+  background-color: #f1e3a3;
+}
+.ageSelect,
+select {
+  width: 250px;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 7px;
+  border: none;
+}
+input {
+  margin-right: 10px;
 }
 
 @media screen and (min-width: 400px) {

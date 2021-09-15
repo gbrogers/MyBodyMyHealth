@@ -81,7 +81,6 @@ function Nav() {
         }
         .navigation {
           position: fixed;
-          // padding: 10px 0 0 0;
           min-height: 10vh;
           width: 100%;
           display: flex;
@@ -90,9 +89,7 @@ function Nav() {
           background-color: #f5bdc4;
           z-index: 100;
         }
-        // .navigation button {
-        //   all: unset;
-        // }
+
         .navigation a,
         .navigation button {
           cursor: pointer;
@@ -107,10 +104,10 @@ function Nav() {
         .navList li {
           list-style-type: none;
           border-bottom: 1px solid black;
-          // padding: 3px;
+          padding: 10px;
           margin: 5px;
           font-size: 1.3em;
-          line-height: 1.6em;
+          line-height: 2.5em;
         }
 
         .navList li:hover {
@@ -136,6 +133,7 @@ function Nav() {
           .navList li:hover {
             border-bottom: 3px #f5bdc4 solid;
             margin-bottom: 2px;
+            font-weight: 400;
           }
         }
       `}</style>

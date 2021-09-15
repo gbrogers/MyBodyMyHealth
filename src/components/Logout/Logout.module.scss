@@ -1,7 +1,15 @@
-.logoutPage {
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoutContainer {
   padding: 30px;
-  border: 1px solid black;
-  margin: 10px;
+  background-color: #dff4f3;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 400px;
+  margin: 40px 10px 10px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;

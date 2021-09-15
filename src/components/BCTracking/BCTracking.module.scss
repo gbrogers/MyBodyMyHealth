@@ -135,7 +135,7 @@
   background-color: #9ef3ef;
 }
 .yesBtn:hover {
-  background-color: indigo;
+  background-color: #c2f3f1;
 }
 
 .noBtn {
@@ -143,15 +143,15 @@
   margin-left: 10px;
 }
 .noBtn:hover {
-  background-color: lightseagreen;
+  background-color: #c2f3f1;
+}
+.saveBtn:disabled {
+  background-color: #d8d8d8;
 }
 .saveBtn {
-  background-color: #d8d8d8;
+  background-color: #33b4d5;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-.saveBtn:hover {
-  background-color: mediumvioletred;
 }
 .bcCheckinBtns {
   display: flex;

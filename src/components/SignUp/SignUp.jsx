@@ -46,11 +46,11 @@ export default function SignUp() {
       <form className={styles.signupForm} onSubmit={(e) => handleLogin(e)}>
         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
         {!user ? (
-          <div>
+          <div className={styles.contentContainer}>
             <h2>Welcome!</h2>
             <h4>Sign Up to get started here.</h4>
             <label>
-              <p>First Name: </p>
+              <p className={styles.fname}>First Name </p>
               <input
                 type="text"
                 placeholder="enter first name"
@@ -58,7 +58,7 @@ export default function SignUp() {
               ></input>
             </label>
             <label>
-              <p>Last Name: </p>
+              <p className={styles.lname}>Last Name </p>
               <input
                 type="text"
                 placeholder="enter last name"
@@ -66,19 +66,21 @@ export default function SignUp() {
               ></input>
             </label>
             <label>
-              <p>Email: </p>
+              <p className={styles.email}>Email </p>
               <input type="email" placeholder="enter email" ref={email}></input>
             </label>
             <label>
-              <p>Password: </p>
+              <p className={styles.password}>Password </p>
               <input
                 type="password"
                 placeholder="enter password"
                 ref={password}
               ></input>
             </label>
-            <button type="submit">Sign Up</button>
-            <p>
+            <button className={styles.signupBtn} type="submit">
+              Sign Up
+            </button>
+            <p className={styles.alternative}>
               Already have and account?{" "}
               <b>
                 <Link to="/login">Log in</Link>
@@ -86,7 +88,9 @@ export default function SignUp() {
             </p>
           </div>
         ) : (
-          <h2>{`Welcome, ${user.fname}!`}</h2>
+          <div className={styles.contentContainer}>
+            <h2>{`Welcome, ${user.fname}!`}</h2>
+          </div>
         )}
       </form>
     </div>

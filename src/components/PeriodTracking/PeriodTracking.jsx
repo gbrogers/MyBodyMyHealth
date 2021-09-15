@@ -189,7 +189,7 @@ function PeriodTracking() {
               </button>
             </div>
 
-            <p>Enter any notes about today that you'd like to keep track of </p>
+            <p>Enter any notes that you'd like to keep track of below. </p>
             <textarea placeholder="enter notes here" ref={noteText}></textarea>
 
             <button

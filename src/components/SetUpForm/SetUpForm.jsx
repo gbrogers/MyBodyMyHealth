@@ -33,7 +33,7 @@ export default function SetUpForm(props) {
               <h3 className={styles.setUpHeader}>
                 Answer the following questions for resources designed for you.
               </h3>
-              <label>1. Enter your age:</label>
+              <label>1. Age:</label>
               <input
                 className={styles.ageSelect}
                 type="number"

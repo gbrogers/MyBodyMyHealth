@@ -15,7 +15,7 @@
 
   .getStartedBtn,
   .loginBtn {
-    all: unset;
+    border: none;
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 5px;
@@ -181,6 +181,10 @@
     }
     .caption {
       margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       p,
       h2 {
         width: 80%;

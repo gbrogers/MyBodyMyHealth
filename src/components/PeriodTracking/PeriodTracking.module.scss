@@ -44,7 +44,7 @@
     flex-direction: column;
     margin: 0 30px;
     .period_checkin_container {
-      background-color: #f1dadd;
+      background-color: #f8d5e1;
       display: flex;
       flex-direction: column;
       padding: 20px;
@@ -63,6 +63,9 @@
         max-width: 400px;
         height: 75px;
         margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
       }
     }
   }
@@ -90,7 +93,7 @@
   // margin-left: 10px;
 }
 .yesBtn:hover {
-  background-color: indigo;
+  background-color: #faaeb7;
 }
 
 .noBtn {
@@ -98,16 +101,15 @@
   margin-left: 10px;
 }
 .noBtn:hover {
-  background-color: lightseagreen;
+  background-color: #faaeb7;
+}
+.saveBtn:disabled {
+  background-color: #d8d8d8;
 }
 .saveBtn {
-  background-color: #d8d8d8;
-  // width: 60%;
+  background-color: #e25e6b;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-.saveBtn:hover {
-  background-color: mediumvioletred;
 }
 .bcCheckinBtns {
   display: flex;

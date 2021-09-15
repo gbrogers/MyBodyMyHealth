@@ -21,14 +21,12 @@ export default function Footer() {
           <h4 className={styles.footerHeader}>My Body My Health</h4>
         </div>
         <p>
-          My Body My Health was developed as a capstone project by{" "}
+          <em>My Body My Health</em> was developed as a capstone project by{" "}
           <b>Giselle Rogers</b>, Software Engineer. Project developed using
           PostgreSQL, Express, Node, React, Javascript, HTML, Sass, Sequelize,
           Axios, and Bcrypt. Personalized resources generated from Health.gov.
-          <br></br>
-          <br></br>
-          See developer links below to learn more about Giselle.
         </p>
+
         <div className={styles.mediaLinks}>
           <a href="https://gbrogers.github.io/" target="_blank">
             <img

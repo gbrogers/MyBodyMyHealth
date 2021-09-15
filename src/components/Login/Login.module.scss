@@ -1,16 +1,59 @@
 .login {
   display: flex;
-  //   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .loginForm {
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid grey;
+  background-color: #dff4f3;
+  padding: 30px;
+  margin: 30px 20px 0 20px;
+  border-radius: 5px;
+
+  input {
+    width: 250px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+    border: none;
+  }
 }
 .incorrectString {
   color: red;
+  // margin: 30px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .password {
+    p {
+      margin-top: 10px;
+    }
+  }
+  .alternative {
+    margin-top: 10px;
+  }
+  // background-color: blue;
+  .loginBtn {
+    background-color: #9ef3ef;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    // margin: 5px 30px;
+    display: block;
+    margin-top: 10px;
+    width: 250px;
+  }
+  .loginBtn:hover {
+    background-color: #aef3f0;
+  }
 }
