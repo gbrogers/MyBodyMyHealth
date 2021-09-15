@@ -41,59 +41,91 @@
   aside {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin: 0 30px;
     .period_checkin_container {
-      border: 1px black solid;
-      padding: 15px;
-      width: 90vw;
+      background-color: #f1dadd;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: rgb(177, 177, 177) 2px 2px 4px;
+      // flex-grow: 2;
+      // margin-top: 10px;
+      margin-bottom: 50px;
       form {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
 
-      .yesNoBtn {
-        display: flex;
-        // width: 25%;
-        // justify-content: space-between;
-        .yesBtn,
-        .noBtn {
-          all: unset;
-          cursor: pointer;
-          padding: 10px 20px;
-          border-radius: 5px;
-          font-weight: 700;
-          margin: 5px 0;
-          background-color: #9ef3ef;
-        }
-      }
-
-      // .notes {
-      //   padding: 10px;
-      //   // background-color: hotpink;
       textarea {
         width: 80%;
+        max-width: 400px;
         height: 75px;
+        margin-top: 10px;
       }
     }
   }
 }
-
-.yesBtn:hover {
-  // background-color: #9ef3ef8e;
-  background: pink;
+.methodHeader {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+}
+.yesBtn,
+.noBtn {
+  border: none;
+  padding: 10px 45px;
+  border-radius: 5px;
+}
+.saveBtn {
+  border: none;
+  padding: 10px 60px;
+  border-radius: 5px;
 }
 
+.yesBtn {
+  background-color: #fc8794;
+  // margin-left: 10px;
+}
+.yesBtn:hover {
+  background-color: indigo;
+}
+
+.noBtn {
+  background-color: #fc8794;
+  margin-left: 10px;
+}
+.noBtn:hover {
+  background-color: lightseagreen;
+}
 .saveBtn {
-  all: unset;
-  cursor: pointer;
-  padding: 10px 40px;
-  border-radius: 5px;
-  font-weight: 700;
-  margin: 5px 0;
-  background-color: #f5bdc4;
+  background-color: #d8d8d8;
+  // width: 60%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .saveBtn:hover {
-  background-color: #700713;
+  background-color: mediumvioletred;
+}
+.bcCheckinBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 230px;
+  margin-top: 10px;
+}
+.yesNoBtn {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+.sideNote {
+  font-size: 10px;
+
+  text-align: center;
 }
 
 .noteListContainer {
@@ -128,5 +160,12 @@
   }
   .noteListContainer {
     margin: 20px 20px 20px 0px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .calendarPromptContainer {
+    flex-direction: row;
+    justify-content: center;
   }
 }

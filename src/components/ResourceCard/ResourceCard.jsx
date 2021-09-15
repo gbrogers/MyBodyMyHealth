@@ -29,7 +29,7 @@ export default function ResourceCard({ item, saveResource }) {
             Save For Later
           </button>
         ) : (
-          <button>Saved</button>
+          <button>Saved!</button>
         )}
 
         {/* <button

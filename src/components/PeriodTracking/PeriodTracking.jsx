@@ -16,6 +16,7 @@ function PeriodTracking() {
   const [noteArray, setNoteArray] = useState([]);
   const [dateState, setDateState] = useState(new Date());
   const noteText = useRef();
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     const user_id = user.id;
@@ -158,6 +159,9 @@ function PeriodTracking() {
       <aside>
         <div className={styles.period_checkin_container}>
           <form>
+            <h4 className={styles.methodHeader}>
+              Contraceptive Method Check-in
+            </h4>
             <p>
               Did you menstruate on{" "}
               <b>{moment(dateState).format("MMMM Do YYYY")}</b>?
@@ -168,13 +172,17 @@ function PeriodTracking() {
                 onClick={(e) => {
                   e.preventDefault();
                   setPeriodPresent(true);
+                  setIsDisabled(false);
                 }}
               >
                 Yes
               </button>
               <button
                 className={styles.noBtn}
-                onClick={(e) => e.preventDefault()}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsDisabled(false);
+                }}
               >
                 No
               </button>
@@ -189,14 +197,16 @@ function PeriodTracking() {
                 e.preventDefault();
                 updateRecords();
                 updateNotes();
+                setIsDisabled(true);
               }}
+              disabled={isDisabled}
             >
               Save
             </button>
           </form>
-          <p>
-            to update previous days on the calendar, just select the date and
-            respond to the prompt for that particular day
+          <p class={styles.sideNote}>
+            * Update previous days on the calendar by selecting the date and
+            responding to the prompt for that particular day
           </p>
         </div>
       </aside>

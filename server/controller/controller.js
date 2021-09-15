@@ -164,6 +164,12 @@ module.exports = {
       return res.status(200).send(previousSavedArticles);
     }
   },
+  removeResource: async (req, res) => {
+    let { name } = req.params;
+    await Saved_article.destroy({ where: { name: name } }).then(() => {
+      return res.status(200).send("successfully deleted");
+    });
+  },
   getPeriodDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);

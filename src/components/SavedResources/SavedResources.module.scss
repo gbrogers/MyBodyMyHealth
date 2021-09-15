@@ -1,64 +1,32 @@
-.container {
-  //   background-color: yellowgreen;
+.individualResource {
   padding: 10px;
-}
-.container {
-  display: flex;
-  flex-direction: column;
-}
-.savedList {
-  //   background-color: pink;
-  // list-style-type: none;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: left;
-  li {
-    padding: 10px;
-    margin: 5px 30px;
-    // background-color: #f7ebb7;
-    // border: 1px solid black;
-    // margin: 5px;
-    border-radius: 5px;
-    flex-basis: 100%;
-    a {
-      border: 1px solid black;
-      padding: 0 20px;
-      margin-top: 10px;
-      border-radius: 5px;
-    }
-    a:hover {
-      background-color: rgba(255, 255, 255, 0.4);
-      font-weight: 700;
-    }
-    h3 {
-      margin-bottom: 7px;
-    }
-  }
-}
-.savedHeader {
-  text-align: center;
-  font-family: "Caveat", cursive;
-  font-weight: 400;
-  font-size: 30px;
-  margin: 10px auto 10px auto;
-  background-color: #ffe46f;
-
-  // padding: 10px;
-}
-.showBtn {
-  border: none;
-  background-color: #ffe46f;
-  cursor: pointer;
-  padding: 0px 15px;
-  display: flex;
-  align-items: center;
+  margin: 5px 30px;
   border-radius: 5px;
-  margin-top: 10px;
-
-  img {
-    width: 18px;
-    margin-right: 10px;
-    padding-top: 1px;
+  flex-basis: 100%;
+  a {
+    border: 1px solid black;
+    padding: 0 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  a:hover {
+    background-color: #fcf8c4;
+    font-weight: 700;
+  }
+  h3 {
+    margin-bottom: 7px;
+  }
+  .deleteBtn {
+    border: 1px solid black;
+    padding: 0 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  .deleteBtn:hover {
+    background-color: rgb(224, 224, 224);
+    font-weight: 700;
   }
 }

@@ -43,8 +43,9 @@
   div {
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    // justify-content: center;
+    // margin-left: 10px;
+    justify-content: center;
+    margin-top: 5px;
   }
 }
 .keyColor {
@@ -67,18 +68,18 @@
   flex-direction: column;
 }
 
-aside {
+.birthControlTracking aside {
   display: flex;
   flex-direction: column;
   padding: 20px;
-  justify-content: space-around;
+  justify-content: center;
 }
 .displayMethodContainer {
   background-color: #c4faf7;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  box-shadow: gray 2px 2px 4px;
+  box-shadow: rgb(177, 177, 177) 2px 2px 4px;
   img {
     width: 50px;
     margin: 20px;
@@ -89,14 +90,15 @@ aside {
   font-family: "Caveat", cursive;
   font-size: 28px;
   font-weight: 400;
+  text-align: center;
 }
 .sideNote {
   font-size: 10px;
-  margin-top: 5px;
+  // margin-top: 5px;
+  text-align: center;
 }
 
 .generatedBCInfo {
-  // background-color: gray;
   display: flex;
   align-items: center;
 }
@@ -104,7 +106,6 @@ aside {
   margin-left: 5px;
   h5 {
     font-weight: 700;
-
     font-size: 18px;
   }
 }
@@ -112,16 +113,21 @@ aside {
   background-color: #f0fffe;
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 60px 20px;
-  box-shadow: gray 2px 2px 4px;
+  padding: 20px 20px 20px 20px;
+  box-shadow: rgb(177, 177, 177) 2px 2px 4px;
   // flex-grow: 2;
   margin-top: 10px;
   margin-bottom: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 .yesBtn,
 .noBtn {
   border: none;
-  padding: 10px 30px;
+  padding: 10px 45px;
   border-radius: 5px;
 }
 .saveBtn {
@@ -131,24 +137,25 @@ aside {
 }
 
 .yesBtn {
-  background-color: hotpink;
-  margin-left: 10px;
+  background-color: #9ef3ef;
+  // margin-left: 10px;
 }
 .yesBtn:hover {
   background-color: indigo;
 }
 
 .noBtn {
-  background-color: lightcoral;
+  background-color: #9ef3ef;
   margin-left: 10px;
 }
 .noBtn:hover {
   background-color: lightseagreen;
 }
 .saveBtn {
-  background-color: mediumturquoise;
+  background-color: #d8d8d8;
   // width: 60%;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .saveBtn:hover {
   background-color: mediumvioletred;
@@ -156,13 +163,15 @@ aside {
 .bcCheckinBtns {
   display: flex;
   flex-direction: column;
-  width: 40%;
-  margin-top: 20px;
+  align-items: stretch;
+  justify-content: center;
+  width: 230px;
+  margin-top: 10px;
 }
 .yesNoBtn {
   display: flex;
   // width: 60%;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 @media screen and (min-width: 960px) {
   .calendarPromptContainer {

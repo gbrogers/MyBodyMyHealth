@@ -21,6 +21,7 @@ function BCTracking() {
   const [lastDate, setLastDate] = useState(new Date());
   const [bcUsed, setBCUsed] = useState(false);
   const [birthControl, setBirthControl] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const { user, setUser } = useContext(UserContext);
 
@@ -57,18 +58,18 @@ function BCTracking() {
   const changeDate = (e) => {
     setDateState(e);
   };
-  async function changeLastDate(e) {
-    setLastDate(e);
-    handleLastDay();
-  }
+  // async function changeLastDate(e) {
+  //   setLastDate(e);
+  //   handleLastDay();
+  // }
 
-  //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
-  function handleLastDay() {
-    // console.log("I made it to the handle function");
-    // console.log(lastDate);
-    const variable = Math.abs(lastDate.getTime() - new Date().getTime());
-    // console.log(variable / (60 * 60 * 1000 * 24));
-  }
+  // //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
+  // function handleLastDay() {
+  //   // console.log("I made it to the handle function");
+  //   // console.log(lastDate);
+  //   const variable = Math.abs(lastDate.getTime() - new Date().getTime());
+  //   // console.log(variable / (60 * 60 * 1000 * 24));
+  // }
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
@@ -247,6 +248,7 @@ function BCTracking() {
                     onClick={(e) => {
                       e.preventDefault();
                       setBCUsed(true);
+                      setIsDisabled(false);
                     }}
                   >
                     Yes
@@ -254,7 +256,10 @@ function BCTracking() {
 
                   <button
                     className={styles.noBtn}
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsDisabled(false);
+                    }}
                   >
                     No
                   </button>
@@ -265,7 +270,9 @@ function BCTracking() {
                   onClick={(e) => {
                     e.preventDefault();
                     updateRecords();
+                    setIsDisabled(true);
                   }}
+                  disabled={isDisabled}
                 >
                   Save
                 </button>

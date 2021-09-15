@@ -4,14 +4,20 @@ import SetUpForm from "../SetUpForm/SetUpForm";
 import SavedResources from "../SavedResources/SavedResources";
 import ResourceCard from "../ResourceCard/ResourceCard";
 import styles from "./Resources.module.scss";
+import DownArrow from "../../images/downArrow.svg";
+import UpArrow from "../../images/upArrow.svg";
+
 import { UserContext } from "../../UserContext";
 import { withRouter } from "react-router-dom";
 
 function Resources() {
   const [resourceList, setResourceList] = useState([]);
+  const [dropDown, setDropDown] = useState(true);
+  const [showSaved, setShowSaved] = useState(false);
 
   const [userSavedResources, setuserSavedResources] = useState([]);
   const { user, setUser } = useContext(UserContext);
+  let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
@@ -74,8 +80,26 @@ function Resources() {
             <h1 className={styles.pageTitle}>Resources</h1>
           </div>
           <div className={styles.dropdowns}>
-            <div>
-              <SavedResources userSavedResources={userSavedResources} />
+            <div className={styles.resourceContainer}>
+              <button
+                className={styles.showBtn}
+                onClick={() => {
+                  setShowSaved(!showSaved);
+                  setDropDown(!dropDown);
+                }}
+              >
+                <img src={srcDropDown}></img>
+                <h2 className={styles.savedHeader}>Your Saved Articles</h2>
+              </button>
+              {showSaved && (
+                <div className={styles.listContainer}>
+                  <ol className={styles.savedList}>
+                    {userSavedResources.map((item) => {
+                      return <SavedResources item={item} />;
+                    })}
+                  </ol>
+                </div>
+              )}
             </div>
             <div>
               <SetUpForm generateResource={generateResource} />
