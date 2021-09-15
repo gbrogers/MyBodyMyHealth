@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import Logo from "../../images/Logo.svg";
 import Hamburger from "../Hamburger/Hamburger";
 import { AuthContext } from "../../AuthContext";
+import { UserContext } from "../../UserContext";
 
 function Nav() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { user, setUser } = useContext(UserContext);
+
   const navStyle = {
     color: "black",
   };
@@ -41,6 +44,10 @@ function Nav() {
             <Link
               to="/logout"
               className={`${styles.loginSignUpBtn} ${styles.logoutBtn}`}
+              onClick={() => {
+                setUser(null);
+                setIsAuth(false);
+              }}
             >
               Log Out
             </Link>
@@ -103,29 +110,34 @@ function Nav() {
           // padding: 3px;
           margin: 5px;
           font-size: 1.3em;
-          line-height: 0.5em;
+          line-height: 1.6em;
         }
+
         .navList li:hover {
-          border-bottom: 3px #f5bdc4 solid;
-          margin-bottom: 2px;
+          margin-bottom: 0;
+          font-weight: 700;
         }
 
-
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 768px) {
           .navList {
             padding: 0 30px;
             display: flex;
             justify-content: space-around;
             align-items: center;
             height: auto;
+          }
+          .navList li {
+            list-style-type: none;
+            border: none;
+            padding: 10px;
+            font-size: 1em;
+            line-height: 0.5em;
+          }
+          .navList li:hover {
+            border-bottom: 3px #f5bdc4 solid;
+            margin-bottom: 2px;
+          }
         }
-        .navList li {
-          list-style-type: none;
-          border: none;
-          padding: 10px;
-          font-size: 1em;
-        }
-
       `}</style>
     </nav>
   );

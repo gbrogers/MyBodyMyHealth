@@ -12,6 +12,7 @@ import BirthControl from "../BirthControl/BirthControl";
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
 import Methods from "../../images/methods.svg";
+import Check from "../../images/checkmark.png";
 
 function BCTracking() {
   const [bcTaken, setBCTaken] = useState([]);
@@ -195,9 +196,16 @@ function BCTracking() {
           )}
           <div className={styles.bc_checkin_container}>
             <form>
-              <h4 className={styles.methodHeader}>
-                Contraceptive Method Check-in
-              </h4>
+              <div className={styles.checkinHeaderContainer}>
+                <h4 className={styles.methodHeader}>
+                  Contraceptive Method Check-in
+                </h4>
+                <img
+                  className={styles.check}
+                  src={Check}
+                  alt="check mark"
+                ></img>
+              </div>
               <p className={styles.checkinPrompt}>
                 Did you use your contraceptive method on{" "}
                 <b>{moment(dateState).format("MMMM Do YYYY")}</b>?

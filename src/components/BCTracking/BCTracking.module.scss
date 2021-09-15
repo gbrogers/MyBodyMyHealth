@@ -165,9 +165,34 @@
   display: flex;
   justify-content: space-around;
 }
+.check {
+  display: none;
+  // height: 20px;
+  margin-left: 5px;
+  padding-bottom: 5px;
+}
+.checkinHeaderContainer {
+  display: flex;
+  align-items: center;
+}
+// @media screen and (min-width: 475px) {
+//   .check {
+//     display: inline;
+
+//   }
+// }
 @media screen and (min-width: 960px) {
   .calendarPromptContainer {
     flex-direction: row;
     justify-content: center;
+  }
+  // .check {
+  //   display: none;
+  // }
+}
+@media screen and (min-width: 1000px) {
+  .check {
+    display: inline;
+    width: 50px;
   }
 }

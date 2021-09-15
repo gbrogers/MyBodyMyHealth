@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 
 //image components
 import MainSectionImg from "../../images/bc-types-home.jpg";
-// import Triangle from "../../images/home-triangle.svg";
-// import ThreeFaces from "../../images/threefaces.jpg";
-// import Runner from "../../images/runner.jpg";
 import Research from "../../images/research.jpg";
 import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";
@@ -96,7 +93,10 @@ export default function Home() {
           <div className={styles.demonstration}></div>
           <div className={styles.caption}>
             <h2>Visually monitor your progress </h2>
-            <p>Sign up to get started today</p>
+            <p>
+              The visual accessibility of tracking on a calendar makes all the
+              difference. Don't trust us, try it out for yourself!
+            </p>
             <div className={styles.sectionFiveBtns}>
               <Link to="/menstrualtracking">
                 <button className={styles.getStartedBtn}>
