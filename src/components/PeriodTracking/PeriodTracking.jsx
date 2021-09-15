@@ -21,7 +21,7 @@ function PeriodTracking() {
   useEffect(() => {
     const user_id = user.id;
 
-    //fetch dates
+    //fetch previously added dates on page render
     axios
       .get(`/api/getPeriodDates/${user_id}`)
       .then((res) => {
@@ -34,11 +34,10 @@ function PeriodTracking() {
       })
       .catch((error) => console.log(error));
 
-    //fetch notes
+    //fetch previously made notes on page render
     axios
       .get(`/api/getNotes/${user_id}`)
       .then((res) => {
-        // console.log(res.data);
         setNoteArray(res.data);
       })
       .catch((error) => console.log(error));
@@ -49,34 +48,29 @@ function PeriodTracking() {
   };
 
   function tileClassName({ date, view }) {
-    // Check if a date React-Calendar wants to check is on the list of dates to add class to
+    // Check if a date React-Calendar wants to check is on the list of user dates to add class to
     if (datesToAddTo.find((dDate) => isSameDay(dDate, date))) {
-      console.log("matched date");
-      return "period";
+      return "period"; //makes class name of specific tile "period"
     }
   }
+  //compare calendar tile date with DB date
   function isSameDay(a, b) {
     const d = new Date(a);
-    // console.log(d.getMonth());
-    // console.log(b.getMonth());
     const dateA = `${d.getMonth()}${d.getDate()}${d.getYear()}`;
     const dateB = `${b.getMonth()}${b.getDate()}${b.getYear()}`;
-    console.log(dateA === dateB);
     return dateA === dateB;
   }
 
-  //make fetch funtion to be called in useEffect
+  //add period date to DB
   async function updateRecords() {
-    console.log(periodPresent);
+    //update DB only when user says period was present
     if (periodPresent) {
       setPeriodPresent(false);
-      console.log("period had");
 
       const requestBody = {
         id: user.id,
         dateState,
       };
-      //will send notes in this request too.
 
       axios
         .post("/api/addPeriodDate", requestBody)
@@ -92,11 +86,11 @@ function PeriodTracking() {
           setdatesToAddTo(dateArray);
         })
         .catch((error) => console.log(error));
-      // console.log(datesToAddTo);
     } else {
       console.log("negative");
     }
   }
+  // add user notes to DB
   async function updateNotes() {
     if (noteText.current.value.length > 1) {
       const noteRequestBody = {
@@ -148,7 +142,7 @@ function PeriodTracking() {
                   new Date(note.note_date).getTime() - new Date().getTime()
                 ) /
                 (60 * 60 * 1000 * 24);
-              if (dateDiff < 7) {
+              if (dateDiff <= 7) {
                 return <IndividualNote note={note} />;
               }
             })}

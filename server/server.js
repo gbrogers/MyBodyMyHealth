@@ -27,7 +27,7 @@ app.use("/api/addBCDate", ctrl.addBCDate);
 app.use("/api/getBCDates/:user_id", ctrl.getBCDates);
 app.use("/api/saveArticle", ctrl.saveArticle);
 app.use("/api/getSavedArticles/:user_id", ctrl.getSavedArticles);
-app.use("/api/removeResource/:name", ctrl.removeResource);
+app.use("/api/removeResource/", ctrl.removeResource);
 app.use("/api/getNotes/:user_id", ctrl.getNotes);
 app.use("/api/addNotes/", ctrl.addNotes);
 app.use("/api/deleteNote/:note_id", ctrl.deleteNote);

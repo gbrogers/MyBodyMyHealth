@@ -1,15 +1,17 @@
 import styles from "./BCTracking.module.scss";
+import "react-calendar/dist/Calendar.css";
 import { useState, useContext, useEffect } from "react";
-import { UserContext } from "../../UserContext";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import moment from "moment";
+
+import { UserContext } from "../../UserContext";
 import BirthControl from "../BirthControl/BirthControl";
+
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
 import Methods from "../../images/methods.svg";
-import { withRouter } from "react-router-dom";
 
 function BCTracking() {
   const [bcTaken, setBCTaken] = useState([]);
@@ -58,18 +60,6 @@ function BCTracking() {
   const changeDate = (e) => {
     setDateState(e);
   };
-  // async function changeLastDate(e) {
-  //   setLastDate(e);
-  //   handleLastDay();
-  // }
-
-  // //should be called at set up and when user says yes to use on particular day. Use switch statement as needed for types
-  // function handleLastDay() {
-  //   // console.log("I made it to the handle function");
-  //   // console.log(lastDate);
-  //   const variable = Math.abs(lastDate.getTime() - new Date().getTime());
-  //   // console.log(variable / (60 * 60 * 1000 * 24));
-  // }
 
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
@@ -133,10 +123,6 @@ function BCTracking() {
         return "Must be done every 4 to 5 hours to be effective.";
     }
   }
-  // async function handleLastUseDate(e) {
-  //   e.preventDefault();
-  //   setLastDate(date.current.value);
-  //   const date1 = moment(dateState).format("YYYY-MM-DD");
 
   return (
     <div className={`${styles.birthControlTracking} page-layout`}>
@@ -172,32 +158,7 @@ function BCTracking() {
           setBirthControl={setBirthControl}
         />
       )}
-      {/* <div className={styles.lastTaken}>
-        <button
-          className={styles.showBtn}
-          onClick={() => {
-            setShowLastUse(!showLastUse);
-            setDropDown2(!dropDown2);
-          }}
-        >
-          <img src={srcDropDown2}></img>
-          Step Two: Select the date of last use of specified Birth Control
-          method.
-        </button> */}
-      {/* {showLastUse && (
-          <div>
-            <p>
-              When is the last time you used your method of birth control OR
-              when was it last replaced?
-            </p>
-            <Calendar
-              value={dateState}
-              onChange={changeLastDate}
-              tileClassName={styles.setUpCalendar}
-            />
-          </div>
-        )} */}
-      {/* </div> */}
+
       <div className={styles.calendarPromptContainer}>
         <div className={`${styles.calendarContainer} "calendar-container"`}>
           <Calendar

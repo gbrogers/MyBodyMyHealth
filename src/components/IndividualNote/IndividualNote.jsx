@@ -9,6 +9,7 @@ export default function IndividualNote(props) {
   const { note } = props;
   const [isDeleted, setIsDeleted] = useState(false);
 
+  //remove note for specific user
   function deleteNote() {
     const note_id = note.id;
     axios

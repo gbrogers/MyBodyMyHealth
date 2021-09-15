@@ -1,27 +1,30 @@
+import styles from "./Resources.module.scss";
+
 import React, { useEffect, useState, useContext } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
+
 import SetUpForm from "../SetUpForm/SetUpForm";
 import SavedResources from "../SavedResources/SavedResources";
 import ResourceCard from "../ResourceCard/ResourceCard";
-import styles from "./Resources.module.scss";
+import { UserContext } from "../../UserContext";
+
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
-
-import { UserContext } from "../../UserContext";
-import { withRouter } from "react-router-dom";
 
 function Resources() {
   const [resourceList, setResourceList] = useState([]);
   const [dropDown, setDropDown] = useState(true);
   const [showSaved, setShowSaved] = useState(false);
-
   const [userSavedResources, setuserSavedResources] = useState([]);
   const { user, setUser } = useContext(UserContext);
+
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
 
   const baseURL =
     "https://health.gov/myhealthfinder/api/v3/myhealthfinder.json";
 
+  //load previously saved articles on page render
   useEffect(() => {
     const user_id = user.id;
     axios
@@ -33,9 +36,8 @@ function Resources() {
       .catch((error) => console.log(error));
   }, []);
 
+  // find resources from external API using user input
   const generateResource = (age, sex, pregnant, sexActive, tobacco) => {
-    // e.preventDefault();
-    console.log("in generateResource");
     axios
       .get(
         `${baseURL}?age=${age}&sex=${sex}&pregnant=${pregnant}&sexuallyActive=${sexActive}&tobaccoUse=${tobacco}`
@@ -53,6 +55,7 @@ function Resources() {
       .catch((error) => console.log(error));
   };
 
+  // add resources to DB
   function saveResource(resourceInfo) {
     let value = resourceInfo.split(",");
     const title = value[0];
@@ -95,7 +98,7 @@ function Resources() {
                 <div className={styles.listContainer}>
                   <ol className={styles.savedList}>
                     {userSavedResources.map((item) => {
-                      return <SavedResources item={item} />;
+                      return <SavedResources user_id={user.id} item={item} />;
                     })}
                   </ol>
                 </div>

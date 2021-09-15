@@ -2,12 +2,22 @@ import react, { useState } from "react";
 import styles from "./SavedResources.module.scss";
 import axios from "axios";
 
-export default function SavedResources({ item }) {
+export default function SavedResources({ user_id, item }) {
   const [isDeleted, setIsDeleted] = useState(false);
 
-  function removeResource(name) {
+  function removeResource() {
+    const name = item.name;
+    const requestBody = {
+      name: item.name,
+      user_id: user_id,
+    };
+    console.log(requestBody);
     axios
-      .delete(`/api/removeResource/${name}`)
+      .delete("/api/removeResource/", {
+        data: {
+          body: requestBody,
+        },
+      })
       .then((res) => {
         console.log(res.data);
       })
@@ -26,7 +36,7 @@ export default function SavedResources({ item }) {
           <button
             className={styles.deleteBtn}
             onClick={() => {
-              removeResource(item.name);
+              removeResource();
               setIsDeleted(true);
             }}
           >
