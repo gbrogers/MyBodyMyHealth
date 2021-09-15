@@ -100,11 +100,14 @@ function Nav() {
         .navList li {
           list-style-type: none;
           border-bottom: 1px solid black;
-          padding: 10px;
+          // padding: 3px;
+          margin: 5px;
           font-size: 1.3em;
+          line-height: 0.5em;
         }
         .navList li:hover {
-          background-color: #DA8590;
+          border-bottom: 3px #f5bdc4 solid;
+          margin-bottom: 2px;
         }
 
 
