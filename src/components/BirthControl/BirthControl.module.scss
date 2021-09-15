@@ -2,15 +2,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  // align-items: center;
 
   > button {
     all: unset;
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 10px;
-    flex-basis: 200px;
-    height: 150px;
+    flex-basis: 190px;
+    height: 165px;
     padding: 15px;
     border-radius: 5px;
     border: 3px #474747 solid;
@@ -19,4 +21,17 @@
     background-color: #ffe56f49;
     transform: scale(1.02);
   }
+}
+img {
+  width: 50px;
+}
+.birthControl h4 {
+  font-style: italic;
+  text-align: center;
+}
+.birthControl h3 {
+  text-align: center;
+}
+.birthControl p {
+  text-align: center;
 }
