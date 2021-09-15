@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 
 import Logout from "../Logout/Logout";
 
-const bcrypt = require("bcryptjs");
-
 export default function SignUp() {
   const { user, setUser } = useContext(UserContext);
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -18,12 +16,6 @@ export default function SignUp() {
   const fname = useRef();
   const lname = useRef();
 
-  function handleHashing(password) {
-    const salt = bcrypt.genSaltSync(5);
-    const passwordHash = bcrypt.hashSync(password, salt);
-    return passwordHash;
-  }
-
   async function handleLogin(e) {
     e.preventDefault();
 
@@ -32,9 +24,7 @@ export default function SignUp() {
 
     const credentials = {
       email: email.current.value,
-      // password: password.current.value,
-      password: handleHashing(password.current.value),
-      // password: hashedPass,
+      password: password.current.value,
       fname: fname.current.value,
       lname: lname.current.value,
     };
@@ -45,11 +35,8 @@ export default function SignUp() {
       .post("/api/authenticate/signup", credentials)
       .then((res) => {
         console.log(res.data);
-        // console.log(res.data.email);
-        const currentUser = res.data;
-        setUser(currentUser);
+        setUser(res.data);
         setIsAuth(true);
-        //need to redirect to home following success
       })
       .catch((error) => console.log(error));
   }

@@ -4,45 +4,41 @@ import { UserContext } from "../../UserContext";
 import { AuthContext } from "../../AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+// import { hash } from "bcrypt";
 
-import Logout from "../Logout/Logout";
-const bcrypt = require("bcryptjs");
+// const bcrypt = require("bcryptjs");
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext);
   const { isAuth, setIsAuth } = useContext(AuthContext);
-
+  const [incorrectString, setIncorrectString] = useState("");
   const email = useRef();
   const password = useRef();
 
-  //Password Hashing
-  function handleHashing(password) {
-    const salt = bcrypt.genSaltSync(5);
-    const passwordHash = bcrypt.hashSync(password, salt);
-    return passwordHash;
-  }
-
   async function handleLogin(e) {
     e.preventDefault();
-    console.log(email.current.value);
-    console.log(password.current.value);
 
     const credentials = {
       email: email.current.value,
-      password: handleHashing(password.current.value),
+      password: password.current.value,
     };
-
-    // console.log({ credentials });
-
     await axios
       .post("/api/authenticate/login", credentials)
       .then((res) => {
-        if (res.data !== false) {
-          const currentUser = res.data;
-          setUser(currentUser);
+        console.log(res.data);
+        if (
+          res.data !== "Password Incorrect" &&
+          res.data !== "Email Not Recognized"
+        ) {
+          setUser(res.data);
           setIsAuth(true);
-          //need to redirect to home following success
+        } else if (res.data === "Password Incorrect") {
+          setIncorrectString("Password Incorrect");
+        } else {
+          setIncorrectString("Email Not Recognized");
         }
+
+        //need to redirect to home following success
       })
       .catch((error) => console.log(error));
   }
@@ -56,6 +52,7 @@ export default function Login() {
           <div>
             <h2>Welcome Back!</h2>
             <h4>Enter Login Information Below</h4>
+            <p className={styles.incorrectString}>{incorrectString}</p>
             <label>
               <p>Email: </p>
               <input type="email" placeholder="enter email" ref={email}></input>

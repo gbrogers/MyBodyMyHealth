@@ -1,8 +1,27 @@
+.headerContainer {
+  background-image: url("../../images/bcTracking.jpg");
+  padding: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 80%;
+}
+.sectionHeader {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 48px;
+  margin: 10px auto 10px auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+}
+
 .showBtn {
   all: unset;
   cursor: pointer;
   padding: 15px;
   display: flex;
+  margin: 20px;
 
   img {
     width: 18px;
@@ -10,22 +29,153 @@
     padding-top: 1px;
   }
 }
+.dropDownHeader {
+  font-family: "Caveat", cursive;
+
+  font-weight: 400;
+}
 .choose_bc {
-  width: 100%;
   background-color: #dff4f3;
+  margin: 20px 10px 0 10px;
+  border-radius: 5px;
 }
-
-.yellowKey {
-  background-color: yellow;
+.bcCalendarLegend {
+  div {
+    display: flex;
+    align-items: center;
+    // margin-left: 10px;
+    justify-content: center;
+    margin-top: 5px;
+  }
+}
+.keyColor {
+  background-color: #dff4f3;
   width: 25px;
-  height: 15px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 7px;
+  // margin-top: 5px;
 }
 
-.setUpCalendar {
-  background-color: crimson;
-  //adjust sixe of compoonent here
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.calendarPromptContainer {
+  display: flex;
+  flex-direction: column;
 }
 
-.checkIn {
-  background-color: cyan;
+.birthControlTracking aside {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+}
+.displayMethodContainer {
+  background-color: #c4faf7;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: rgb(177, 177, 177) 2px 2px 4px;
+  img {
+    width: 50px;
+    margin: 20px;
+  }
+}
+
+.methodHeader {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: center;
+}
+.sideNote {
+  font-size: 10px;
+  // margin-top: 5px;
+  text-align: center;
+}
+
+.generatedBCInfo {
+  display: flex;
+  align-items: center;
+}
+.bcDetailsContainer {
+  margin-left: 5px;
+  h5 {
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+.bc_checkin_container {
+  background-color: #f0fffe;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 20px;
+  box-shadow: rgb(177, 177, 177) 2px 2px 4px;
+  // flex-grow: 2;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.yesBtn,
+.noBtn {
+  border: none;
+  padding: 10px 45px;
+  border-radius: 5px;
+}
+.saveBtn {
+  border: none;
+  padding: 10px 60px;
+  border-radius: 5px;
+}
+
+.yesBtn {
+  background-color: #9ef3ef;
+  // margin-left: 10px;
+}
+.yesBtn:hover {
+  background-color: indigo;
+}
+
+.noBtn {
+  background-color: #9ef3ef;
+  margin-left: 10px;
+}
+.noBtn:hover {
+  background-color: lightseagreen;
+}
+.saveBtn {
+  background-color: #d8d8d8;
+  // width: 60%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.saveBtn:hover {
+  background-color: mediumvioletred;
+}
+.bcCheckinBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 230px;
+  margin-top: 10px;
+}
+.yesNoBtn {
+  display: flex;
+  // width: 60%;
+  justify-content: space-around;
+}
+@media screen and (min-width: 960px) {
+  .calendarPromptContainer {
+    flex-direction: row;
+    justify-content: center;
+  }
 }

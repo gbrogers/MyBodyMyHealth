@@ -1,4 +1,31 @@
 .singleNote {
-  background-color: yellowgreen;
-  margin: 5px;
+  background-color: #ffeef1;
+  box-shadow: 2px 2px 4px #c5c5c5;
+  margin: 10px 10px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 5px;
+}
+.singleNoteContent {
+  display: flex;
+  align-items: center;
+}
+.notepadImg {
+  width: 50px;
+  margin: 15px;
+}
+.deleteBtn {
+  border: none;
+  background-color: transparent;
+  margin-right: 20px;
+}
+.deleteBtn:hover {
+  font-weight: 700;
+}
+
+@media screen and (min-width: 875px) {
+  .singleNote {
+    margin: 10px 10px 10px 0px;
+  }
 }
