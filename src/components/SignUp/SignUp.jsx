@@ -86,10 +86,7 @@ export default function SignUp() {
             </p>
           </div>
         ) : (
-          <div>
-            <h2>{`Welcome, ${user.fname}!`}</h2>
-            <Logout />
-          </div>
+          <h2>{`Welcome, ${user.fname}!`}</h2>
         )}
       </form>
     </div>

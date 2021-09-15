@@ -1,17 +1,18 @@
 import styles from "./Login.module.scss";
+
 import { useState, useRef, useContext } from "react";
-import { UserContext } from "../../UserContext";
-import { AuthContext } from "../../AuthContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
-// import { hash } from "bcrypt";
 
-// const bcrypt = require("bcryptjs");
+import { UserContext } from "../../UserContext";
+import { AuthContext } from "../../AuthContext";
 
 export default function Login() {
   const { user, setUser } = useContext(UserContext);
   const { isAuth, setIsAuth } = useContext(AuthContext);
+
   const [incorrectString, setIncorrectString] = useState("");
+
   const email = useRef();
   const password = useRef();
 

@@ -87,7 +87,7 @@ export default function Home() {
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
             <p>Get information by topic, or personalized just for you.</p>
-            <Link to="/signup">
+            <Link to="/resources">
               <button className={styles.getStartedBtn}>Learn More</button>
             </Link>
           </div>
@@ -98,11 +98,15 @@ export default function Home() {
             <h2>Visually monitor your progress </h2>
             <p>Sign up to get started today</p>
             <div className={styles.sectionFiveBtns}>
-              <Link to="/signup">
-                <button className={styles.getStartedBtn}>Get Started</button>
+              <Link to="/menstrualtracking">
+                <button className={styles.getStartedBtn}>
+                  Menstrual Tracking
+                </button>
               </Link>
-              <Link to="/login">
-                <button className={styles.loginBtn}>Login</button>
+              <Link to="/contraceptivetracking">
+                <button className={styles.loginBtn}>
+                  Contraceptive Tracking
+                </button>
               </Link>
             </div>
           </div>
