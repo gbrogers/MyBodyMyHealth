@@ -50,24 +50,26 @@ export default function Login() {
         {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
 
         {!user ? (
-          <div>
+          <div className={styles.contentContainer}>
             <h2>Welcome Back!</h2>
-            <h4>Enter Login Information Below</h4>
             <p className={styles.incorrectString}>{incorrectString}</p>
-            <label>
-              <p>Email: </p>
+
+            <label className={styles.email}>
+              <p>Email </p>
               <input type="email" placeholder="enter email" ref={email}></input>
             </label>
-            <label>
-              <p>Password: </p>
+            <label className={styles.password}>
+              <p>Password </p>
               <input
                 type="password"
                 placeholder="enter password"
                 ref={password}
               ></input>
             </label>
-            <button type="submit">Login</button>
-            <p>
+            <button className={styles.loginBtn} type="submit">
+              Login
+            </button>
+            <p className={styles.alternative}>
               New to the app?{" "}
               <b>
                 <Link to="/signup">Sign Up</Link>
@@ -75,7 +77,7 @@ export default function Login() {
             </p>
           </div>
         ) : (
-          <div>
+          <div className={styles.contentContainer}>
             <h2>{`Welcome Back, ${user.fname}!`}</h2>
             <Link to="/">Return to Home</Link>
             {/* <Logout /> */}

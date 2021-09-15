@@ -9,21 +9,9 @@ const Logout = () => {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const { user, setUser } = useContext(UserContext);
   return (
-    <div className="page-layout">
-      <div className={styles.logoutPage}>
+    <div className={`${styles.logout} page-layout`}>
+      <div className={styles.logoutContainer}>
         <h2>Thanks for visiting! See you again soon.</h2>
-        {/* <button
-          className={styles.logoutBtn}
-          onClick={() => {
-            setUser(null);
-            setIsAuth(false);
-            if (!isAuth) {
-              return <Redirect to="/login" />;
-            }
-          }}
-        >
-          Log Out
-        </button> */}
       </div>
     </div>
   );

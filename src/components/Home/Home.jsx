@@ -84,9 +84,9 @@ export default function Home() {
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
             <p>Get information by topic, or personalized just for you.</p>
-            <Link to="/resources">
-              <button className={styles.getStartedBtn}>Learn More</button>
-            </Link>
+            <button className={styles.getStartedBtn}>
+              <Link to="/resources">Learn More</Link>
+            </button>
           </div>
         </section>
         <section className={styles.sectionFive}>

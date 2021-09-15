@@ -31,7 +31,7 @@ export default function SavedResources({ user_id, item }) {
           View
         </a>
         {isDeleted ? (
-          <button className={styles.deleteBtn}>Deleted!</button>
+          <button className={styles.deleteBtn}>Removed!</button>
         ) : (
           <button
             className={styles.deleteBtn}
