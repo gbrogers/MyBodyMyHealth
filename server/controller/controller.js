@@ -10,11 +10,8 @@ const bcrypt = require("bcryptjs");
 module.exports = {
   loginUser: async (req, res) => {
     const { email, password } = req.body;
-    //check password logic here with db
     const validUser = await User.findOne({ where: { email: email } });
-    // if (validUser !== null && validUser.password === password) {
     if (validUser) {
-      // console.log(validUser.password);
       console.log(validUser);
       if (bcrypt.compareSync(password, validUser.dataValues.password)) {
         console.log("password correct");
@@ -58,7 +55,6 @@ module.exports = {
     console.log(user_id);
     console.log(birth_control_id);
 
-    // const foundUser = await User.findOne({ where: { id: user_id } });
     await User.update(
       { birth_control_id: birth_control_id },
       { where: { id: user_id } }
@@ -134,7 +130,6 @@ module.exports = {
     const alreadyExists = await Saved_article.findOne({
       where: { [Op.and]: [{ name: title }, { user_id: user_id }] },
     });
-    // console.log(alreadyExists);
 
     if (!alreadyExists) {
       await Saved_article.create({
@@ -156,7 +151,6 @@ module.exports = {
   getSavedArticles: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    // console.log(user_id);
     const previousSavedArticles = await Saved_article.findAll({
       where: { user_id: user_id },
     });
@@ -165,15 +159,18 @@ module.exports = {
     }
   },
   removeResource: async (req, res) => {
-    let { name } = req.params;
-    await Saved_article.destroy({ where: { name: name } }).then(() => {
-      return res.status(200).send("successfully deleted");
-    });
+    const { name, user_id } = req.body.body;
+    await Saved_article.destroy({
+      where: { [Op.and]: [{ name: name }, { user_id: user_id }] },
+    })
+      .then(() => {
+        return res.status(200).send("successfully deleted");
+      })
+      .catch((error) => console.log("failed - " + error));
   },
   getPeriodDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    // console.log(user_id);
     const previousPeriodDates = await Date_menstruation.findAll({
       where: { user_id: user_id },
     });
@@ -184,7 +181,6 @@ module.exports = {
   getBCDates: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    // console.log(user_id);
     const previousBCDates = await Date_birth_control.findAll({
       where: { user_id: user_id },
     });
@@ -195,12 +191,10 @@ module.exports = {
   getNotes: async (req, res) => {
     let { user_id } = req.params;
     user_id = Number(user_id);
-    // console.log(user_id);
     const previousNotes = await Note.findAll({
       where: { user_id: user_id },
     });
     if (previousNotes) {
-      // console.log(previousNotes);
       return res.status(200).send(previousNotes);
     }
   },
