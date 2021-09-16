@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 const connect = require("./database/db.js");
 
-app.use(express.urlencoded({ extended: true })); // this is from youtube video
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
