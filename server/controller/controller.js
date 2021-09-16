@@ -38,16 +38,13 @@ module.exports = {
       lname,
       email,
       password: passwordHash,
-    })
-      .then(() => {
-        if (newUser) {
-          console.log(newUser);
-          return res.status(200).send(newUser);
-        }
-      })
-      .catch((error) => {
-        console.log("failed - " + error);
-      });
+    });
+    if (newUser) {
+      console.log(newUser);
+      return res.status(200).send(newUser);
+    } else {
+      return res.status(500).send("unsuccessful");
+    }
   },
 
   addBC: async (req, res) => {

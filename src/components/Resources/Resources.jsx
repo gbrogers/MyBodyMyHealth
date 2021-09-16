@@ -16,6 +16,7 @@ function Resources() {
   const [resourceList, setResourceList] = useState([]);
   const [dropDown, setDropDown] = useState(true);
   const [showSaved, setShowSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [userSavedResources, setuserSavedResources] = useState([]);
   const { user, setUser } = useContext(UserContext);
 
@@ -38,11 +39,13 @@ function Resources() {
 
   // find resources from external API using user input
   const generateResource = (age, sex, pregnant, sexActive, tobacco) => {
+    setIsLoading(true);
     axios
       .get(
         `${baseURL}?age=${age}&sex=${sex}&pregnant=${pregnant}&sexuallyActive=${sexActive}&tobaccoUse=${tobacco}`
       )
       .then((res) => {
+        setIsLoading(false);
         console.log(res.data);
         setResourceList([
           ...res.data.Result.Resources.all.Resource,
@@ -110,11 +113,17 @@ function Resources() {
           </div>
         </div>
 
-        <ul className={styles.personalizedResources}>
-          {resourceList.map((item) => {
-            return <ResourceCard item={item} saveResource={saveResource} />;
-          })}
-        </ul>
+        {isLoading ? (
+          <div className={styles.loading}>
+            <h3>Loading...</h3>
+          </div>
+        ) : (
+          <ul className={styles.personalizedResources}>
+            {resourceList.map((item) => {
+              return <ResourceCard item={item} saveResource={saveResource} />;
+            })}
+          </ul>
+        )}
       </div>
     </div>
   );

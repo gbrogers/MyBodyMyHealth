@@ -63,3 +63,13 @@
   flex-wrap: wrap;
   justify-content: left;
 }
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    background-color: #9ef3ef;
+    border-radius: 5px;
+    padding: 10px 20px;
+  }
+}

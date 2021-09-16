@@ -6,10 +6,9 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  background-color: #dff4f3;
-  padding: 30px;
+  // background-color: #dff4f3;
+
   margin: 30px 20px 0 20px;
-  border-radius: 5px;
 
   input {
     width: 250px;
@@ -28,6 +27,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #dff4f3;
+  padding: 30px;
+  border-radius: 30px 0;
   h2 {
     margin-bottom: 10px;
   }
@@ -56,4 +58,42 @@
   .loginBtn:hover {
     background-color: #aef3f0;
   }
+}
+
+.redirectLinks {
+  display: flex;
+
+  h3 {
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-weight: 400;
+    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    padding: 10px;
+  }
+  div {
+    padding: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 80%;
+    border-radius: 5px;
+    width: 300px;
+    height: 195.2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+}
+
+.menstrualLink {
+  background-image: url("../../images/periodTracking2.jpg");
+}
+.contraceptiveLink {
+  background-image: url("../../images/bcTracking.jpg");
+}
+.resourceLink {
+  background-image: url("../../images/pexels-cottonbro-6471424.jpg");
 }

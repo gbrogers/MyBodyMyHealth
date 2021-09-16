@@ -104,9 +104,11 @@ export default function SetUpForm(props) {
             </form>
             <button
               className={styles.generateResource}
-              onClick={() =>
-                generateResource(age, sex, pregnant, tobacco, sexActive)
-              }
+              onClick={() => {
+                setShowSetUp(!showSetUp);
+                setDropDown(!dropDown);
+                generateResource(age, sex, pregnant, tobacco, sexActive);
+              }}
             >
               Generate Resources
             </button>

@@ -88,6 +88,7 @@ function Nav() {
           justify-content: space-between;
           background-color: #f5bdc4;
           z-index: 100;
+          // box-shadow: rgb(177, 177, 177) 2px 2px 4px;
         }
 
         .navigation a,

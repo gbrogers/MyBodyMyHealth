@@ -77,10 +77,29 @@ export default function Login() {
             </p>
           </div>
         ) : (
-          <div className={styles.contentContainer}>
-            <h2>{`Welcome Back, ${user.fname}!`}</h2>
-            <Link to="/">Return to Home</Link>
-            {/* <Logout /> */}
+          <div className={styles.loggedIn}>
+            <div className={styles.contentContainer}>
+              <h2>{`Welcome Back, ${user.fname}!`}</h2>
+            </div>
+
+            <div className={styles.redirectLinks}>
+              <Link to="./menstrualtracking">
+                <div className={styles.menstrualLink}>
+                  <h3>Menstrual Tracking</h3>
+                </div>
+              </Link>
+              <Link to="./contraceptivetracking">
+                <div className={styles.contraceptiveLink}>
+                  <h3>Contraceptive Tracking</h3>
+                </div>
+              </Link>
+              <Link to="./resources">
+                <div className={styles.resourceLink}>
+                  <h3>Resources</h3>
+                </div>
+              </Link>
+            </div>
+            {/* <Link to="/">Return to Home</Link> */}
           </div>
         )}
       </form>
