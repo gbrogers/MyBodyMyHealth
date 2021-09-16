@@ -77,7 +77,11 @@ export default function SignUp() {
                 ref={password}
               ></input>
             </label>
-            <button className={styles.signupBtn} type="submit">
+            <button
+              className={styles.signupBtn}
+              // onClick={() => setIsAuth(true)}
+              type="submit"
+            >
               Sign Up
             </button>
             <p className={styles.alternative}>
