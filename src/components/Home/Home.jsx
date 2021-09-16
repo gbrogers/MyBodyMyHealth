@@ -1,5 +1,6 @@
 import styles from "./Home.module.scss";
 import { Link } from "react-router-dom";
+import react, { useState } from "react";
 
 //image components
 import MainSectionImg from "../../images/bc-types-home.jpg";
@@ -8,8 +9,10 @@ import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";
 import BrainIcon from "../../images/brain.png";
 import ResourcesIcon from "../../images/resources.png";
+import Camping from "../../images/camping.jpg";
 
 export default function Home() {
+  const [seeMore, setSeeMore] = useState(false);
   return (
     <div className={`${styles.home} page-layout`}>
       <div>
@@ -17,14 +20,46 @@ export default function Home() {
           <div>
             <div>
               <h1>My Body My Health</h1>
-              <p>
-                Your health is so often put on the back burners. Put a stop to
-                that TODAY and grab hold to your health and your future. My Body
-                My Health allows you to take control of aspects of your health
-                such as menstrual tracking, contraceptive tracking, and provides
-                both personalized and generic health resources at the tips of
-                your fingers.
-              </p>
+              {seeMore ? (
+                <p>
+                  {/* Take hold of the very basics of your sexual and reproductive
+                health through providing health resources specific to you and a
+                platform for contraceptive and menstrual tracking. */}
+                  The US's current health care system is lacking in meeting the
+                  needs of many inidividuals, regardless of sex and gender, but
+                  especially for those individuals with a uterus. Sexual and
+                  reproductive health needs are lifelong and cannot continue to
+                  take the back burners. My Body My Health can help with the
+                  very basics of taking hold of your unique health needs. My
+                  Body My Health helps you keep track of you menstrual cycle and
+                  it's side effects, assists you in tracking the use of your
+                  birth control method so that you ensure you are properly
+                  protected from pregnany when you want to be, and finally
+                  provides verified resources specific to your needs, based on
+                  input from you.{" "}
+                  <button
+                    className={styles.seeMoreBtn}
+                    onClick={() => setSeeMore(!seeMore)}
+                  >
+                    See Less
+                  </button>
+                </p>
+              ) : (
+                <p>
+                  The US's current health care system is lacking in meeting the
+                  needs of many inidividuals, regardless of sex and gender, but
+                  especially for those individuals with a uterus. Sexual and
+                  reproductive health needs are lifelong and cannot continue to
+                  take the back burners. My Body My Health can help with the
+                  very basics of taking hold of your unique health needs.
+                  <button
+                    className={styles.seeMoreBtn}
+                    onClick={() => setSeeMore(!seeMore)}
+                  >
+                    See More
+                  </button>
+                </p>
+              )}
               <Link to="/signup">
                 <button className={styles.getStartedBtn}>Get Started</button>
               </Link>
@@ -34,35 +69,73 @@ export default function Home() {
         </section>
         <section className={styles.sectionTwo}>
           <div className={styles.blueSection}>
+            {/* <div className={styles.blueContent}> */}
+            {/* <p className={styles.blueWords}>
+                The US's current healthcare system is lacking in meeting the
+                needs of many inidividuals, regardless of sex and gender, but
+                especially for those individuals with a uterus. Women's health
+                is so much larger than just gynecology, but it is a part of it.
+                Sexual and reproductive health needs are lifelong and cannot
+                continue to take the back burners. My Body My Health can help
+                with the very basics of taking hold of your unique sexual and
+                reproductive health needs. My Body My Health helps you keep
+                track of you menstrual cycle and it's side effects, assists you
+                in tracking the use of your birth control method so that you
+                ensure you are properly protected from pregnany when you want to
+                be, and finally provides verified resources specific to your
+                needs, based on input from you.
+              </p> */}
+            {/* <img
+                className={styles.campingImg}
+                src={Camping}
+                alt="camping"
+              ></img> */}
+            {/* </div> */}
+
             <div className={styles.circleIcons}>
               <div className={styles.circle1}>
-                {/* <p>This is text information </p> */}
+                <p>
+                  Visually track the use of your birth control method to ensure
+                  effectiveness that meets your personal goals.
+                </p>
                 <div className={styles.individualCircle}>
-                  <img className={styles.methodIcon} src={MethodsIcon}></img>
+                  <Link to="./contraceptivetracking">
+                    <img className={styles.methodIcon} src={MethodsIcon}></img>
+                  </Link>
                 </div>
               </div>
 
-              <div className={styles.circle2}>
+              {/* <div className={styles.circle2}>
                 <div className={styles.individualCircle}>
                   <img
                     className={styles.resourcesIcon}
                     src={ResourcesIcon}
                   ></img>
                 </div>
-                {/* <p>This is text information </p> */}
-              </div>
+                <p>This is text information </p>
+              </div> */}
 
-              <div className={styles.circle3}>
-                {/* <p>This is text information </p> */}
+              <div className={styles.circle2}>
+                <p>
+                  Visually track your menstrual cycle and keep notes to track
+                  you mood, activity level, body, symptoms, and more.
+                </p>
                 <div className={styles.individualCircle}>
-                  <img className={styles.bodyIcon} src={UterusIcon}></img>
+                  <Link to="./menstrualtracking">
+                    <img className={styles.bodyIcon} src={UterusIcon}></img>
+                  </Link>
                 </div>
               </div>
-              <div className={styles.circle4}>
+              <div className={styles.circle2}>
+                <p>
+                  Find and save resources for you, based on sex, age, tobacco
+                  use, sexual activity, and pregnancy status.
+                </p>
                 <div className={styles.individualCircle}>
-                  <img className={styles.brainIcon} src={BrainIcon}></img>
+                  <Link to="./resources">
+                    <img className={styles.brainIcon} src={BrainIcon}></img>
+                  </Link>
                 </div>
-                {/* <p>This is text information </p> */}
               </div>
             </div>
           </div>

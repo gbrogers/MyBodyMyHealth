@@ -1,4 +1,11 @@
 .home {
+  .seeMoreBtn {
+    border: none;
+    font-weight: 700;
+    background-color: transparent;
+    margin-left: 5px;
+  }
+
   h1,
   h2 {
     font-family: "Caveat", cursive;
@@ -71,40 +78,69 @@
   ///////////////////////// SECTION TWO///////////////////////////////////////////////////////
   .sectionTwo {
     position: relative;
-    margin: 0px 0 100px 0;
+    margin: 50px 0 100px 0;
 
     .blueSection {
-      // height: 450px;
-      height: 300px;
       background-color: #dff4f3;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      padding: 20px;
+      //   .blueContent {
+      //     display: flex;
+      //     flex-direction: column-reverse;
+      //     .blueWords {
+      //       max-width: 900px;
+      //       padding: 20px;
+      //       padding-top: 0;
+      //     }
+      //     // .campingImg {
+      //     //   max-width: 400px;
+      //     //   padding: 20px;
+      //     //   flex-grow: 2;
+      //     // }
+      //   }
     }
     .circleIcons {
       display: flex;
       // flex-direction: column;
-      justify-content: space-evenly;
+      justify-content: space-around;
       flex-wrap: wrap;
       align-items: center;
       // z-index: -50;
       .individualCircle {
         background-color: #c3fd8a;
         border: 5px solid #fff;
-        width: 20vw;
-        height: 20vw;
-        min-width: 100px;
-        min-height: 100px;
+        width: 30vw;
+        height: 30vw;
+        min-width: 200px;
+        min-height: 200px;
         border-radius: 50%;
         text-align: center;
         padding: 10px;
-        margin: 10px;
-
+        margin: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         img {
           width: 70%;
+        }
+      }
+      .circle1,
+      .circle2,
+      .circle3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p {
+          font-family: "Caveat", cursive;
+          font-size: 28px;
+          font-weight: 400;
+          width: 250px;
+          text-align: center;
+          margin-bottom: 10px;
         }
       }
     }
@@ -279,18 +315,29 @@
     .sectionTwo {
       .blueSection {
         align-items: center;
-        .quoteContainer {
-          padding-bottom: 4.5em;
+        // .quoteContainer {
+        //   padding-bottom: 4.5em;
+        // }
+        .blueContent {
+          flex-direction: row;
+          padding: 30px;
+          .blueWords {
+            padding-top: 20px;
+          }
+          .campingImg {
+            padding-right: 0px;
+          }
         }
       }
       .circleIcons {
-        position: absolute;
-        margin-top: 300px;
+        position: relative;
+        // margin-top: 400px;
+        bottom: -125px;
         display: flex;
         flex-direction: row;
         width: 90%;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         .individualCircle {
           width: 9em;
           height: 9em;
