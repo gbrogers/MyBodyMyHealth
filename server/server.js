@@ -4,9 +4,7 @@ const ctrl = require("./controller/controller.js");
 const app = express();
 
 const path = require("path");
-// app.use(express.static(`${__dirname}/../build`));
-// app.use(express.static(`${__dirname}/../build`));
-//comment
+app.use(express.static(path.join(__dirname, "build")));
 
 const connect = require("./database/db.js");
 
@@ -19,8 +17,8 @@ app.get("/", (req, res) => {
 });
 
 // endpoints
-app.use("/api/authenticate/login", ctrl.loginUser);
-app.use("/api/authenticate/signup", ctrl.signUpUser);
+app.post("/api/authenticate/login", ctrl.loginUser);
+app.post("/api/authenticate/signup", ctrl.signUpUser);
 app.use("/api/addBC", ctrl.addBC);
 app.use("/api/getBirthControl/:birth_control_id", ctrl.getBirthControl);
 app.use("/api/addPeriodDate", ctrl.addPeriodDate);
