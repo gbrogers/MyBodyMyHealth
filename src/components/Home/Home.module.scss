@@ -226,6 +226,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    button {
+      margin-left: 0;
+    }
   }
 }
 ////////////////////////////////// 400 MEDIA QUERY ///////////////////////////////////////
@@ -350,25 +353,44 @@
       }
       .sectionFiveBtns {
         flex-direction: row;
+        button {
+          margin-right: 10px;
+        }
       }
     }
   }
 } //end of 768 media query
 
 @media screen and (min-width: 875px) {
-  .sectionTwo {
-    .blueSection {
-      padding-left: 50px;
-      padding-right: 50px;
+  .home {
+    .sectionTwo {
+      .blueSection {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+      .circleIcons {
+        .circle1,
+        .circle2,
+        .circle3 {
+          p {
+            // font-size: 26px;
+            // width: 275px;
+          }
+        }
+      }
     }
-    .circleIcons {
+  }
+}
+
+@media screen and (min-width: 1175px) {
+  .home {
+    .sectionTwo .circleIcons {
       .circle1,
       .circle2,
       .circle3 {
-        // min-width: 100px;
         p {
-          font-size: 28px;
-          width: 250px;
+          font-size: 26px;
+          width: 275px;
         }
       }
     }
