@@ -1,6 +1,7 @@
 {
   "name": "mybodymyhealth",
   "version": "0.1.0",
+  "homepage": "https://my-body-my-health.vercel.app/",
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.6.0",
