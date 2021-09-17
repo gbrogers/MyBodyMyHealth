@@ -36,7 +36,7 @@
     background-color: #defbf9;
     margin-left: 10px;
   }
-  ///////////////////////// SECTION ONE///////////////////////////////////////////////////////
+  ///////////////////////// SECTION ONE ///////////////////////////////////////////////////////
 
   .sectionOne {
     > div {
@@ -75,7 +75,7 @@
     }
   }
 
-  ///////////////////////// SECTION TWO///////////////////////////////////////////////////////
+  ///////////////////////// SECTION TWO ///////////////////////////////////////////////////////
   .sectionTwo {
     position: relative;
     margin: 50px 0 100px 0;
@@ -87,21 +87,6 @@
       justify-content: center;
       align-items: center;
       padding: 10px;
-
-      //   .blueContent {
-      //     display: flex;
-      //     flex-direction: column-reverse;
-      //     .blueWords {
-      //       max-width: 900px;
-      //       padding: 20px;
-      //       padding-top: 0;
-      //     }
-      //     // .campingImg {
-      //     //   max-width: 400px;
-      //     //   padding: 20px;
-      //     //   flex-grow: 2;
-      //     // }
-      //   }
     }
     .circleIcons {
       display: flex;
@@ -139,9 +124,10 @@
         align-items: center;
         p {
           font-family: "Caveat", cursive;
-          font-size: 20px;
+          font-size: 24px;
           font-weight: 400;
-          width: 150px;
+          width: 80%;
+          max-width: 425px;
           text-align: center;
           margin-bottom: 10px;
           margin-top: 20px;
@@ -149,7 +135,7 @@
       }
     }
   }
-  ///////////////////////// SECTION THREE///////////////////////////////////////////////////////
+  ///////////////////////// SECTION THREE ///////////////////////////////////////////////////////
 
   .sectionThree {
     .quoteContainer {
@@ -171,7 +157,7 @@
       }
     }
   }
-  ///////////////////////// SECTION FOUR///////////////////////////////////////////////////////
+  ///////////////////////// SECTION FOUR ///////////////////////////////////////////////////////
 
   .sectionFour {
     display: flex;
@@ -206,7 +192,7 @@
     }
   }
 
-  ////////////////////////////////////////// SECTION 5//////////////////////////////////////////////////////
+  ////////////////////////// SECTION FIVE //////////////////////////////////////////////////////
 
   .sectionFive {
     padding: 50px 10px;
@@ -228,6 +214,7 @@
       p,
       h2 {
         width: 80%;
+        text-align: center;
       }
       p {
         margin: 5px 0;
@@ -235,8 +222,16 @@
       }
     }
   }
+  .sectionFiveBtns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+      margin-left: 0;
+    }
+  }
 }
-////////////////////////////////// 400 MEDIA QUERY///////////////////////////////////////
+////////////////////////////////// 400 MEDIA QUERY ///////////////////////////////////////
 @media screen and (min-width: 400px) {
   .home {
     .sectionOne {
@@ -245,9 +240,6 @@
       }
     }
     .sectionTwo {
-      // .circleIcons {
-      //   flex-direction: row;
-      // }
     }
     .sectionThree {
     }
@@ -264,42 +256,6 @@
       }
     }
     .sectionTwo {
-      .blueSection {
-        align-items: center;
-        // padding-left: 20px;
-        // padding-right: 20px;
-
-        // .quoteContainer {
-        //   padding-bottom: 4.5em;
-        // }
-        // .blueContent {
-        //   flex-direction: row;
-        //   padding: 30px;
-        //   .blueWords {
-        //     padding-top: 20px;
-        //   }
-        //   .campingImg {
-        //     padding-right: 0px;
-        //   }
-        // }
-      }
-      .circleIcons {
-        // // margin-top: 400px;
-        // bottom: -125px;
-        // display: flex;
-        // // flex-direction: row;
-        // width: 90%;
-        // justify-content: space-between;
-        // align-items: center;
-        .circle1,
-        .circle2,
-        .circle3 {
-          // min-width: 100px;
-          p {
-            font-size: 18px;
-          }
-        }
-      }
     }
     .sectionThree {
     }
@@ -313,14 +269,6 @@
         padding: 30px;
         align-items: flex-start;
         justify-content: center;
-
-        h2 {
-        }
-        p {
-          // height: 200px;
-        }
-        // align-items: center;
-        // justify-items: center;
       }
       .research {
         display: block;
@@ -332,29 +280,6 @@
   }
 } //end of 550 media query
 
-@media screen and (min-width: 660px) {
-  .home {
-    .sectionTwo {
-      .circleIcons {
-        flex-direction: row;
-        position: relative;
-        bottom: -125px;
-        width: 90%;
-        justify-content: space-between;
-        align-items: flex-end;
-        .circle1,
-        .circle2,
-        .circle3 {
-          // min-width: 100px;
-          p {
-            font-size: 20px;
-            width: 200px;
-          }
-        }
-      }
-    }
-  }
-}
 ////////////////////////////////// 768 MEDIA QUERY///////////////////////////////////////
 @media screen and (min-width: 768px) {
   .home {
@@ -380,47 +305,21 @@
       }
     }
     .sectionTwo {
-      //   .blueSection {
-      //     align-items: center;
-      //     // padding-left: 20px;
-      //     // padding-right: 20px;
-
-      //     // .quoteContainer {
-      //     //   padding-bottom: 4.5em;
-      //     // }
-      //     // .blueContent {
-      //     //   flex-direction: row;
-      //     //   padding: 30px;
-      //     //   .blueWords {
-      //     //     padding-top: 20px;
-      //     //   }
-      //     //   .campingImg {
-      //     //     padding-right: 0px;
-      //     //   }
-      //     // }
-      //   }
       .circleIcons {
+        flex-direction: row;
+        position: relative;
+        bottom: -125px;
+        width: 90%;
+        justify-content: space-between;
+        align-items: flex-end;
         .circle1,
         .circle2,
         .circle3 {
-          // min-width: 100px;
           p {
-            font-size: 24px;
+            font-size: 20px;
             width: 200px;
           }
         }
-        //     position: relative;
-        //     // margin-top: 400px;
-        //     bottom: -125px;
-        //     display: flex;
-        //     flex-direction: row;
-        //     width: 90%;
-        //     justify-content: space-between;
-        //     align-items: flex-end;
-        //     .individualCircle {
-        //       // width: 9em;
-        //       // height: 9em;
-        //     }
       }
     }
     .sectionThree {
@@ -447,25 +346,51 @@
       .caption {
         margin-left: 15px;
         align-items: flex-start;
+        p,
+        h2 {
+          text-align: left;
+        }
+      }
+      .sectionFiveBtns {
+        flex-direction: row;
+        button {
+          margin-right: 10px;
+        }
       }
     }
   }
 } //end of 768 media query
 
 @media screen and (min-width: 875px) {
-  .sectionTwo {
-    .blueSection {
-      padding-left: 50px;
-      padding-right: 50px;
+  .home {
+    .sectionTwo {
+      .blueSection {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+      .circleIcons {
+        .circle1,
+        .circle2,
+        .circle3 {
+          p {
+            // font-size: 26px;
+            // width: 275px;
+          }
+        }
+      }
     }
-    .circleIcons {
+  }
+}
+
+@media screen and (min-width: 1175px) {
+  .home {
+    .sectionTwo .circleIcons {
       .circle1,
       .circle2,
       .circle3 {
-        // min-width: 100px;
         p {
-          font-size: 28px;
-          width: 250px;
+          font-size: 26px;
+          width: 275px;
         }
       }
     }

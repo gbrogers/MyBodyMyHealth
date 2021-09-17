@@ -1,4 +1,10 @@
 .componentContainer {
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+  flex-direction: column;
+  align-items: center;
+
   .setUpContainer {
     background-color: #f7f6c4;
     max-width: 700px;
@@ -54,13 +60,7 @@
       margin-left: 10px;
     }
   }
-  .componentContainer {
-    display: flex;
-    justify-content: center;
-    padding: 0 10px;
-    flex-direction: column;
-    align-items: center;
-  }
+
   .setUpHeader {
     width: 100%;
     // color: hotpink;

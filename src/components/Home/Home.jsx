@@ -8,8 +8,6 @@ import Research from "../../images/research.jpg";
 import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";
 import BrainIcon from "../../images/brain.png";
-import ResourcesIcon from "../../images/resources.png";
-import Camping from "../../images/camping.jpg";
 
 export default function Home() {
   const [seeMore, setSeeMore] = useState(false);
@@ -36,7 +34,7 @@ export default function Home() {
                   birth control method so that you ensure you are properly
                   protected from pregnany when you want to be, and finally
                   provides verified resources specific to your needs, based on
-                  input from you.{" "}
+                  input from you.
                   <button
                     className={styles.seeMoreBtn}
                     onClick={() => setSeeMore(!seeMore)}
@@ -69,29 +67,6 @@ export default function Home() {
         </section>
         <section className={styles.sectionTwo}>
           <div className={styles.blueSection}>
-            {/* <div className={styles.blueContent}> */}
-            {/* <p className={styles.blueWords}>
-                The US's current healthcare system is lacking in meeting the
-                needs of many inidividuals, regardless of sex and gender, but
-                especially for those individuals with a uterus. Women's health
-                is so much larger than just gynecology, but it is a part of it.
-                Sexual and reproductive health needs are lifelong and cannot
-                continue to take the back burners. My Body My Health can help
-                with the very basics of taking hold of your unique sexual and
-                reproductive health needs. My Body My Health helps you keep
-                track of you menstrual cycle and it's side effects, assists you
-                in tracking the use of your birth control method so that you
-                ensure you are properly protected from pregnany when you want to
-                be, and finally provides verified resources specific to your
-                needs, based on input from you.
-              </p> */}
-            {/* <img
-                className={styles.campingImg}
-                src={Camping}
-                alt="camping"
-              ></img> */}
-            {/* </div> */}
-
             <div className={styles.circleIcons}>
               <div className={styles.circle1}>
                 <p>
@@ -104,16 +79,6 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-
-              {/* <div className={styles.circle2}>
-                <div className={styles.individualCircle}>
-                  <img
-                    className={styles.resourcesIcon}
-                    src={ResourcesIcon}
-                  ></img>
-                </div>
-                <p>This is text information </p>
-              </div> */}
 
               <div className={styles.circle2}>
                 <p>
@@ -152,7 +117,6 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.sectionFour}>
-          {/* <img src={ThreeFaces} className={styles.threeFaces}></img> */}
           <img src={Research} className={styles.research}></img>
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
