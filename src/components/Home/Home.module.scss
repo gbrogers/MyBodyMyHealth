@@ -69,7 +69,7 @@
           font-weight: 400;
         }
         p {
-          margin: 10px 0;
+          margin: 10px;
         }
       }
     }
@@ -83,10 +83,11 @@
     .blueSection {
       background-color: #dff4f3;
       display: flex;
-      flex-direction: column;
+      // flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 10px;
+
       //   .blueContent {
       //     display: flex;
       //     flex-direction: column-reverse;
@@ -104,17 +105,20 @@
     }
     .circleIcons {
       display: flex;
-      // flex-direction: column;
+      flex-direction: column;
       justify-content: space-around;
       flex-wrap: wrap;
       align-items: center;
+      max-width: 1015px;
       .individualCircle {
         background-color: #c3fd8a;
         border: 5px solid #fff;
-        width: 30vw;
-        height: 30vw;
-        min-width: 200px;
-        min-height: 200px;
+        width: 20vw;
+        height: 20vw;
+        min-width: 150px;
+        min-height: 150px;
+        max-width: 200px;
+        max-height: 200px;
         border-radius: 50%;
         text-align: center;
         padding: 10px;
@@ -135,11 +139,12 @@
         align-items: center;
         p {
           font-family: "Caveat", cursive;
-          font-size: 28px;
+          font-size: 20px;
           font-weight: 400;
-          width: 250px;
+          width: 150px;
           text-align: center;
           margin-bottom: 10px;
+          margin-top: 20px;
         }
       }
     }
@@ -240,6 +245,9 @@
       }
     }
     .sectionTwo {
+      // .circleIcons {
+      //   flex-direction: row;
+      // }
     }
     .sectionThree {
     }
@@ -256,6 +264,42 @@
       }
     }
     .sectionTwo {
+      .blueSection {
+        align-items: center;
+        // padding-left: 20px;
+        // padding-right: 20px;
+
+        // .quoteContainer {
+        //   padding-bottom: 4.5em;
+        // }
+        // .blueContent {
+        //   flex-direction: row;
+        //   padding: 30px;
+        //   .blueWords {
+        //     padding-top: 20px;
+        //   }
+        //   .campingImg {
+        //     padding-right: 0px;
+        //   }
+        // }
+      }
+      .circleIcons {
+        // // margin-top: 400px;
+        // bottom: -125px;
+        // display: flex;
+        // // flex-direction: row;
+        // width: 90%;
+        // justify-content: space-between;
+        // align-items: center;
+        .circle1,
+        .circle2,
+        .circle3 {
+          // min-width: 100px;
+          p {
+            font-size: 18px;
+          }
+        }
+      }
     }
     .sectionThree {
     }
@@ -287,6 +331,30 @@
     }
   }
 } //end of 550 media query
+
+@media screen and (min-width: 660px) {
+  .home {
+    .sectionTwo {
+      .circleIcons {
+        flex-direction: row;
+        position: relative;
+        bottom: -125px;
+        width: 90%;
+        justify-content: space-between;
+        align-items: flex-end;
+        .circle1,
+        .circle2,
+        .circle3 {
+          // min-width: 100px;
+          p {
+            font-size: 20px;
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
 ////////////////////////////////// 768 MEDIA QUERY///////////////////////////////////////
 @media screen and (min-width: 768px) {
   .home {
@@ -312,35 +380,47 @@
       }
     }
     .sectionTwo {
-      .blueSection {
-        align-items: center;
-        // .quoteContainer {
-        //   padding-bottom: 4.5em;
-        // }
-        .blueContent {
-          flex-direction: row;
-          padding: 30px;
-          .blueWords {
-            padding-top: 20px;
-          }
-          .campingImg {
-            padding-right: 0px;
-          }
-        }
-      }
+      //   .blueSection {
+      //     align-items: center;
+      //     // padding-left: 20px;
+      //     // padding-right: 20px;
+
+      //     // .quoteContainer {
+      //     //   padding-bottom: 4.5em;
+      //     // }
+      //     // .blueContent {
+      //     //   flex-direction: row;
+      //     //   padding: 30px;
+      //     //   .blueWords {
+      //     //     padding-top: 20px;
+      //     //   }
+      //     //   .campingImg {
+      //     //     padding-right: 0px;
+      //     //   }
+      //     // }
+      //   }
       .circleIcons {
-        position: relative;
-        // margin-top: 400px;
-        bottom: -125px;
-        display: flex;
-        flex-direction: row;
-        width: 90%;
-        justify-content: space-between;
-        align-items: flex-end;
-        .individualCircle {
-          width: 9em;
-          height: 9em;
+        .circle1,
+        .circle2,
+        .circle3 {
+          // min-width: 100px;
+          p {
+            font-size: 24px;
+            width: 200px;
+          }
         }
+        //     position: relative;
+        //     // margin-top: 400px;
+        //     bottom: -125px;
+        //     display: flex;
+        //     flex-direction: row;
+        //     width: 90%;
+        //     justify-content: space-between;
+        //     align-items: flex-end;
+        //     .individualCircle {
+        //       // width: 9em;
+        //       // height: 9em;
+        //     }
       }
     }
     .sectionThree {
@@ -366,7 +446,28 @@
       }
       .caption {
         margin-left: 15px;
+        align-items: flex-start;
       }
     }
   }
 } //end of 768 media query
+
+@media screen and (min-width: 875px) {
+  .sectionTwo {
+    .blueSection {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    .circleIcons {
+      .circle1,
+      .circle2,
+      .circle3 {
+        // min-width: 100px;
+        p {
+          font-size: 28px;
+          width: 250px;
+        }
+      }
+    }
+  }
+}

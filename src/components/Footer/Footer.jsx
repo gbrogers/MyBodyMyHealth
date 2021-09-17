@@ -23,8 +23,9 @@ export default function Footer() {
         <p>
           <em>My Body My Health</em> was developed as a capstone project by{" "}
           <b>Giselle Rogers</b>, Software Engineer. Project developed using
-          PostgreSQL, Express, Node, React, Javascript, HTML, Sass, Sequelize,
-          Axios, and Bcrypt. Personalized resources generated from Health.gov.
+          PostgreSQL, Express, NodeJS, React, JavaScript, HTML5, SASS,
+          Sequelize, Axios, and Bcrypt. Personalized resources generated from
+          Health.gov API.
         </p>
 
         <div className={styles.mediaLinks}>

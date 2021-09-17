@@ -3,6 +3,7 @@
   background-color: #c6f39a;
   margin-top: 30px;
   padding: 30px;
+  // padding-bottom: 45px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -24,6 +25,9 @@
   flex-direction: column;
   margin-top: 20px;
   max-width: 700px;
+  p {
+    font-size: 0.8em;
+  }
   .mediaLinks {
     margin-top: 10px;
     display: flex;
@@ -50,10 +54,10 @@
 }
 
 .socialIcons {
-  height: 50px;
+  height: 30px;
 }
 .github {
-  height: 65px;
+  height: 45px;
 }
 
 @media screen and (min-width: 575px) {

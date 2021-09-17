@@ -4,6 +4,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.displayResources {
+  padding-bottom: 40px;
+}
 .headerContainer {
   background-image: url("../../images/papers.jpg");
   padding: 30px;
@@ -34,7 +37,7 @@
   font-weight: 400;
   font-size: 30px;
   margin: 10px auto 10px auto;
-  background-color: #ffe46f;
+  // background-color: #ffe46f;
 }
 .resourceContainer {
   padding: 10px;
@@ -43,7 +46,7 @@
 }
 .showBtn {
   border: none;
-  background-color: #ffe46f;
+  background-color: #f8ecb4;
   cursor: pointer;
   padding: 0px 15px;
   display: flex;
@@ -71,5 +74,16 @@
     background-color: #9ef3ef;
     border-radius: 5px;
     padding: 10px 20px;
+    display: flex;
+    img {
+      width: 30px;
+      padding: 5px;
+    }
   }
 }
+
+// @media screen and (min-width: 1000px) {
+//   .dropdowns {
+//     flex-direction: row;
+//   }
+// }

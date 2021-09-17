@@ -11,6 +11,7 @@ import { UserContext } from "../../UserContext";
 
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
+import Smiley from "../../images/smiley.png";
 
 function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -115,7 +116,11 @@ function Resources() {
 
         {isLoading ? (
           <div className={styles.loading}>
-            <h3>Loading...</h3>
+            <h3>
+              Loading your resources {"  "}
+              <img src={Smiley} alt="smiley"></img>
+              {"  "}...
+            </h3>
           </div>
         ) : (
           <ul className={styles.personalizedResources}>

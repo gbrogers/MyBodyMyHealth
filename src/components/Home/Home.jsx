@@ -60,7 +60,7 @@ export default function Home() {
                   </button>
                 </p>
               )}
-              <Link to="/signup">
+              <Link to="/menstrualtracking">
                 <button className={styles.getStartedBtn}>Get Started</button>
               </Link>
             </div>
@@ -156,7 +156,10 @@ export default function Home() {
           <img src={Research} className={styles.research}></img>
           <div className={styles.mustardSqr}>
             <h2>Explore Resources</h2>
-            <p>Get information by topic, or personalized just for you.</p>
+            <p>
+              Search for evidence-based health information personalized just for
+              you.
+            </p>
             <button className={styles.getStartedBtn}>
               <Link to="/resources">Learn More</Link>
             </button>

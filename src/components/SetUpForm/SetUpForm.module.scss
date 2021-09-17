@@ -1,111 +1,115 @@
-.setUpContainer {
-  background-color: #f7f6c4;
-  max-width: 700px;
-  padding: 25px;
-  margin: 10px;
-  border-radius: 5px;
-}
-.setUpWords {
-  // background-color: rgba(255, 255, 255, 0.692);
-  padding: 15px;
-  border-radius: 5px;
-}
-.showBtn {
-  border: none;
-  background-color: #ffe46f;
-  width: 100%;
-  cursor: pointer;
-  padding: 0px 15px;
-  display: flex;
-  align-items: center;
-
-  border-radius: 5px;
-  margin: 10px;
-
-  img {
-    width: 18px;
-    margin-right: 10px;
-    padding-top: 1px;
-  }
-}
-.setUpForm {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  > label {
-    margin: 7px 0px;
-    width: fit-content;
+.componentContainer {
+  .setUpContainer {
+    background-color: #f7f6c4;
+    max-width: 700px;
+    padding: 25px;
+    margin: 10px;
     border-radius: 5px;
-    > label > input:nth-child(1) {
-      cursor: pointer;
-      margin-right: 7px;
+  }
+  .setUpWords {
+    // background-color: rgba(255, 255, 255, 0.692);
+    padding: 15px;
+    border-radius: 5px;
+  }
+  .showBtn {
+    border: none;
+    background-color: #f8ecb4;
+    width: 100%;
+    cursor: pointer;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+
+    border-radius: 5px;
+    margin: 10px;
+
+    img {
+      width: 18px;
+      margin-right: 10px;
+      padding-top: 1px;
     }
   }
+  .setUpForm {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 
-  label,
-  select {
-    cursor: pointer;
+    > label {
+      margin: 7px 0px;
+      width: fit-content;
+      border-radius: 5px;
+      > label > input:nth-child(1) {
+        cursor: pointer;
+        margin-right: 7px;
+      }
+    }
+
+    label,
+    select {
+      cursor: pointer;
+    }
+    label,
+    select,
+    input {
+      margin-left: 10px;
+    }
   }
-  label,
-  select,
-  input {
+  .componentContainer {
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .setUpHeader {
+    width: 100%;
+    // color: hotpink;
+    font-size: 0.95rem;
     margin-left: 10px;
+    text-align: left;
   }
-}
-.componentContainer {
-  display: flex;
-  justify-content: center;
-  padding: 0 10px;
-  flex-direction: column;
-  align-items: center;
-}
-.setUpHeader {
-  width: 100%;
-  // color: hotpink;
-  font-size: 0.95rem;
-  margin-left: 10px;
-  text-align: left;
-}
-.sexSelect,
-.ageSelect {
-  width: 60%;
-}
-.setUpMainHeader {
-  text-align: center;
-  font-family: "Caveat", cursive;
-  font-weight: 400;
-  font-size: 30px;
-  margin: 10px auto 10px auto;
-}
-.generateResource {
-  border: none;
-  background-color: #ffe46f;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-.generateResource:hover {
-  background-color: #f1e3a3;
-}
-.ageSelect,
-select {
-  width: 250px;
-  border-radius: 5px;
-  margin-top: 5px;
-  padding: 7px;
-  border: none;
-}
-input {
-  margin-right: 10px;
+  .sexSelect,
+  .ageSelect {
+    width: 60%;
+  }
+  .setUpMainHeader {
+    text-align: center;
+    font-family: "Caveat", cursive;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 10px auto 10px auto;
+  }
+  .generateResource {
+    border: none;
+    background-color: #ffe46f;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .generateResource:hover {
+    background-color: #f1e3a3;
+  }
+  .ageSelect,
+  select {
+    width: 250px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 7px;
+    border: none;
+  }
+  input {
+    margin-right: 10px;
+  }
 }
 
 @media screen and (min-width: 400px) {
-  .sexSelect,
-  .ageSelect {
-    width: 200px;
+  .componentContainer {
+    .sexSelect,
+    .ageSelect {
+      width: 200px;
+    }
   }
 }
