@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "../public/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 // endpoints
-app.post("/api/authenticate/login", ctrl.loginUser);
-app.post("/api/authenticate/signup", ctrl.signUpUser);
+app.use("/api/authenticate/login", ctrl.loginUser);
+app.use("/api/authenticate/signup", ctrl.signUpUser);
 app.use("/api/addBC", ctrl.addBC);
 app.use("/api/getBirthControl/:birth_control_id", ctrl.getBirthControl);
 app.use("/api/addPeriodDate", ctrl.addPeriodDate);
