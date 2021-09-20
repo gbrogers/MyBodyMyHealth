@@ -24,7 +24,7 @@ export default function SavedResources({ user_id, item }) {
       .catch((error) => console.log(error));
   }
   return (
-    <li className={styles.individualResource}>
+    <li key={item.id} className={styles.individualResource}>
       <h3>{item.name}</h3>
       <div>
         <a href={item.url} target="_blank">

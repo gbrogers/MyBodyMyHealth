@@ -83,6 +83,7 @@ module.exports = {
   },
   addPeriodDate: async (req, res) => {
     const { id, dateState } = req.body;
+
     await Date_menstruation.create({
       user_id: id,
       date_occurred: dateState,
@@ -109,6 +110,19 @@ module.exports = {
         return res.status(200).send(allDates);
       })
       .catch((error) => console.log("failed - " + error));
+  },
+  getLastBCUse: async (req, res) => {
+    const { user_id } = req.params;
+    console.log(user_id);
+    const userDates = await Date_birth_control.findAll({
+      where: { user_id },
+    });
+
+    if (userDates) {
+      return res.status(200).send(userDates);
+    } else {
+      return res.status(200).send(null);
+    }
   },
   addNotes: async (req, res) => {
     const { user_id, text, note_date } = req.body;

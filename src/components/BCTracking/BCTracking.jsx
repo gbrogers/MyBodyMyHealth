@@ -21,7 +21,8 @@ function BCTracking() {
   const [dropDown, setDropDown] = useState(true);
   const [dropDown2, setDropDown2] = useState(true);
   const [dateState, setDateState] = useState(new Date());
-  const [lastDate, setLastDate] = useState(new Date());
+  const [lastUse, setLastUse] = useState(true);
+  const [dateArray, setDateArray] = useState([]);
   const [bcUsed, setBCUsed] = useState(false);
   const [birthControl, setBirthControl] = useState(null);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -40,7 +41,7 @@ function BCTracking() {
       axios
         .get(`/api/getBirthControl/${birth_control_id}`)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setBirthControl(res.data);
         })
         .catch((error) => console.log(error));
@@ -65,7 +66,7 @@ function BCTracking() {
   function tileClassName({ date, view }) {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
     if (bcTaken.find((dDate) => isSameDay(dDate, date))) {
-      console.log("BC matched date");
+      // console.log("BC matched date");
       return "BC";
     }
   }
@@ -73,7 +74,7 @@ function BCTracking() {
     const d = new Date(a);
     const dateA = `${d.getMonth()}${d.getDate()}${d.getYear()}`;
     const dateB = `${b.getMonth()}${b.getDate()}${b.getYear()}`;
-    console.log(dateA === dateB);
+    // console.log(dateA === dateB);
     return dateA === dateB;
   }
 
@@ -122,6 +123,82 @@ function BCTracking() {
         return "This method does not need maintenance.";
       case "q4h":
         return "Must be done every 4 to 5 hours to be effective.";
+    }
+  }
+  function calcNextUse(frequencyKey) {
+    let user_id = user.id;
+    axios
+      .get(`/api/getLastBCUse/${user_id}`)
+      .then((res) => {
+        console.log(res.data);
+        let justDates = [];
+        let resArray = res.data;
+        resArray.map((item) => {
+          justDates = [...justDates, item.date_taken];
+        });
+
+        let biggest = justDates.reduce((a, b) => {
+          return new Date(a) > new Date(b) ? a : b;
+        });
+
+        setLastUse(biggest);
+      })
+      .catch((error) => console.log(error));
+
+    let d = new Date(lastUse);
+    let year = d.getFullYear();
+    let month = d.getMonth();
+    let day = d.getDate();
+
+    switch (frequencyKey) {
+      case "q7y":
+        return `Replacement Due: ${new Date(
+          year + 7,
+          month,
+          day
+        ).toLocaleDateString()}`;
+      case "q5y":
+        return `Replacement Due: ${new Date(
+          year + 5,
+          month,
+          day
+        ).toLocaleDateString()}`;
+      case "q3y":
+        return `Replacement Due: ${new Date(
+          year + 3,
+          month,
+          day
+        ).toLocaleDateString()}`;
+      case "q12y":
+        return `Replacement Due: ${new Date(
+          year + 12,
+          month,
+          day
+        ).toLocaleDateString()}`;
+      case "q3m":
+        return `Next Dose: ${new Date(
+          year,
+          month + 3,
+          day
+        ).toLocaleDateString()}`;
+      case "qm":
+        return `Replacement Due: ${new Date(
+          year,
+          month + 1,
+          day
+        ).toLocaleDateString()}`;
+      case "qd":
+        return `Replacement Due: ${new Date(
+          year,
+          month,
+          day + 1
+        ).toLocaleDateString()}`;
+      case "prn":
+        return "";
+      case "once":
+        return "";
+      case "q4h":
+        return "";
     }
   }
 
@@ -190,6 +267,7 @@ function BCTracking() {
                     <p>{`Type: ${birthControl.bc_type}`}</p>
                   )}
                   <p>{calcFrequency(birthControl.frequency)}</p>
+                  {lastUse && <p>{calcNextUse(birthControl.frequency)}</p>}
                 </div>
               </div>
             </div>

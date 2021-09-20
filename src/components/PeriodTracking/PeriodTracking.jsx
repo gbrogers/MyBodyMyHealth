@@ -106,7 +106,7 @@ function PeriodTracking() {
       axios
         .post("/api/addNotes", noteRequestBody)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setNoteArray(res.data);
         })
         .catch((error) => console.log(error));

@@ -31,6 +31,7 @@ app.use("/api/removeResource/", ctrl.removeResource);
 app.use("/api/getNotes/:user_id", ctrl.getNotes);
 app.use("/api/addNotes/", ctrl.addNotes);
 app.use("/api/deleteNote/:note_id", ctrl.deleteNote);
+app.use("/api/getLastBCUse/:user_id", ctrl.getLastBCUse);
 
 connect.connect();
 
