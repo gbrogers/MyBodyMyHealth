@@ -24,7 +24,14 @@ export default function Login() {
       password: password.current.value,
     };
     await axios
-      .post("/api/authenticate/login", credentials)
+      .post("/api/authenticate/login", {
+        body: credentials,
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Host: "https://mybodymyhealth.herokuapp.com",
+          Accept: "application/json",
+        },
+      })
       .then((res) => {
         // console.log(res.data);
         if (
