@@ -4,7 +4,7 @@ const ctrl = require("./controller/controller.js");
 const app = express();
 
 const path = require("path");
-app.use(express.static(path.join("public")));
+app.use(express.static(path.join(__dirname, "build")));
 
 const connect = require("./database/db.js");
 
@@ -13,11 +13,8 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.sendFile(path.join(__dirname, "build", "../public/index.html"));
 });
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../public/index.html"));
-// });
 
 // endpoints
 app.use("/api/authenticate/login", ctrl.loginUser);
