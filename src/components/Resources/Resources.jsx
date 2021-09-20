@@ -32,7 +32,7 @@ function Resources() {
     axios
       .get(`/api/getSavedArticles/${user_id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setuserSavedResources(res.data);
       })
       .catch((error) => console.log(error));
@@ -47,7 +47,7 @@ function Resources() {
       )
       .then((res) => {
         setIsLoading(false);
-        console.log(res.data);
+        // console.log(res.data);
         setResourceList([
           ...res.data.Result.Resources.all.Resource,
           ...res.data.Result.Resources.some.Resource,
@@ -72,7 +72,7 @@ function Resources() {
     axios
       .post("/api/saveArticle", requestBody)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data !== "no thanks") {
           setuserSavedResources(res.data);
         }

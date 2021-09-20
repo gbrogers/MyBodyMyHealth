@@ -15,12 +15,12 @@ export default function IndividualNote(props) {
     axios
       .delete(`/api/deleteNote/${note_id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((error) => console.log(error));
   }
   return (
-    <li className={styles.singleNote}>
+    <li key={note.id} className={styles.singleNote}>
       <div className={styles.singleNoteContent}>
         <img
           src={Notepad}

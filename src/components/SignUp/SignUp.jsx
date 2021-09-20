@@ -34,7 +34,7 @@ export default function SignUp() {
     await axios
       .post("/api/authenticate/signup", credentials)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setUser(res.data);
         setIsAuth(true);
       })

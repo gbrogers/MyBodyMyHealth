@@ -8,6 +8,7 @@ import Research from "../../images/research.jpg";
 import MethodsIcon from "../../images/methods.png";
 import UterusIcon from "../../images/uterus.png";
 import BrainIcon from "../../images/brain.png";
+import ScreenCapture from "../../images/screenCapture.PNG";
 
 export default function Home() {
   const [seeMore, setSeeMore] = useState(false);
@@ -130,7 +131,11 @@ export default function Home() {
           </div>
         </section>
         <section className={styles.sectionFive}>
-          <div className={styles.demonstration}></div>
+          <img
+            className={styles.demonstration}
+            src={ScreenCapture}
+            alt="screen capture of page"
+          ></img>
           <div className={styles.caption}>
             <h2>Visually monitor your progress </h2>
             <p>
