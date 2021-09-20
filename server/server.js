@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 // endpoints
-app.use("/api/authenticate/login", ctrl.loginUser);
+app.post("/api/authenticate/login", ctrl.loginUser);
 app.use("/api/authenticate/signup", ctrl.signUpUser);
 app.use("/api/addBC", ctrl.addBC);
 app.use("/api/getBirthControl/:birth_control_id", ctrl.getBirthControl);
