@@ -41,7 +41,8 @@ export default function Login() {
 
         //need to redirect to home following success
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error.response.request._response));
+    // .catch((error) => console.log("failed -" + error));
   }
 
   return (
