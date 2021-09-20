@@ -130,21 +130,18 @@ function BCTracking() {
     axios
       .get(`/api/getLastBCUse/${user_id}`)
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         let justDates = [];
         let resArray = res.data;
         resArray.map((item) => {
           justDates = [...justDates, item.date_taken];
         });
-        // console.log(justDates);
 
-        justDates.reduce((a, b) => {
-          return new Date(a.MeasureDate) > new Date(b.MeasureDate) ? a : b;
+        let biggest = justDates.reduce((a, b) => {
+          return new Date(a) > new Date(b) ? a : b;
         });
-        console.log(justDates);
-        // console.log(justDates[justDates.length - 2]);
 
-        setLastUse(justDates[justDates.length - 1]);
+        setLastUse(biggest);
       })
       .catch((error) => console.log(error));
 
