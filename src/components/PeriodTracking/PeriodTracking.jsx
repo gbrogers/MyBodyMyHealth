@@ -158,9 +158,7 @@ function PeriodTracking() {
         <div className={styles.period_checkin_container}>
           <form>
             <div className={styles.checkinHeaderContainer}>
-              <h4 className={styles.methodHeader}>
-                Contraceptive Method Check-in
-              </h4>
+              <h4 className={styles.methodHeader}>Menstruation Check-in</h4>
               <img className={styles.check} src={Check} alt="check mark"></img>
             </div>
             <p>

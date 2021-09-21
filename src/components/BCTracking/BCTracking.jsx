@@ -17,12 +17,9 @@ import Check from "../../images/checkmark.png";
 function BCTracking() {
   const [bcTaken, setBCTaken] = useState([]);
   const [showBC, setShowBC] = useState(false);
-  const [lastDateFound, setLastDateFound] = useState(false);
   const [dropDown, setDropDown] = useState(true);
-  const [dropDown2, setDropDown2] = useState(true);
   const [dateState, setDateState] = useState(new Date());
   const [lastUse, setLastUse] = useState(false);
-  // const [dateArray, setDateArray] = useState([]);
   const [bcUsed, setBCUsed] = useState(false);
   const [birthControl, setBirthControl] = useState(null);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -30,7 +27,6 @@ function BCTracking() {
   const { user, setUser } = useContext(UserContext);
 
   let srcDropDown = dropDown ? DownArrow : UpArrow; //update to src images
-  let srcDropDown2 = dropDown2 ? DownArrow : UpArrow; //update to src images
 
   //load previously added calendar dates and birthcontrol info when page renders
   useEffect(() => {
@@ -130,9 +126,8 @@ function BCTracking() {
     axios
       .get(`/api/getLastBCUse/${user_id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data !== null) {
-          setLastDateFound(true);
           let justDates = [];
           let resArray = res.data;
           resArray.map((item) => {
@@ -270,9 +265,8 @@ function BCTracking() {
                     <p>{`Type: ${birthControl.bc_type}`}</p>
                   )}
                   <p>{calcFrequency(birthControl.frequency)}</p>
-                  {lastDateFound && (
-                    <p>{calcNextUse(birthControl.frequency)}</p>
-                  )}
+
+                  <p>{calcNextUse(birthControl.frequency)}</p>
                 </div>
               </div>
             </div>
