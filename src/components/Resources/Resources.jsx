@@ -12,6 +12,7 @@ import { UserContext } from "../../UserContext";
 import DownArrow from "../../images/downArrow.svg";
 import UpArrow from "../../images/upArrow.svg";
 import Smiley from "../../images/smiley.png";
+import HealthLiteracy from "../../images/healthLiteracy.png";
 
 function Resources() {
   const [resourceList, setResourceList] = useState([]);
@@ -85,6 +86,27 @@ function Resources() {
         <div>
           <div className={styles.headerContainer}>
             <h1 className={styles.pageTitle}>Resources</h1>
+          </div>
+          <div className={styles.quoteContainer}>
+            <div className={styles.quote}>
+              <img src={HealthLiteracy} alt="health literacy icon"></img>
+              <div>
+                <b>Personal health literacy</b> is crucial when advocating for
+                yourself in a healthcare system and beyond. According to the
+                CDC,
+                <em>
+                  "Personal health literacy is the degree to which individuals
+                  have the ability to find, understand, and use information and
+                  services to inform health-related decisions and actions for
+                  themselves and others."
+                </em>{" "}
+                The below resource generator makes calls to a Health.gov API to
+                return certified health resources to help promote your personal
+                health literacy. Get started (or continue) advocating for
+                yourself through improving your health literacy by generating
+                personal resources below.
+              </div>
+            </div>
           </div>
           <div className={styles.dropdowns}>
             <div className={styles.resourceContainer}>

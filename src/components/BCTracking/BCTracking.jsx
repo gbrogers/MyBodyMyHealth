@@ -17,12 +17,12 @@ import Check from "../../images/checkmark.png";
 function BCTracking() {
   const [bcTaken, setBCTaken] = useState([]);
   const [showBC, setShowBC] = useState(false);
-  const [showLastUse, setShowLastUse] = useState(false);
+  const [lastDateFound, setLastDateFound] = useState(false);
   const [dropDown, setDropDown] = useState(true);
   const [dropDown2, setDropDown2] = useState(true);
   const [dateState, setDateState] = useState(new Date());
-  const [lastUse, setLastUse] = useState(true);
-  const [dateArray, setDateArray] = useState([]);
+  const [lastUse, setLastUse] = useState(false);
+  // const [dateArray, setDateArray] = useState([]);
   const [bcUsed, setBCUsed] = useState(false);
   const [birthControl, setBirthControl] = useState(null);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -131,17 +131,20 @@ function BCTracking() {
       .get(`/api/getLastBCUse/${user_id}`)
       .then((res) => {
         console.log(res.data);
-        let justDates = [];
-        let resArray = res.data;
-        resArray.map((item) => {
-          justDates = [...justDates, item.date_taken];
-        });
+        if (res.data !== null) {
+          setLastDateFound(true);
+          let justDates = [];
+          let resArray = res.data;
+          resArray.map((item) => {
+            justDates = [...justDates, item.date_taken];
+          });
 
-        let biggest = justDates.reduce((a, b) => {
-          return new Date(a) > new Date(b) ? a : b;
-        });
+          let biggest = justDates.reduce((a, b) => {
+            return new Date(a) > new Date(b) ? a : b;
+          });
 
-        setLastUse(biggest);
+          setLastUse(biggest);
+        }
       })
       .catch((error) => console.log(error));
 
@@ -188,7 +191,7 @@ function BCTracking() {
           day
         ).toLocaleDateString()}`;
       case "qd":
-        return `Replacement Due: ${new Date(
+        return `Next Pill: ${new Date(
           year,
           month,
           day + 1
@@ -267,7 +270,9 @@ function BCTracking() {
                     <p>{`Type: ${birthControl.bc_type}`}</p>
                   )}
                   <p>{calcFrequency(birthControl.frequency)}</p>
-                  {lastUse && <p>{calcNextUse(birthControl.frequency)}</p>}
+                  {lastDateFound && (
+                    <p>{calcNextUse(birthControl.frequency)}</p>
+                  )}
                 </div>
               </div>
             </div>

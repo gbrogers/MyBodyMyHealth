@@ -81,9 +81,44 @@
     }
   }
 }
+.quoteContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #cdeceb;
+  margin: 20px auto;
+  border-radius: 25px 0;
+  max-width: 1000px;
 
-// @media screen and (min-width: 1000px) {
-//   .dropdowns {
-//     flex-direction: row;
-//   }
-// }
+  .quote {
+    background-color: #ffffff71;
+    padding: 20px;
+    border-radius: 25px 0;
+    text-align: center;
+    img {
+      width: 50px;
+      // margin: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .quoteContainer {
+    .quote {
+      text-align: left;
+      // margin-left: 15px;
+      img {
+        margin-right: 15px;
+        width: 100px;
+      }
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      // margin-left: 15px;
+      // flex-direction: column;
+    }
+  }
+}
