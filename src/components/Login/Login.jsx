@@ -26,7 +26,6 @@ export default function Login() {
     await axios
       .post("/api/authenticate/login", credentials)
       .then((res) => {
-        // console.log(res.data);
         if (
           res.data !== "Password Incorrect" &&
           res.data !== "Email Not Recognized"
