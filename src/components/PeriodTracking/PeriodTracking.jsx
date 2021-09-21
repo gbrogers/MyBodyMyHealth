@@ -203,7 +203,7 @@ function PeriodTracking() {
               Save
             </button>
           </form>
-          <p class={styles.sideNote}>
+          <p className={styles.sideNote}>
             * Update previous days on the calendar by selecting the date and
             responding to the prompt for that particular day
           </p>

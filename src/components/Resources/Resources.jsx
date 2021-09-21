@@ -101,7 +101,7 @@ function Resources() {
                   themselves and others."
                 </em>{" "}
                 The below resource generator makes calls to a Health.gov API to
-                return certified health resources to help promote your personal
+                return verified health resources to help promote your personal
                 health literacy. Get started (or continue) advocating for
                 yourself through improving your health literacy by generating
                 personal resources below.

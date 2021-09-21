@@ -113,7 +113,7 @@ module.exports = {
   },
   getLastBCUse: async (req, res) => {
     const { user_id } = req.params;
-    console.log(user_id);
+    // console.log(user_id);
     const userDates = await Date_birth_control.findAll({
       where: { user_id },
     });
