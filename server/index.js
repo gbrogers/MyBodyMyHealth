@@ -4,13 +4,14 @@ const ctrl = require("./controller/controller.js");
 const app = express();
 
 const path = require("path");
-app.use(express.static(path.resolve(__dirname, "../client/build")));
-
-// const connect = require("./database/db.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+
+// const connect = require("./database/db.js");
 
 // endpoints
 // app.post("/api/authenticate/login", ctrl.loginUser);
@@ -32,9 +33,7 @@ app.use(cors());
 // connect.connect();
 
 app.get("*", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname, "../client/build", "../client/public/index.html")
-  );
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 const port = process.env.PORT || 5555;
