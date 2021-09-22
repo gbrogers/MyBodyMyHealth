@@ -1,15 +1,121 @@
-.setUpForm {
+.componentContainer {
   display: flex;
+  justify-content: center;
+  padding: 0 10px;
   flex-direction: column;
+  align-items: center;
 }
 
-.setUpForm label,
-.setUpForm select {
+.componentContainer .setUpContainer {
+  background-color: #f7f6c4;
+  max-width: 700px;
+  padding: 25px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.componentContainer .setUpWords {
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.componentContainer .showBtn {
+  border: none;
+  background-color: #f8ecb4;
+  width: 100%;
+  cursor: pointer;
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.componentContainer .showBtn img {
+  width: 18px;
+  margin-right: 10px;
+  padding-top: 1px;
+}
+
+.componentContainer .setUpForm {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.componentContainer .setUpForm > label {
+  margin: 7px 0px;
+  width: fit-content;
+  border-radius: 5px;
+}
+
+.componentContainer .setUpForm > label > label > input:nth-child(1) {
+  cursor: pointer;
+  margin-right: 7px;
+}
+
+.componentContainer .setUpForm label,
+.componentContainer .setUpForm select {
   cursor: pointer;
 }
 
-.setUpForm label,
-.setUpForm select,
-.setUpForm input {
+.componentContainer .setUpForm label,
+.componentContainer .setUpForm select,
+.componentContainer .setUpForm input {
   margin-left: 10px;
+}
+
+.componentContainer .setUpHeader {
+  width: 100%;
+  font-size: 0.95rem;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.componentContainer .sexSelect,
+.componentContainer .ageSelect {
+  width: 60%;
+}
+
+.componentContainer .setUpMainHeader {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 30px;
+  margin: 10px auto 10px auto;
+}
+
+.componentContainer .generateResource {
+  border: none;
+  background-color: #ffe46f;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.componentContainer .generateResource:hover {
+  background-color: #f1e3a3;
+}
+
+.componentContainer .ageSelect,
+.componentContainer select {
+  width: 250px;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 7px;
+  border: none;
+}
+
+.componentContainer input {
+  margin-right: 10px;
+}
+
+@media screen and (min-width: 400px) {
+  .componentContainer .sexSelect,
+  .componentContainer .ageSelect {
+    width: 200px;
+  }
 }

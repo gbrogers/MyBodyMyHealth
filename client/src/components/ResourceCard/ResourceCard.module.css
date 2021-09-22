@@ -1,0 +1,84 @@
+.individualResource {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding: 5%;
+  border-radius: 5px;
+  border: 3px #474747 solid;
+  flex-basis: 300px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.individualResource .namePictureContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.individualResource .namePictureContainer img {
+  border-radius: 5px;
+  opacity: 0.8;
+  width: 95%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.individualResource h3 {
+  text-align: center;
+  color: #474747;
+  margin: 20px 10px;
+}
+
+.individualResource li a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resourceOptions {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px black solid;
+  height: 100px;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.resourceOptions a {
+  background-color: #f5bdc4;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.resourceOptions a:hover {
+  background-color: #fad8dc;
+}
+
+.resourceOptions button {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-size: 0.7rem;
+  margin-top: 5px;
+}
+
+.resourceOptions button:hover {
+  font-weight: 700;
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 400px) {
+  .individualResource {
+    padding: 20px;
+  }
+  .individualResource img,
+  .individualResource h3 {
+    width: 285px;
+  }
+  .resourceOptions a {
+    width: 285px;
+    text-align: center;
+  }
+}
