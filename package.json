@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "build": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0"
