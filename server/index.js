@@ -12,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 const connect = require("./database/db.js");
 
-endpoints;
+// endpoints;
 app.post("/api/authenticate/login", ctrl.loginUser);
 app.post("/api/authenticate/signup", ctrl.signUpUser);
 app.post("/api/addBC", ctrl.addBC);
