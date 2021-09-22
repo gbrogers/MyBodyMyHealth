@@ -12,10 +12,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
-
 // endpoints
 app.post("/api/authenticate/login", ctrl.loginUser);
 app.post("/api/authenticate/signup", ctrl.signUpUser);
@@ -34,6 +30,10 @@ app.use("/api/deleteNote/:note_id", ctrl.deleteNote);
 app.use("/api/getLastBCUse/:user_id", ctrl.getLastBCUse);
 
 connect.connect();
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+});
 
 const port = process.env.PORT || 5555;
 app.listen(port, () => {
