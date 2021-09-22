@@ -32,7 +32,9 @@ app.use("/api/getLastBCUse/:user_id", ctrl.getLastBCUse);
 connect.connect();
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  res.sendFile(
+    path.resolve(__dirname, "../client/build", "../client/public/index.html")
+  );
 });
 
 const port = process.env.PORT || 5555;
