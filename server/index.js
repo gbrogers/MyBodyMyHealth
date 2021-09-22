@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const ctrl = require("./controller/controller.js");
 const app = express();
-
 const path = require("path");
 
 app.use(express.urlencoded({ extended: true }));
