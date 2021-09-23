@@ -14,6 +14,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
+  opacity: 0.8;
 }
 
 .calendar_notes_container {
