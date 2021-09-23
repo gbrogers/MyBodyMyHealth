@@ -85,7 +85,7 @@ function Nav() {
           width: 100%;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: center;
           background-color: #f5bdc4;
           z-index: 100;
           // box-shadow: rgb(177, 177, 177) 2px 2px 4px;

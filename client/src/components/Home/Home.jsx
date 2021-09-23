@@ -84,7 +84,7 @@ export default function Home() {
               <div className={styles.circle2}>
                 <p>
                   Visually track your menstrual cycle and keep notes to track
-                  you mood, activity level, body, symptoms, and more.
+                  your mood, activity level, body, symptoms, and more.
                 </p>
                 <div className={styles.individualCircle}>
                   <Link to="./menstrualtracking">
