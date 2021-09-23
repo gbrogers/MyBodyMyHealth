@@ -80,12 +80,12 @@ function PeriodTracking() {
         .post("/api/addPeriodDate", requestBody)
         .then((res) => {
           const dates = res.data;
-          console.log(dates);
+          // console.log(dates);
           let dateArray = [];
           dates.map((instance) => {
             dateArray = [...dateArray, instance.date_occurred];
-            console.log(dateArray);
-            console.log(instance.date_occurred);
+            // console.log(dateArray);
+            // console.log(instance.date_occurred);
           });
           setdatesToAddTo(dateArray);
         })

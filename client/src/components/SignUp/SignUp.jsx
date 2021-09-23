@@ -17,8 +17,8 @@ export default function SignUp() {
   async function handleLogin(e) {
     e.preventDefault();
 
-    console.log(email.current.value);
-    console.log(password.current.value);
+    // console.log(email.current.value);
+    // console.log(password.current.value);
 
     const credentials = {
       email: email.current.value,
@@ -27,7 +27,7 @@ export default function SignUp() {
       lname: lname.current.value,
     };
 
-    console.log({ credentials });
+    // console.log({ credentials });
 
     await axios
       .post("/api/authenticate/signup", credentials)

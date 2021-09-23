@@ -34,10 +34,8 @@ export default function BirthControl(props) {
     setBirthControl,
   } = props;
 
-  // console.log(user)
-
   async function handleSelection(e, value) {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setDropDown(!dropDown);
     setShowBC(!showBC);
 
