@@ -6,7 +6,7 @@ export default function ResourceCard({ item, saveResource }) {
   const { Id, AccessibleVersion, Title, ImageUrl, ImageAlt } = item;
   return (
     <li key={Id} className={styles.individualResource}>
-      <div class={styles.namePictureContainer}>
+      <div className={styles.namePictureContainer}>
         <img src={ImageUrl} alt={ImageAlt}></img>
         <h3>{Title}</h3>
       </div>
