@@ -1,0 +1,87 @@
+.footer {
+  background-color: #c6f39a;
+  margin-top: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px black solid;
+  padding-bottom: 20px;
+}
+
+.footerLinks a {
+  margin: 2px 0;
+}
+
+.footerLinks a:hover {
+  font-weight: 700;
+}
+
+.aboutApp {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  max-width: 700px;
+}
+
+.aboutApp p {
+  font-size: 0.8em;
+}
+
+.aboutApp .mediaLinks {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerHeader {
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.footerLogoHeaderContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.footerLogoHeaderContainer img {
+  width: 50px;
+  display: flex;
+}
+
+.socialIcons {
+  height: 30px;
+}
+
+.github {
+  height: 45px;
+}
+
+@media screen and (min-width: 575px) {
+  .footer {
+    flex-direction: row-reverse;
+  }
+  .footerLinks {
+    border-bottom: none;
+    border-left: 1px solid black;
+    padding-left: 20px;
+    min-width: 200px;
+    padding-top: 10px;
+  }
+  .aboutApp {
+    margin-right: 20px;
+    margin-top: 0;
+  }
+  .aboutApp .mediaLinks {
+    justify-content: flex-start;
+  }
+}

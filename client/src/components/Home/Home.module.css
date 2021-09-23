@@ -1,0 +1,353 @@
+.home .seeMoreBtn {
+  border: none;
+  font-weight: 700;
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+.home h1,
+.home h2 {
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.home h2 {
+  font-size: 2rem;
+  line-height: 0.8;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+}
+
+.home .getStartedBtn,
+.home .loginBtn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.home .getStartedBtn {
+  background-color: #9ef3ef;
+}
+
+.home .loginBtn {
+  background-color: #defbf9;
+  margin-left: 10px;
+}
+
+.home .sectionOne > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../images/bc-types-home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.home .sectionOne > div .mainSectionImg {
+  width: 95vw;
+  display: none;
+}
+
+.home .sectionOne > div > div {
+  width: 75vw;
+  margin: 20px 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 25px 0;
+}
+
+.home .sectionOne > div > div h1,
+.home .sectionOne > div > div p {
+  text-align: center;
+  font-weight: 400;
+}
+
+.home .sectionOne > div > div p {
+  margin: 10px;
+}
+
+.home .sectionTwo {
+  position: relative;
+  margin: 50px 0 100px 0;
+}
+
+.home .sectionTwo .blueSection {
+  background-color: #dff4f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.home .sectionTwo .circleIcons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1015px;
+}
+
+.home .sectionTwo .circleIcons .individualCircle {
+  background-color: #c3fd8a;
+  border: 5px solid #fff;
+  width: 20vw;
+  height: 20vw;
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .sectionTwo .circleIcons .individualCircle img {
+  width: 70%;
+}
+
+.home .sectionTwo .circleIcons .circle1,
+.home .sectionTwo .circleIcons .circle2,
+.home .sectionTwo .circleIcons .circle3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .sectionTwo .circleIcons .circle1 p,
+.home .sectionTwo .circleIcons .circle2 p,
+.home .sectionTwo .circleIcons .circle3 p {
+  font-family: "Caveat", cursive;
+  font-size: 24px;
+  font-weight: 400;
+  width: 80%;
+  max-width: 425px;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.home .sectionThree .quoteContainer {
+  height: 200px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .sectionThree .quoteContainer p {
+  width: 70%;
+  max-width: 775px;
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.home .sectionThree .quoteContainer p .author {
+  float: right;
+  font-weight: 700;
+}
+
+.home .sectionFour {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.home .sectionFour .mustardSqr {
+  font-size: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #ffe56f;
+  padding-left: 60px;
+  position: relative;
+  height: 300px;
+}
+
+.home .sectionFour .mustardSqr p,
+.home .sectionFour .mustardSqr button {
+  font-size: 1rem;
+}
+
+.home .sectionFour .mustardSqr::after {
+  position: absolute;
+  content: url("../../images/home-triangle.svg");
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.home .sectionFour .research {
+  opacity: 0.9;
+  display: none;
+}
+
+.home .sectionFive {
+  padding: 50px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home .sectionFive .demonstration {
+  width: 60%;
+  background-color: grey;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 6px #dbdbdb;
+}
+
+.home .sectionFive .caption {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home .sectionFive .caption p,
+.home .sectionFive .caption h2 {
+  width: 80%;
+  text-align: center;
+}
+
+.home .sectionFive .caption p {
+  margin: 5px 0;
+  max-width: 500px;
+}
+
+.home .sectionFiveBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home .sectionFiveBtns button {
+  margin-left: 0;
+}
+
+@media screen and (min-width: 550px) {
+  .home .sectionOne > div > div {
+    padding: 40px;
+  }
+  .home .sectionFour {
+    display: flex;
+    flex-direction: row;
+  }
+  .home .sectionFour .mustardSqr {
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .home .sectionFour .research {
+    display: block;
+    height: 300px;
+    width: 45vw;
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home .sectionOne > div {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 100px;
+  }
+  .home .sectionOne > div .mainSectionImg {
+    width: 40%;
+  }
+  .home .sectionOne > div > div {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .home .sectionOne > div > div p {
+    margin: 10px 0;
+    text-align: left;
+  }
+  .home .sectionTwo .circleIcons {
+    flex-direction: row;
+    position: relative;
+    bottom: -125px;
+    width: 90%;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .home .sectionTwo .circleIcons .circle1 p,
+  .home .sectionTwo .circleIcons .circle2 p,
+  .home .sectionTwo .circleIcons .circle3 p {
+    font-size: 20px;
+    width: 200px;
+  }
+  .home .sectionFour .mustardSqr {
+    width: 40vw;
+    background-color: #ffe46f;
+  }
+  .home .sectionFour .research {
+    display: block;
+    height: 300px;
+    width: 60vw;
+    object-fit: cover;
+  }
+  .home .sectionFive {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .home .sectionFive .demonstration {
+    margin-right: 15px;
+    margin-left: 60px;
+  }
+  .home .sectionFive .caption {
+    margin-left: 15px;
+    align-items: flex-start;
+  }
+  .home .sectionFive .caption p,
+  .home .sectionFive .caption h2 {
+    text-align: left;
+  }
+  .home .sectionFive .sectionFiveBtns {
+    flex-direction: row;
+  }
+  .home .sectionFive .sectionFiveBtns button {
+    margin-right: 10px;
+  }
+}
+
+@media screen and (min-width: 875px) {
+  .home .sectionTwo .blueSection {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media screen and (min-width: 1175px) {
+  .home .sectionTwo .circleIcons .circle1 p,
+  .home .sectionTwo .circleIcons .circle2 p,
+  .home .sectionTwo .circleIcons .circle3 p {
+    font-size: 26px;
+    width: 275px;
+  }
+}

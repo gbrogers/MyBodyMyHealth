@@ -1,0 +1,35 @@
+.individualResource {
+  padding: 10px;
+  margin: 5px 30px;
+  border-radius: 5px;
+  flex-basis: 100%;
+}
+
+.individualResource a {
+  border: 1px solid black;
+  padding: 0 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.individualResource a:hover {
+  background-color: #fcf8c4;
+}
+
+.individualResource h3 {
+  margin-bottom: 7px;
+}
+
+.individualResource .deleteBtn {
+  border: 1px solid black;
+  padding: 0 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.individualResource .deleteBtn:hover {
+  background-color: #eeeeee;
+}

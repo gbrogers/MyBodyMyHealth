@@ -1,0 +1,124 @@
+.personalizedResources {
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.displayResources {
+  padding-bottom: 40px;
+}
+.headerContainer {
+  background-image: url("../../images/papers.jpg");
+  padding: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.pageTitle {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 48px;
+  margin: 10px auto 10px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+
+  border-radius: 5px;
+  padding: 10px;
+}
+.dropdowns {
+  display: flex;
+  flex-direction: column;
+}
+.savedHeader {
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 30px;
+  margin: 10px auto 10px auto;
+  // background-color: #ffe46f;
+}
+.resourceContainer {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.showBtn {
+  border: none;
+  background-color: #f8ecb4;
+  cursor: pointer;
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin-top: 10px;
+
+  img {
+    width: 18px;
+    margin-right: 10px;
+    padding-top: 1px;
+  }
+}
+.savedList {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h3 {
+    background-color: #9ef3ef;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: flex;
+    img {
+      width: 30px;
+      padding: 5px;
+    }
+  }
+}
+.quoteContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background-color: #cdeceb;
+  margin: 20px auto;
+  border-radius: 25px 0;
+  max-width: 1000px;
+
+  .quote {
+    background-color: #ffffff71;
+    padding: 20px;
+    border-radius: 25px 0;
+    text-align: center;
+    img {
+      width: 50px;
+      // margin: 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .quoteContainer {
+    .quote {
+      text-align: left;
+      // margin-left: 15px;
+      img {
+        margin-right: 15px;
+        width: 100px;
+      }
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      // margin-left: 15px;
+      // flex-direction: column;
+    }
+  }
+}
