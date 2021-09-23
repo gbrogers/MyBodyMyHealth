@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 67vh;
+  // height: 67vh;
 }
 .loginForm {
   display: flex;
   flex-direction: column;
   // background-color: #dff4f3;
-
+  padding: 50px 0;
   margin: 30px 20px 0 20px;
 
   input {
