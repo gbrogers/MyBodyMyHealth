@@ -83,7 +83,7 @@ export default function SignUp() {
               Sign Up
             </button>
             <p className={styles.alternative}>
-              Already have and account?{" "}
+              Already have an account?{" "}
               <b>
                 <Link to="/login">Log in</Link>
               </b>
