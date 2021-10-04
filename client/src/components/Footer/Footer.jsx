@@ -29,7 +29,10 @@ export default function Footer() {
         </p>
 
         <div className={styles.mediaLinks}>
-          <a href="https://gbrogers.github.io/" target="_blank">
+          <a
+            href="https://giselle-rogers-portfolio.netlify.app/"
+            target="_blank"
+          >
             <img
               src={Profile}
               alt="profile"
