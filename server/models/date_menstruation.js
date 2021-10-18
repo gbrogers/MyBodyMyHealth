@@ -5,11 +5,6 @@ const User = require("./user");
 const Date_menstruation = connection.define(
   "Date_menstruation",
   {
-    // id: {
-    //   type: Sequelize.UUID,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
     user_id: {
       type: Sequelize.INTEGER,
       references: {

@@ -6,18 +6,6 @@ console.log(connection);
 const Saved_article = connection.define(
   "Saved_article",
   {
-    // id: {
-    //   type: Sequelize.UUID,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
-    // user_id: {
-    //   type: Sequelize.INTEGER,
-    //   references: {
-    //     model: User,
-    //     key: "id",
-    //   },
-    // },
     url: {
       type: Sequelize.STRING(1234),
       allowNull: false,

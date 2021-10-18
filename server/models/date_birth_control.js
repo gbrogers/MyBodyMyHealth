@@ -5,11 +5,6 @@ const User = require("./user");
 const Date_birth_control = connection.define(
   "Date_birth_control",
   {
-    // id: {
-    //   type: Sequelize.UUID,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
     user_id: {
       type: Sequelize.INTEGER,
       references: {

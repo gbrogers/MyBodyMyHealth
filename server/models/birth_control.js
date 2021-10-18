@@ -4,11 +4,6 @@ const connection = require("../database/sequelize.js");
 const Birth_control = connection.define(
   "Birth_control",
   {
-    // id: {
-    //   type: Sequelize.UUID,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
     bc_name: {
       type: Sequelize.STRING,
     },

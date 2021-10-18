@@ -5,11 +5,6 @@ const User = require("./user.js");
 const Note = connection.define(
   "Note",
   {
-    // id: {
-    //   type: Sequelize.UUID,
-    //   primaryKey: true,
-    //   allowNull: false,
-    // },
     user_id: {
       type: Sequelize.INTEGER,
       allowNull: false,
