@@ -24,6 +24,7 @@
     "build": "cd client && npm install && npm run build"
   },
   "devDependencies": {
+    "cypress": "^8.7.0",
     "sequelize-cli": "^6.2.0"
   }
 }
