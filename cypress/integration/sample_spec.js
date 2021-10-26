@@ -14,8 +14,9 @@ describe("My Third Test", () => {
     cy.contains("Login").click();
     cy.url().should("include", "/login");
 
-    // cy.get(".email")
-    //   .type("fake@email.com")
-    //   .should("have.value", "fake@email.com");
+    cy.get("input[type='email']").type("fake@email.com");
+    cy.get("input[type='password']").type("password");
+    cy.get("button[type='submit']").click();
+    // cy.url().should("include", "Email Not Recognized");
   });
 });
