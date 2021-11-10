@@ -139,7 +139,7 @@
 
   .sectionThree {
     .quoteContainer {
-      height: 200px;
+      // height: 200px;
       margin-bottom: 30px;
       display: flex;
       // flex-direction: column;
@@ -246,6 +246,9 @@
     .sectionTwo {
     }
     .sectionThree {
+      .quoteContainer {
+        height: 200px;
+      }
     }
     .sectionFour {
     }
